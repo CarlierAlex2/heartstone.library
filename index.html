@@ -24,40 +24,49 @@
 
     </head>
     <body>
-        <main class="c-app">
-            <h1 class="c-logo u-muted">
-                <svg class="c-sun"
-                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
-                    <path d="M17,11c0,3.3-2.7,6-6,6s-6-2.7-6-6s2.7-6,6-6S17,7.7,17,11z M11.5,0h-1v3h1V0z M3.6,2.9L2.9,3.6L5,5.7L5.7,5L3.6,2.9zM0,10.5l0,1h3v-1H0z M2.9,18.4l0.7,0.7L5.7,17L5,16.3L2.9,18.4z M10.5,22h1v-3h-1V22z M18.4,19.1l0.7-0.7L17,16.3L16.3,17L18.4,19.1z M22,11.5v-1h-3v1H22z M19.1,3.6l-0.7-0.7L16.3,5L17,5.7L19.1,3.6z"/>
-                </svg>
-                Daylight
-            </h1>
-            <div class="c-horizon">
-                <div class="c-horizon__sky-wrapper">
-                    <div class="c-horizon__sky">
-                        <span class="c-horizon__sun js-sun" data-time="10:30" style="bottom: 60%; left: 20%;">
-                            <svg class="c-sun"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
-                               <path d="M17,11c0,3.3-2.7,6-6,6s-6-2.7-6-6s2.7-6,6-6S17,7.7,17,11z M11.5,0h-1v3h1V0z M3.6,2.9L2.9,3.6L5,5.7L5.7,5L3.6,2.9zM0,10.5l0,1h3v-1H0z M2.9,18.4l0.7,0.7L5.7,17L5,16.3L2.9,18.4z M10.5,22h1v-3h-1V22z M18.4,19.1l0.7-0.7L17,16.3L16.3,17L18.4,19.1z M22,11.5v-1h-3v1H22z M19.1,3.6l-0.7-0.7L16.3,5L17,5.7L19.1,3.6z"/>
-                           </svg>
-                        </span>
+        <main class="">
+            <div class="js-search">
+                <input class="js-search__bar" type="text" placeholder="Name of card..">
+                <button class="js-search__btn" type="button">Search</button> 
+                <ul class="js-search__list">
+                    <li data-cardId="EX1_591">Card 1</li>
+                    <li data-cardId="EX1_050">Card 2</li>
+                  </ul>
+            </div>
+
+            <div>
+                <img class="js-card__image" 
+                src="https://d15f34w2p8l1cc.cloudfront.net/hearthstone/f7d4aa4cdcf78441cc8d0bae954a55a271ad9cedc89c611b8fc0cf0859a8a32f.png" 
+                alt="Card Image" width="307" height="465"> 
+
+                <div class="js-health">
+                    <div class="js-progress__bar c-progress__bar">
+                        <div class="js-progress__fill c-progress__fill"></div>     
+                       </div>
+                </div>
+
+                <div class="js-attack">
+                    <div class="js-progress__bar c-progress__bar">
+                        <div class="js-progress__fill c-progress__fill"></div>     
+                       </div>
+                </div>
+
+                <div class="js-cost">
+                    <div class="js-progress__bar c-progress__bar">
+                     <div class="js-progress__fill c-progress__fill"></div>     
                     </div>
                 </div>
-                <div class="c-horizon__line">
-                    <time class="c-horizon__time js-sunrise">
-                        07:59
-                    </time>
-                    <time class="c-horizon__time js-sunset">
-                        19:07
-                    </time>
-                </div>
+
+                <!--
+                <h1>Name</h1>
+                <p class="js-card__name">Dark Guardian</p>
+                <h1>Card Set</h1>
+                <p class="js-card__set">Whispers of the Old Gods</p>
+                <h1>Description</h1>
+                <p class="js-card__text">Increased Stats</p>
+                -->
             </div>
-            <p class="c-app__summary">
-                <span class="js-time-left">4</span> minutes sunlight <span class="u-muted">left today. Make the most of it!</span>
-            </p>
-            <p class="c-app__location u-muted js-location">
-                Kortrijk, Belgium
-            </p>
+
         </main>
 	</body>
 </html>

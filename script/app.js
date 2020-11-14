@@ -1,182 +1,279 @@
-//const key = "75dde4b3c7msh17f23cdc7ce3a37p1b96cbjsn28b62e715f49";
-const key = "c6e6e6c4055b2ff8b28b067cdedb959c";
+const API_HEARTSTONE = "https://omgvamp-hearthstone-v1.p.rapidapi.com";
+const KEY_RAPIDAPI = "33cfbd2fd6mshd1b64af868129a8p1a7089jsn81904d09c905";
+const HOST_RAPIDAPI = "omgvamp-hearthstone-v1.p.rapidapi.com";
+const TEST_CARD_ID_01 = "EX1_591"
+const TEST_CARD_ID_02 = "EX1_050"
+
+let html_CardImage;
+let html_SearchBar, html_SearchList, html_SearchButton;
+let html_CardName, html_CardSet, html_CardText;
+let html_Cost, html_Attack, html_Health;
+let currentCard;
+let listCards;
+let defaultImage;
+
+const MAX_HEALTH = 10;
+const MAX_ATTACK = 10;
+const MAX_COST = 10;
 
 
-
-//#region ===== helper functions  //============================================================================================================================================================
-const formatTime = (date) =>{
-	const hours = date.getHours();
-	const minutes = date.getMinutes();
-	return `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}`;
+//============================================================================================================================================================
+const callbackCardById = function(jsonObject){
+	let card = jsonObject["0"];
+	console.log(card);
+	showCard(card);
 };
 
-
-const parseMilliseconds = (timestamp) =>{
-	//Get hours from milliseconds
-	const date = convertSecondToDate(timestamp);
-	return formatTime(date);
+const callBackDefaultImage = function(jsonObject){
+	let card = jsonObject[0];
+	defaultImage = card["img"];
 };
 
+const callbackCardList = function(jsonObject){
+	console.log(jsonObject);
 
-const convertSecondToDate = (seconds) =>{
-	return new Date(seconds * 1000); //API in seconden => * 1000 voor milli
 };
 
+const callbackSearch = function(jsonObject){
+	console.log(jsonObject);
+	fillSearchList(jsonObject);
 
-const getBottomPercentage = (percentage)=>{
-	return percentage < 50? percentage * 2 : (100 - percentage) * 2; //tot hoogste stand van de zon gaat het naar boven, daarna naar beneden
+	//getCardyId(cardId);
 };
 
-
-const letItBeNight = () =>{
-	//console.log("Enable nightmode");
-	document.querySelector('html').classList.add('is-night');
-};
+const fillSearchList = function(list){
+	let listFound = [];
+	let listContentHtml = "";
 
 
-const letItBeDay = () =>{
-	//console.log("Disable nightmode");
-	document.querySelector('html').classList.remove('is-night');
-};
-//#endregion
+	for (const card of list) {
+		if(card.hasOwnProperty("img"))
+		{
+			console.log(card);
+			listFound.push(card);
+		}
+		if(listFound.length >= 5)
+		{
+			break;
+		}
+	}
 
-
-
-//#region ===== 5 TODO: maak updateSun functie  //============================================================================================================================================================
-const updateSun = (sun, sunLeft, sunBottom, now) => {
-	sun.style.left = `${sunLeft}%`;
-	sun.style.bottom = `${sunBottom}%`;
-
-	const currentTimeStamp = formatTime(now);
-	sun.setAttribute('data-time', currentTimeStamp);
-};
-//#endregion
-
-
-
-//#region ===== 4 Zet de zon op de juiste plaats en zorg ervoor dat dit iedere minuut gebeurt.  //============================================================================================================================================================
-const placeSunAndStartMoving = (totalMinutes, sunrise) => {
-	const sunHTML = document.querySelector('.js-sun');
-	const timeHTML = document.querySelector('.js-time-left');
-
-	// Bepaal het aantal minuten dat de zon al op is.
-	const now = new Date();
-	const minutesNow = (now.getHours() * 60 + now.getMinutes());
-
-	const sunriseDate = convertSecondToDate(sunrise)
-	const minutesSunrise = (sunriseDate.getHours() * 60 + sunriseDate.getMinutes());
-
-	let minutesBeenUp = minutesNow - minutesSunrise; //let omdat later updaten
-	const minutesLeft = totalMinutes - minutesBeenUp;
-
-	const sunLeft = (minutesBeenUp/totalMinutes) * 100;
-	const sunBottom = getBottomPercentage(sunLeft); //tot hoogste stand van de zon gaat het naar boven, daarna naar beneden
-
-	// Zet initiële goede positie zon
-	updateSun(sunHTML, sunLeft, sunBottom, now);
-
-	// Voeg de 'is-loaded' class toe aan de body-tag.
-	document.body.classList.add('is-loaded');
-
-	// Vul het resterende aantal minuten in.
-	let minutesLeftDisplay = Math.floor(minutesLeft);
-	if(minutesLeftDisplay < 0)
-		minutesLeftDisplay = 0;
-	timeHTML.innerHTML = minutesLeftDisplay;
-
-	// Bekijk of de zon niet nog onder of reeds onder is
-	if(minutesBeenUp > totalMinutes || minutesBeenUp < 0)
+	console.log(`Fill list - length: ${listFound.length}`);
+	for (const card of listFound)
 	{
-		letItBeNight();
+		let cardId = card["cardId"];
+		let cardName = card["name"];
+		listContentHtml += `<li data-cardId="${cardId}">${cardName}</li>`;
 	}
 
-	// Updaten zon elke minuut (wordt pas na 1 minuut gestart)
-	const t = setInterval(() => {
-		console.log("checkSun");
-		if(minutesBeenUp > totalMinutes)
-		{
-			//clearInterval(t);
-			letItBeNight();
-		}
-		else if(minutesBeenUp < 0)
-		{
-			letItBeNight();
-		}
-		else
-		{
-			letItBeDay();
-	
-			// Zon updaten via de updateSun functie.
-			const now = new Date();
-			const left = (100/totalMinutes) * minutesBeenUp;
-			const bottom = getBottomPercentage(left);
-	
-			// Update resterend aantal minuten en verhoog aantal verstreken minuten.
-			updateSun(sunHTML, left, bottom, now);
-			minutesBeenUp++;
-		}	
+	html_SearchList.innerHTML = listContentHtml;
+	listenToSelectSearched(html_SearchList);
+};
+
+const setBarPercentage = function(html_object, statValue, statMax){
+	html_fill = html_object.querySelector(".js-progress__fill");
+	html_fill.style.width = `${(statValue / statMax) * 100}%`;
+};
+
+
+const showCard = function(card){
+	currentCard = card;
+	let health = 0;
+	let cost = 0;
+	let attack = 0;
+
+	if(card.hasOwnProperty("img")){
+		html_CardImage.src = card["img"];
 	}
-	,60000);
+	else
+	{
+		html_CardImage.src = defaultImage;
+	}
+	html_CardImage.alt = `Card image of ${card["name"]}`;
+
+	if(card.hasOwnProperty("health")){
+		health = card["health"];
+	}
+	if(card.hasOwnProperty("attack")){
+		attack = card["attack"];
+	}
+	if(card.hasOwnProperty("cost")){
+		cost = card["cost"];
+	}
+
+	/*
+	html_CardName.innerHTML = card["name"];
+	html_CardSet.innerHTML = card["cardSet"];
+	html_CardText.innerHTML = card["text"];
+	*/
+
+	setBarPercentage(html_Health, health, MAX_HEALTH);
+	setBarPercentage(html_Attack, attack, MAX_ATTACK);
+	setBarPercentage(html_Cost, cost, MAX_COST);
 };
-//#endregion
 
+const consoleCard = function(card)
+{
+	const name = card["name"];
+	const cardSet = card["cardSet"];
+	const cardType = card["type"];
 
+	const faction = card["faction"];
+	const rarity = card["rarity"];
 
-//#region ===== 3 Met de data van de API kunnen we de app opvullen  //============================================================================================================================================================
-const showResult = queryResponse => {
-	console.log(queryResponse);
-	// Geef locatie weer
-	const locatieHTML = document.querySelector('.js-location');
-	const stad = queryResponse.city.name;
-	const country = queryResponse.city.country;
-	locatieHTML.innerText = `${stad}, ${country}`;
+	const cost = card["cost"];
+	const attack = card["attack"];
+	const health = card["health"];
 
-	// Toon  tijd voor de zonsopkomst en -ondergang
-	const sunriseHTML = document.querySelector('.js-sunrise');
-	const sunrise = queryResponse.city.sunrise;
-	const sunriseText = parseMilliseconds(sunrise);
-	sunriseHTML.innerText = sunriseText;
+	const text = card["text"];
+	const flavor = card["flavor"];
+	const artist = card["artist"];
+	const collectible = card["collectible"];
+	const playerClass = card["playerClass"];
 
-	const sunsetHTML = document.querySelector('.js-sunset');
-	const sunset = queryResponse.city.sunset;
-	const sunsetText = parseMilliseconds(sunset);
-	sunsetHTML.innerText = sunsetText;
+	const img = card["img"];
+	const imgGold = card["imgGold"];
+	const locale = card["locale"];
 
-	// Geef zon positie en update
-	// Geef de periode tussen sunrise en sunset en het tijdstip van sunrise mee
-	const timeDifference = ((sunset - sunrise) / 60); //API staat seconden -> /60 voor minuten
-	placeSunAndStartMoving(timeDifference, sunrise);
+	console.log(`name - ${name}`);
+	console.log(`cardSet - ${cardSet}`);
+	console.log(`cardType - ${cardType}`);
+
+	console.log(`faction - ${faction}`);
+	console.log(`rarity - ${rarity}`);
+
+	console.log(`cost - ${cost}`);
+	console.log(`attack - ${attack}`);
+	console.log(`health - ${health}`);
+
+	console.log(`text - ${text}`);
+	console.log(`flavor - ${flavor}`);
+	console.log(`artist - ${artist}`);
+	console.log(`collectible - ${collectible}`);
+	console.log(`playerClass - ${playerClass}`);
+
+	console.log(`img - ${img}`);
+	console.log(`imgGold - ${imgGold}`);
+	console.log(`locale - ${locale}`);
 };
-//#endregion
 
-
-
-//#region ===== 2 Aan de hand van een longitude en latitude gaan we de yahoo wheater API ophalen.  //============================================================================================================================================================
-const getAPI = async(lat, lon) => {
-	// Eerst bouwen we onze url op
-	endpoint = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}&units=metric&lang=nl&cnt=1`;
-	// Met de fetch API proberen we de data op te halen.
-	const responseData = await fetch(endpoint).then((response) =>
-        {
-            if(!response.ok)
-                throw Error(`Er is een probleem opgetreden: ${response.status}`);
-            else
-                return response.json();
-    
-        }
-    )
-    .catch((error) =>{console.log(`Fout bij het verwerken van json: ${error}`);}
-	)
-	// Als dat gelukt is, gaan we naar onze showResult functie.
-	showResult(responseData);
+const callBackLog = function(responseLog){
+	console.log(responseLog);
 };
-//#endregion
 
 
 
 //============================================================================================================================================================
+const handleData = function(url, callbackFunctionName, callbackErrorFunctionName = null, method = 'GET', body = null) {
+	fetch(url, {
+	  method: method,
+	  body: body,
+	  headers: {"x-rapidapi-key": `${KEY_RAPIDAPI}`, "x-rapidapi-host": `${HOST_RAPIDAPI}`, 'content-type': 'application/json'}
+	})
+	  .then(function(response) {
+		if (!response.ok) {
+		  console.warn(`>> Probleem bij de fetch(). Statuscode: ${response.status}`);
+		  if (callbackErrorFunctionName) {
+			console.warn(`>> Callback errorfunctie ${callbackErrorFunctionName.name}(response) wordt opgeroepen`);
+			callbackErrorFunctionName(response); 
+		  } else {
+			console.warn('>> Er is geen callback errorfunctie meegegeven als parameter');
+		  }
+		} else {
+		  console.info('>> Er is een response teruggekomen van de server');
+		  return response.json();
+		}
+	  })
+	  .then(function(jsonObject) {
+		if (jsonObject) {
+		  console.info('>> JSONobject is aangemaakt');
+		  console.info(`>> Callbackfunctie ${callbackFunctionName.name}(response) wordt opgeroepen`);
+		  callbackFunctionName(jsonObject);
+		}
+	  });
+};
+
+
+const getInfo = function() {
+	console.log("Get Info fetch");
+	handleData(`${API_HEARTSTONE}/info`, callBackLog, callBackLog, "GET");
+
+
+};
+
+const getDefaultCard = function(cardId) {
+	handleData(`${API_HEARTSTONE}/cardbacks`, callBackDefaultImage, callBackLog, "GET");
+};
+
+const getCardyId = function(cardId) {
+	console.log("Get CardById fetch");
+	handleData(`${API_HEARTSTONE}/cards/${cardId}`, callbackCardById, callBackLog, "GET");
+};
+
+const getCardList = function(){
+	console.log("Get all cards fetch");
+	handleData(`${API_HEARTSTONE}/cards`, callbackCardList, callBackLog, "GET");
+};
+
+const getCardSearchName = function(name){
+	console.log("Get card by name fetch");
+	handleData(`${API_HEARTSTONE}/cards/search/${name}`, callbackSearch, callBackLog, "GET");
+};
+
+const listenToSearch = function(){
+	html_SearchButton.addEventListener("click", function() {
+		const name = html_SearchBar.value;
+		getCardSearchName(name);
+	  }); 
+};
+
+const listenToSelectSearched = function(list){
+	list.removeEventListener("click", eventShowCard); 
+	list.addEventListener("click", eventShowCard); 
+};
+
+const eventShowCard = function(event){
+	if(event.target && event.target.nodeName == "LI") 
+	{
+		const item = event.target;
+		console.log(item + " was clicked");
+		const cardId = item.getAttribute("data-cardId"); ;
+		getCardyId(cardId);
+	}
+}
+
+
+//============================================================================================================================================================
+const getHtmlElements = function(){
+	html_CardImage = document.querySelector('.js-card__image');
+
+	html_SearchBar = document.querySelector('.js-search__bar');
+	html_SearchList = document.querySelector('.js-search__list');
+	html_SearchButton = document.querySelector('.js-search__btn');
+
+	html_Health = document.querySelector('.js-health');
+	html_Attack = document.querySelector('.js-attack');
+	html_Cost = document.querySelector('.js-cost');
+
+	/*
+	html_CardName = document.querySelector('.js-card__name');
+	html_CardSet = document.querySelector('.js-card__set');
+	html_CardText = document.querySelector('.js-card__text');
+	*/
+};
+
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
-	// 1 We will query the API with longitude and latitude.
-	getAPI(50.8027841, 3.2097454);
+	getHtmlElements();
+
+	getInfo();
+	getDefaultCard();
+	//getCardSearchName("a");
+	//getCardyId(TEST_CARD_ID_01);
+	//getCardyId(TEST_CARD_ID_02);
+
+	listenToSearch();
 });
 
