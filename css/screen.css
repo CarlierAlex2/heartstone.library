@@ -8,7 +8,48 @@
 
 :root {
     /* colors */
-    --global-color-light: #CCE7FF;
+    --color-orange-dark: #ff8b3e;
+    --color-orange-light: #ffc9a6;
+
+    --color-blue-dark: #498bff;
+    --color-blue-light: #76edff;
+
+    --color-yellow-dark: #be820e;
+    --color-yellow-light: #ffdc28;
+
+    --color-red-dark: #74241b;
+    --color-red-light: #ff4e39;
+
+
+    --color-neutral-light-xxxx: #ffffff;
+    --color-neutral-light-xxx: #fafdff;
+    --color-neutral-light-xx: #e8eef2;
+    --color-neutral-light-x: #ced5d9;
+    --color-neutral-light: #b5bbbf;
+    --color-neutral-dark: #85898c;
+    --color-neutral-dark-x: #555759;
+    --color-neutral-dark-xx: #252627;
+    --color-neutral-dark-xxx: #0c0c0d;
+
+    --global-background-color: var(--color-neutral-dark-xx);
+    --global-text-color: var(--color-neutral-light-xxxx);
+
+
+    /* Whitespace */
+    --global-baseline: 8px;
+    --global-whitespace-xxs: var(--global-baseline); /* = 8px */
+    --global-whitespace-xs: calc(var(--global-baseline) * 2); /* = 16px */
+    --global-whitespace-sm: calc(var(--global-baseline) * 3); /* = 24px */
+    --global-whitespace-md: calc(var(--global-baseline) * 4); /* = 32px */
+    --global-whitespace-lg: calc(var(--global-baseline) * 5); /* = 48px */
+    --global-whitespacexl: calc(var(--global-baseline) * 6); /* = 56px */
+
+
+    /* Shadows */
+
+    /* border radius */
+
+    /* transitions */
 
 }
 
@@ -30,8 +71,8 @@ html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    color: var(--global-color-front);
-    background-color: var(--global-color-back);
+    color: var(--global-text-color);
+    background-color: var(--global-background-color);
 }
 
 *,

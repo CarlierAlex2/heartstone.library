@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" class="is-day">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Daylight</title>
+        <meta name="description" content="An app about the time of the day the sun is up.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="msapplication-TileColor" content="#cce7ff">
+        <meta name="theme-color" content="#cce7ff">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="mask-icon" href="safari-pinned-tab.svg" color="#0f3557">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/screen.css">
+
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+
+        <script src="./script/app.js"></script>
+
+    </head>
+    <body>
+        <main class="">
+            <div class="js-search">
+                <input class="js-search__bar" type="text" placeholder="Name of card..">
+                <button class="js-search__btn" type="button">Search</button> 
+                <ul class="js-search__list">
+                    <li data-cardId="EX1_591">Card 1</li>
+                    <li data-cardId="EX1_050">Card 2</li>
+                  </ul>
+            </div>
+
+            <div>
+                <img class="js-card__image" 
+                src="https://d15f34w2p8l1cc.cloudfront.net/hearthstone/f7d4aa4cdcf78441cc8d0bae954a55a271ad9cedc89c611b8fc0cf0859a8a32f.png" 
+                alt="Card Image" width="307" height="465"> 
+
+                <div class="js-health">
+                    <div class="js-progress__bar c-progress__bar">
+                        <div class="js-progress__fill c-progress__fill"></div>     
+                       </div>
+                </div>
+
+                <div class="js-attack">
+                    <div class="js-progress__bar c-progress__bar">
+                        <div class="js-progress__fill c-progress__fill"></div>     
+                       </div>
+                </div>
+
+                <div class="js-cost">
+                    <div class="js-progress__bar c-progress__bar">
+                     <div class="js-progress__fill c-progress__fill"></div>     
+                    </div>
+                </div>
+
+                <!--
+                <h1>Name</h1>
+                <p class="js-card__name">Dark Guardian</p>
+                <h1>Card Set</h1>
+                <p class="js-card__set">Whispers of the Old Gods</p>
+                <h1>Description</h1>
+                <p class="js-card__text">Increased Stats</p>
+                -->
+            </div>
+
+        </main>
+	</body>
+</html>
