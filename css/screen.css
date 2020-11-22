@@ -267,28 +267,14 @@ input::placeholder {
 
 /* size modifiers */
 
+.o-row--md {
+    padding-top: var(--global-whitespace-md);
+    padding-bottom: var(--global-whitespace-md);
+}
+
 .o-row--lg {
-    padding-top: var(--global-whitespace-xl);
-    padding-bottom: var(--global-whitespace);
-}
-
-.o-row--xl {
-    padding-top: var(--global-whitespace-xxl);
-    padding-bottom: var(--global-whitespace-xl);
-}
-
-@media (min-width: 768px) {
-    .o-row {
-        padding-left: var(--global-whitespace-xl);
-        padding-right: var(--global-whitespace-xl);
-    }
-}
-
-@media (min-width: 992px) {
-    .o-row--xl {
-        padding-top: 96px;
-        padding-bottom: var(--global-whitespace-xxl);
-    }
+    padding-top: var(--global-whitespace-lg);
+    padding-bottom: var(--global-whitespace-lg);
 }
 
 /*
@@ -367,11 +353,11 @@ input::placeholder {
 }
 
 .o-layout--gutter-sm {
-    margin: 0 -6px;
+    margin: 0 -8px;
 }
 
 .o-layout--gutter-sm > .o-layout__item {
-    padding: 0 6px;
+    padding: 0 8px;
 }
 
 .o-layout--gutter-md {
@@ -413,6 +399,10 @@ input::placeholder {
 
 .o-layout--row-reverse {
     flex-direction: row-reverse;
+}
+
+.o-layout--column {
+    flex-direction: column;
 }
 
 /* Horizontal alignment modifiers*/
@@ -479,6 +469,13 @@ input::placeholder {
 
 .o-layout--align-content-space-between {
     align-content: space-between;
+}
+
+/* Vertical alignment modifiers that only work if there is one than one flex item */
+
+.o-flex-grow {
+    width: auto;
+    flex-grow: 1;
 }
 
 /*
@@ -610,18 +607,30 @@ input::placeholder {
     Website main logo
 */
 
-.c-logo {
-    height: 8rem; /* 128px = 16em * 8 */
+.c-icon {
+    max-height: 3rem; /* 48px = 16 * 3rem */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.c-logo__symbol {
+.c-icon-logo {
+    max-height: 8rem; /* 128px = 16 * 8rem*/
+}
+
+.c-icon-bar {
+    width: 3rem; /* 48px = 16 * 3rem */
+    margin-right: var(--global-whitespace-lg) 
+}
+
+.c-icon-btn {
+    width: 1.5rem; /* 24px = 16 * 1.5rem */
+}
+
+.c-icon__symbol {
     height: 100%;
     fill: var(--global-color-alpha-dark);
 }
-
 
 /*
     Component: Stats
@@ -629,19 +638,117 @@ input::placeholder {
     Status elements like percentage bars
 */
 
-.c-progress__bar{
-    width: 20rem;
-    height: 4rem;
-    border: 0.3rem solid purple;
-    margin-top: 1.5rem;
-    background-color: #fff;
+.c-stats{
+    --stats-label-fontSize : 14px;
+    --stats-label-margin : var(--global-whitespace-sm);
+    --stats-border-size:  0.3rem;
+
+    --stats-color-main: purple;
+    --stats-color-sub: white;
+
+    min-height: 100%;
 }
 
-.c-progress__fill{
-    height: 3.4rem;
-    background-color: purple;
+.c-stats-health{
+    --stats-color-main: var(--color-red-dark);
+    --stats-color-sub: var(--color-red-light);;
+}
+
+.c-stats-attack{
+    --stats-color-main: var(--color-yellow-dark);
+    --stats-color-sub: var(--color-yellow-light);;
+}
+
+.c-stats-cost{
+    --stats-color-main: var(--color-blue-dark);
+    --stats-color-sub: var(--color-blue-light);;
+}
+
+.c-stats__label{
+    font-size: var(--stats-label-fontSize);
+    margin: 0 0 var(--stats-label-margin);
+}
+
+.c-stats__bar{
+    height: calc(100% - var(--stats-border-size));
+    border: var(--stats-border-size) solid var(--stats-color-main);
+    background-color: transparent;
+}
+
+.c-stats__fill{
+    min-height: 100%;
+    background-color: var(--stats-color-main);
     width: 50%;
 }   
+
+/*
+    Component: Search
+    ---
+    Search elements
+*/
+
+.c-search{
+    --search-color: var(--color-neutral-dark);
+    --search-text-color: var(--color-neutral-dark);
+
+    --search-input-padding-h: var(--global-whitespace-sm);
+    --search-input-padding-v: var(--global-whitespace-xs);
+
+    --search-list-padding: var(--global-whitespace-md);
+    --search-layout-padding: 16px;
+
+    color: var(--search-text-color);
+    position: relative;
+    z-index: 1000;
+}
+
+.c-search__bar{
+    position: relative;
+    flex-grow: 1;
+}
+
+.c-search__input{
+    width: 100%;
+    border-bottom: 1px solid var(--search-color);
+    padding: var(--search-input-padding-v) var(--search-input-padding-h);
+}
+
+.c-search__btn{
+    fill: var(--search-color);
+    width: auto;
+}
+
+.c-search__list{
+    position: absolute;
+    background-color: var(--color-neutral-dark-xxx);
+    transform: translateY(0);
+    width: calc(100% - var(--search-layout-padding));
+}
+
+.c-search__list-hide{
+    display: none;
+}
+
+.c-search__list li{
+    padding: var(--search-list-padding) 0;
+    margin: 0 var(--search-input-padding-h);
+}
+
+.c-search__list li + li {
+    --search-list-borderColor: rgba(255, 255, 255, 0.2);
+    border-top: 1px solid var(--search-list-borderColor);
+}
+
+
+/*
+    Component: Image
+    ---
+    Image elements
+*/
+
+.c-image{
+    max-width: 100%;
+}
 
 
 /*------------------------------------*\
@@ -708,15 +815,15 @@ input::placeholder {
     Utility classes to put specific max widths onto elements
 */
 .u-max-width-xxs {
-    max-width: 12.5em !important;  /*200px / 16 = 12.5em*/
+    max-width: 12.5rem !important;  /*200px = 12.5rem * 16*/
 }
 
 .u-max-width-xs {
-    max-width: 16.5em !important;  /*264px / 16 = 16.5em*/
+    max-width: 16.5rem !important;  /*264px = 16.5rem * 16*/
 }
 
 .u-max-width-sm {
-    max-width: 39em !important;
+    max-width: 19.5rem !important; /*312px = 19.5rem * 16 */
 }
 
 .u-max-width-md {

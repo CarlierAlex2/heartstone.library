@@ -5,7 +5,7 @@ const TEST_CARD_ID_01 = "EX1_591"
 const TEST_CARD_ID_02 = "EX1_050"
 
 let html_CardImage;
-let html_SearchBar, html_SearchList, html_SearchButton;
+let html_SearchInput, html_SearchList, html_SearchButton;
 let html_CardName, html_CardSet, html_CardText;
 let html_Cost, html_Attack, html_Health;
 let currentCard;
@@ -37,7 +37,7 @@ const callbackCardList = function(jsonObject){
 const callbackSearch = function(jsonObject){
 	console.log(jsonObject);
 	fillSearchList(jsonObject);
-
+	html_SearchList.classList.remove("c-search__list-hide");
 	//getCardyId(cardId);
 };
 
@@ -63,7 +63,7 @@ const fillSearchList = function(list){
 	{
 		let cardId = card["cardId"];
 		let cardName = card["name"];
-		listContentHtml += `<li data-cardId="${cardId}">${cardName}</li>`;
+		listContentHtml += `<li data-cardName="${cardName}" data-cardId="${cardId}">${cardName}</li>`;
 	}
 
 	html_SearchList.innerHTML = listContentHtml;
@@ -71,8 +71,11 @@ const fillSearchList = function(list){
 };
 
 const setBarPercentage = function(html_object, statValue, statMax){
-	html_fill = html_object.querySelector(".js-progress__fill");
+	html_fill = html_object.querySelector(".js-stats__fill");
+	html_value = html_object.querySelector(".js-stat__value");
+	
 	html_fill.style.width = `${(statValue / statMax) * 100}%`;
+	html_value.innerHTML = statValue;
 };
 
 
@@ -222,7 +225,7 @@ const getCardSearchName = function(name){
 
 const listenToSearch = function(){
 	html_SearchButton.addEventListener("click", function() {
-		const name = html_SearchBar.value;
+		const name = html_SearchInput.value;
 		getCardSearchName(name);
 	  }); 
 };
@@ -237,8 +240,11 @@ const eventShowCard = function(event){
 	{
 		const item = event.target;
 		console.log(item + " was clicked");
-		const cardId = item.getAttribute("data-cardId"); ;
+		const cardId = item.getAttribute("data-cardId");
+		const cardName = item.getAttribute("data-cardName");
 		getCardyId(cardId);
+		html_SearchList.classList.add("c-search__list-hide");
+		html_SearchInput.value = cardName;
 	}
 }
 
@@ -247,7 +253,7 @@ const eventShowCard = function(event){
 const getHtmlElements = function(){
 	html_CardImage = document.querySelector('.js-card__image');
 
-	html_SearchBar = document.querySelector('.js-search__bar');
+	html_SearchInput = document.querySelector('.js-search__input');
 	html_SearchList = document.querySelector('.js-search__list');
 	html_SearchButton = document.querySelector('.js-search__btn');
 
