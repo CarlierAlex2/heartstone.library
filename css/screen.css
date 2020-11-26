@@ -9,7 +9,8 @@
 :root {
     /* colors */
     --color-orange-dark: #ff8b3e;
-    --color-orange-light: #ffc9a6;
+    --color-orange-light: #ffab73;
+    --color-orange-light-x: #ffc9a6;
 
     --color-blue-dark: #498bff;
     --color-blue-light: #76edff;
@@ -42,7 +43,7 @@
     --global-text-color-light: var(--color-neutral-light);
 
     --global-color-alpha-dark: var(--color-orange-dark);
-    --global-color-alpha-light: var(--color-orange-light);
+    --global-color-alpha-light: var(--color-orange-light-x);
 
 
     /* Whitespace */
@@ -518,6 +519,27 @@ input::placeholder {
     -webkit-appearance: none;
 }
 
+
+
+/*
+    Object: Hide accessible
+    ---
+    Accessibly hide any element
+*/
+
+.o-hide-accessible {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+
+
 /*------------------------------------*\
 #COMPONENTS
 \*------------------------------------*/
@@ -529,6 +551,129 @@ input::placeholder {
 
 .c-page{
     margin-bottom: var(--global-whitespace-xxl);
+}
+
+/*
+    Component: App
+    ---
+*/
+
+.c-app__corner, 
+.c-app__topbar,
+.c-app__sidebar,
+.c-app__main{
+    display: block;
+}
+
+.c-app{
+    --c-app__sidebar-width: calc(192rem / 16);
+    --c-app__topbar-height: calc(48rem / 16);
+
+    --c-app__corner-background: var(--color-orange-dark);
+    --c-app__sidebar-background: var(--color-orange-light);
+
+    min-height: 100vh;
+    display: grid;
+
+    grid-template-columns: var(--c-app__sidebar-width) 1fr;
+    grid-template-rows: var(--c-app__topbar-height) 1fr;
+}
+
+.c-app__corner{
+    background-color: var(--c-app__corner-background);
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+
+.c-app__sidebar{
+    background-color: var(--c-app__sidebar-background);
+    grid-column-start: 1;
+    grid-row-start: 2;
+
+    padding: var(--global-whitespace-md);
+}
+
+.c-app__topbar{
+    grid-column-start: 2;
+    grid-row-start: 1;
+}
+
+.c-app__main{
+    grid-column-start: 2;
+    grid-row-start: 2;
+}
+
+
+/*
+    Component: Toggle list
+    ---
+*/
+
+.c-toggle-list {
+
+}
+
+
+.c-toggle-list__item + .c-toggle-list__item{
+    padding-top: var(--global-whitespace-md);
+}
+
+
+/*
+    Component: Filter
+    ---
+*/
+
+.c-label{
+    font-weight: 600;
+    color: var(--color-neutral-dark-xxx);
+}
+
+.c-custom-toggle{
+    --custom-option-background: var(--color-neutral-light-xxxx);
+    --custom-option-borderColor: var(--color-neutral-dark-x);
+    --custom-option-border: 1px solid var(--custom-option-borderColor);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    /*background-color: blue;*/
+}
+
+/*
+.c-option--hidden:checked + .c-custom-toggle{
+    background-color: red;
+}
+*/
+
+.c-custom-toggle__fake-input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 16px;
+    height: 16px;
+    border: var(--custom-option-border);
+    margin-right: 8px;
+    background-color: var(--custom-option-background);
+}
+
+.c-option--hidden:checked + .c-custom-toggle .c-custom-toggle__fake-input{
+    background:blue;
+}
+
+.c-custom-toggle__symbol{
+    opacity: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.c-option--hidden:checked + .c-custom-toggle .c-custom-toggle__symbol{
+    fill:red;
+    opacity: 100;
 }
 
 
@@ -645,8 +790,7 @@ input::placeholder {
 
     --stats-color-main: purple;
     --stats-color-sub: white;
-
-    min-height: 100%;
+    --stats-color-background: white;
 }
 
 .c-stats-health{
@@ -670,15 +814,17 @@ input::placeholder {
 }
 
 .c-stats__bar{
-    height: calc(100% - var(--stats-border-size));
-    border: var(--stats-border-size) solid var(--stats-color-main);
-    background-color: transparent;
+    display: block;
+    background-color: var(--stats-color-background);
+
+    width: 100%;
+    height: 20px;
 }
 
 .c-stats__fill{
-    min-height: 100%;
-    background-color: var(--stats-color-main);
+    background-color: var(--stats-color-sub);
     width: 50%;
+    height: 100%;
 }   
 
 /*

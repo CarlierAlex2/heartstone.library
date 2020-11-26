@@ -24,183 +24,221 @@
 
     </head>
     <body>
-        <main class="c-page">
+        <main class="c-page c-app">
+          <div class="c-app__corner">
+            <h1>Filter</h1>
+          </div>
 
+          <div class="c-app__sidebar">
+            <ul class="o-list c-toggle-list js-filter-list">
+              <li class="c-toggle-list__item">
+                  <input class="o-hide-accessible c-option--hidden" type="checkbox" id="option1" value="Option 1" >
+                  <label class="c-label c-custom-toggle" for="option1">
+                    Option 1
+                    <span class="c-custom-toggle__fake-input">
+                      <svg class="c-custom-toggle__symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
+                          <path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
+                      </svg>
+                    </span>
+                  </label>
+              </li>
+              <li class="c-toggle-list__item">
+                <input class="o-hide-accessible c-option--hidden" type="checkbox" id="option2" value="Option 2">
+                <label class="c-label c-custom-toggle" for="option2">
+                  Option 2
+                  <span class="c-custom-toggle__fake-input">
+                    <svg class="c-custom-toggle__symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
+                        <path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
+                    </svg>
+                  </span>
+                </label>
+            </li>
+          </ul>
+          </div>
 
+          <div class="c-app__topbar">
             <section class="o-row">
-                <div class="o-container u-max-width-sm">
-                    <section class="o-section o-section--md">
-                        <div class="js-search c-search">
-                            <div class="o-layout o-layout--gutter-sm o-layout--align-center o-layout--justify-space-between" >
-                                                            
-                            <div class="o-layout__item c-search__btn">
-                                <svg class="c-icon c-icon-btn"
-                                id="filter" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                                    <g id="Group_351" data-name="Group 351" transform="translate(4.755 3.17)">
-                                      <path id="Path_128" data-name="Path 128" d="M3,3.585A1.585,1.585,0,0,1,4.585,2H23.6a1.585,1.585,0,0,1,1.585,1.585V8.339a1.585,1.585,0,0,1-.464,1.12l-7.46,7.46V22.6a1.585,1.585,0,0,1-.464,1.12l-3.17,3.17a1.585,1.585,0,0,1-2.705-1.121V16.92L3.464,9.46A1.585,1.585,0,0,1,3,8.339Z" transform="translate(-3 -2)" fill="#0c0c0d" fill-rule="evenodd"/>
-                                    </g>
-                                    <rect id="Rectangle_238" data-name="Rectangle 238" width="32" height="32" fill="rgba(0,0,0,0)" opacity="0"/>
-                                  </svg>
-                            </div>
-                            
-
-
-                            <div class=" o-layout__item o-flex-grow c-search__bar">
-                                <input class="c-search__input js-search__input o-button-reset" type="text" placeholder="Name of card..">
-                                <ul class="c-search__list c-search__list-hide js-search__list o-list">
-                                    <li data-cardId="EX1_591">Card 1</li>
-                                    <li data-cardId="EX1_050">Card 2</li>
-                                </ul>
-                            </div>
-
-                            
-                            <div class="o-layout__item c-search__btn"> 
-                                <svg class="c-icon c-icon-btn js-search__btn"
-                                id="search" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                                    <rect id="rectangle" width="32" height="32" fill="none"/>
-                                    <path id="ic_search_white" d="M313.014,67.029h-1.166l-.437-.437a9.12,9.12,0,0,0,2.331-6.12,9.471,9.471,0,1,0-9.471,9.471,9.12,9.12,0,0,0,6.12-2.331l.437.437v1.166l7.286,7.286,2.186-2.186Zm-8.743,0a6.557,6.557,0,1,1,6.557-6.557A6.53,6.53,0,0,1,304.271,67.029Z" transform="translate(-291.8 -48)"/>
+              <div class="o-container u-max-width-sm">
+                  <section class="o-section o-section--md">
+                      <div class="js-search c-search">
+                          <div class="o-layout o-layout--gutter-sm o-layout--align-center o-layout--justify-space-between" >
+                                                          
+                          <div class="o-layout__item c-search__btn">
+                              <svg class="c-icon c-icon-btn"
+                              id="filter" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                                  <g id="Group_351" data-name="Group 351" transform="translate(4.755 3.17)">
+                                    <path id="Path_128" data-name="Path 128" d="M3,3.585A1.585,1.585,0,0,1,4.585,2H23.6a1.585,1.585,0,0,1,1.585,1.585V8.339a1.585,1.585,0,0,1-.464,1.12l-7.46,7.46V22.6a1.585,1.585,0,0,1-.464,1.12l-3.17,3.17a1.585,1.585,0,0,1-2.705-1.121V16.92L3.464,9.46A1.585,1.585,0,0,1,3,8.339Z" transform="translate(-3 -2)" fill="#0c0c0d" fill-rule="evenodd"/>
+                                  </g>
+                                  <rect id="Rectangle_238" data-name="Rectangle 238" width="32" height="32" fill="rgba(0,0,0,0)" opacity="0"/>
                                 </svg>
-                            </div>
-                            
-                            </div>
-                        </div>
-                    </section>
-                </div>
+                          </div>
+                          
+
+
+                          <div class=" o-layout__item o-flex-grow c-search__bar">
+                              <input class="c-search__input js-search__input o-button-reset" type="text" placeholder="Name of card..">
+                              <ul class="c-search__list c-search__list-hide js-search__list o-list">
+                                  <li data-cardId="EX1_591">Card 1</li>
+                                  <li data-cardId="EX1_050">Card 2</li>
+                              </ul>
+                          </div>
+
+                          
+                          <div class="o-layout__item c-search__btn"> 
+                              <svg class="c-icon c-icon-btn js-search__btn"
+                              id="search" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                                  <rect id="rectangle" width="32" height="32" fill="none"/>
+                                  <path id="ic_search_white" d="M313.014,67.029h-1.166l-.437-.437a9.12,9.12,0,0,0,2.331-6.12,9.471,9.471,0,1,0-9.471,9.471,9.12,9.12,0,0,0,6.12-2.331l.437.437v1.166l7.286,7.286,2.186-2.186Zm-8.743,0a6.557,6.557,0,1,1,6.557-6.557A6.53,6.53,0,0,1,304.271,67.029Z" transform="translate(-291.8 -48)"/>
+                              </svg>
+                          </div>
+                          
+                          </div>
+                      </div>
+                  </section>
+              </div>
             </section>
+          </div>
 
+          <div class="c-app__main">
             <section class="o-row o-row--lg">
-                <div class="o-container u-max-width-xs">
-                    <section class="o-section o-section--md">
-                        <img class="js-card__image c-image u-align-center" 
-                        src="https://d15f34w2p8l1cc.cloudfront.net/hearthstone/f7d4aa4cdcf78441cc8d0bae954a55a271ad9cedc89c611b8fc0cf0859a8a32f.png" 
-                        alt="Card Image"> 
-                    </section>
+              <div class="o-container u-max-width-xs">
+                  <section class="o-section o-section--md">
+                      <img class="js-card__image c-image u-align-center" 
+                      src="https://d15f34w2p8l1cc.cloudfront.net/hearthstone/f7d4aa4cdcf78441cc8d0bae954a55a271ad9cedc89c611b8fc0cf0859a8a32f.png" 
+                      alt="Card Image"> 
+                  </section>
 
-                    <section class="o-section o-section--md">
-                        <section class="o-section o-section--md">
-                            <div class="c-stats c-stats-health js-health o-layout o-layout--justify-start o-layout--align-center">
+                  <section class="o-section o-section--md">
+                      <section class="o-section o-section--md">
+                          <div class="c-stats c-stats-health js-health o-layout">
 
-                                <svg class="c-icon c-icon-bar"
-                                id="Health_Icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-                                    <g id="Stat_Icon">
-                                      <g id="Daimond" transform="translate(0 0)">
-                                        <g id="Shape2" transform="translate(24 0) rotate(45)" fill="#ff4e39">
-                                          <path d="M 32.94112396240234 32.94112396240234 L 1.000003933906555 32.94112396240234 L 1.000003933906555 1.000003933906555 L 32.94112396240234 1.000003933906555 L 32.94112396240234 32.94112396240234 Z" stroke="none"/>
-                                          <path d="M 2.000003814697266 2.000003814697266 L 2.000003814697266 31.94112396240234 L 31.94112396240234 31.94112396240234 L 31.94112396240234 2.000003814697266 L 2.000003814697266 2.000003814697266 M 3.814697265625e-06 3.814697265625e-06 L 33.94112396240234 3.814697265625e-06 L 33.94112396240234 33.94112396240234 L 3.814697265625e-06 33.94112396240234 L 3.814697265625e-06 3.814697265625e-06 Z" stroke="none" fill="#74241b"/>
+                              <svg class="c-icon c-icon-bar"
+                              id="Health_Icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                  <g id="Stat_Icon">
+                                    <g id="Daimond" transform="translate(0 0)">
+                                      <g id="Shape2" transform="translate(24 0) rotate(45)" fill="#ff4e39">
+                                        <path d="M 32.94112396240234 32.94112396240234 L 1.000003933906555 32.94112396240234 L 1.000003933906555 1.000003933906555 L 32.94112396240234 1.000003933906555 L 32.94112396240234 32.94112396240234 Z" stroke="none"/>
+                                        <path d="M 2.000003814697266 2.000003814697266 L 2.000003814697266 31.94112396240234 L 31.94112396240234 31.94112396240234 L 31.94112396240234 2.000003814697266 L 2.000003814697266 2.000003814697266 M 3.814697265625e-06 3.814697265625e-06 L 33.94112396240234 3.814697265625e-06 L 33.94112396240234 33.94112396240234 L 3.814697265625e-06 33.94112396240234 L 3.814697265625e-06 3.814697265625e-06 Z" stroke="none" fill="#74241b"/>
+                                      </g>
+                                      <g id="Shape1" transform="translate(7.318 6.827)" fill="#ff4e39" stroke="#74241b" stroke-width="2">
+                                        <rect width="33.503" height="35" stroke="none"/>
+                                        <rect x="1" y="1" width="31.503" height="33" fill="none"/>
+                                      </g>
+                                    </g>
+                                    <g id="Component_52" data-name="Component 52" transform="translate(12 11.989)" opacity="0.5">
+                                      <rect id="rectangle" width="24" height="24" fill="none"/>
+                                      <path id="path" d="M12,8A4.932,4.932,0,0,0,7.5,5,4.413,4.413,0,0,0,3,9.5c0,3.529,3.793,6.258,9,11.5,5.207-5.242,9-7.971,9-11.5A4.413,4.413,0,0,0,16.5,5,4.93,4.93,0,0,0,12,8Z" transform="translate(0 0)" fill-rule="evenodd"/>
+                                    </g>
+                                  </g>
+                                </svg>
+  
+                              <div class="o-flex-grow o-layout o-layout--column">
+                                  <div class="o-layout">
+                                      <p class="c-stats__label">Health:</p>
+                                      <p class="c-stats__label js-stat__value">1</p>
+                                  </div>
+                                  <div class="js-stats__bar c-stats__bar">
+                                      <div class="js-stats__fill c-stats__fill"></div>     
+                                  </div>
+                              </div>
+                          </div>
+                      </section>
+
+      
+                      <section class="o-section o-section--md">
+                          <div class="c-stats c-stats-attack js-attack o-layout">
+
+                              <svg class="c-icon c-icon-bar"
+                              xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                  <g id="Attack_Icon" transform="translate(0 0)">
+                                    <g id="Stat_Icon" transform="translate(-48 -545.011)">
+                                      <g id="Daimond" transform="translate(-0.682 -2.059)">
+                                        <g id="Shape2" transform="translate(72.682 547.07) rotate(45)" fill="#ffdc28">
+                                          <path d="M 32.94112396240234 32.94112396240234 L 0.999994158744812 32.94112396240234 L 1.000003576278687 1.000003576278687 L 32.94112396240234 0.999994158744812 L 32.94112396240234 32.94112396240234 Z" stroke="none"/>
+                                          <path d="M 2.000003814697266 2.000003814697266 L 2.000003814697266 31.94112396240234 L 31.94112396240234 31.94112396240234 L 31.94112396240234 2.000003814697266 L 2.000003814697266 2.000003814697266 M 3.814697265625e-06 3.814697265625e-06 L 33.94112396240234 3.814697265625e-06 L 33.94112396240234 33.94112396240234 L 3.814697265625e-06 33.94112396240234 L 3.814697265625e-06 3.814697265625e-06 Z" stroke="none" fill="#be820e"/>
                                         </g>
-                                        <g id="Shape1" transform="translate(7.318 6.827)" fill="#ff4e39" stroke="#74241b" stroke-width="2">
+                                        <g id="Shape1" transform="translate(56 553.896)" fill="#ffdc28" stroke="#be820e" stroke-width="2">
                                           <rect width="33.503" height="35" stroke="none"/>
                                           <rect x="1" y="1" width="31.503" height="33" fill="none"/>
                                         </g>
                                       </g>
-                                      <g id="Component_52" data-name="Component 52" transform="translate(12 11.989)" opacity="0.5">
-                                        <rect id="rectangle" width="24" height="24" fill="none"/>
-                                        <path id="path" d="M12,8A4.932,4.932,0,0,0,7.5,5,4.413,4.413,0,0,0,3,9.5c0,3.529,3.793,6.258,9,11.5,5.207-5.242,9-7.971,9-11.5A4.413,4.413,0,0,0,16.5,5,4.93,4.93,0,0,0,12,8Z" transform="translate(0 0)" fill-rule="evenodd"/>
-                                      </g>
-                                    </g>
-                                  </svg>
-    
-                                <div class="o-flex-grow o-layout o-layout--column">
-                                    <div class="o-layout">
-                                        <p class="c-stats__label">Health:</p>
-                                        <p class="c-stats__label js-stat__value">1</p>
-                                    </div>
-                                    <div class="js-stats__bar c-stats__bar">
-                                        <div class="js-stats__fill c-stats__fill"></div>     
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-        
-                        <section class="o-section o-section--md">
-                            <div class="c-stats c-stats-attack js-attack o-layout o-layout--justify-start o-layout--align-center">
-
-                                <svg class="c-icon c-icon-bar"
-                                xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-                                    <g id="Attack_Icon" transform="translate(0 0)">
-                                      <g id="Stat_Icon" transform="translate(-48 -545.011)">
-                                        <g id="Daimond" transform="translate(-0.682 -2.059)">
-                                          <g id="Shape2" transform="translate(72.682 547.07) rotate(45)" fill="#ffdc28">
-                                            <path d="M 32.94112396240234 32.94112396240234 L 0.999994158744812 32.94112396240234 L 1.000003576278687 1.000003576278687 L 32.94112396240234 0.999994158744812 L 32.94112396240234 32.94112396240234 Z" stroke="none"/>
-                                            <path d="M 2.000003814697266 2.000003814697266 L 2.000003814697266 31.94112396240234 L 31.94112396240234 31.94112396240234 L 31.94112396240234 2.000003814697266 L 2.000003814697266 2.000003814697266 M 3.814697265625e-06 3.814697265625e-06 L 33.94112396240234 3.814697265625e-06 L 33.94112396240234 33.94112396240234 L 3.814697265625e-06 33.94112396240234 L 3.814697265625e-06 3.814697265625e-06 Z" stroke="none" fill="#be820e"/>
-                                          </g>
-                                          <g id="Shape1" transform="translate(56 553.896)" fill="#ffdc28" stroke="#be820e" stroke-width="2">
-                                            <rect width="33.503" height="35" stroke="none"/>
-                                            <rect x="1" y="1" width="31.503" height="33" fill="none"/>
-                                          </g>
-                                        </g>
-                                        <g id="Sword" transform="translate(60 557)" opacity="0.52">
-                                          <g id="Group_348" data-name="Group 348">
-                                            <path id="Path_126" data-name="Path 126" d="M33.956-501.728a40.555,40.555,0,0,1-1.574,4.494c-.743,1.814-3.129,4.824-5.6,7.08a46.524,46.524,0,0,1-5.733,4.487c-.606.4-1.236.8-1.4.9l-.3.174.425.43c.5.5.556.717.25.985-.275.231-.481.156-1.043-.405l-.475-.474-.106.212a4.547,4.547,0,0,1-1.212,1.3c-.362.3-1.449,1.346-2.411,2.318s-1.9,1.876-2.092,2c-.568.38-.637.355-1.48-.486a7.616,7.616,0,0,0-.774-.717c-.106,0-.431-.517-.431-.679.006-.5.493-1.115,2.5-3.154.912-.929,1.867-1.938,2.123-2.244a4.365,4.365,0,0,1,.893-.841l.419-.281-.468-.468c-.55-.548-.624-.754-.393-1.028.268-.306.481-.249.987.249l.425.418.094-.143a41.431,41.431,0,0,1,2.8-4.076,34.525,34.525,0,0,1,8.112-7.859,8.744,8.744,0,0,1,1.842-1,23.821,23.821,0,0,1,4.446-1.458H34Zm-5.97,5.422a86.02,86.02,0,0,0-7.032,6.831c-1.4,1.471-1.742,1.857-1.742,1.994s.031.174.156.187.562-.368,2.592-2.312c3.884-3.714,5.577-5.515,6.42-6.855C28.536-496.711,28.442-496.674,27.986-496.306Z" transform="translate(-10 501.99)" fill="#0c0c0d"/>
-                                          </g>
+                                      <g id="Sword" transform="translate(60 557)" opacity="0.52">
+                                        <g id="Group_348" data-name="Group 348">
+                                          <path id="Path_126" data-name="Path 126" d="M33.956-501.728a40.555,40.555,0,0,1-1.574,4.494c-.743,1.814-3.129,4.824-5.6,7.08a46.524,46.524,0,0,1-5.733,4.487c-.606.4-1.236.8-1.4.9l-.3.174.425.43c.5.5.556.717.25.985-.275.231-.481.156-1.043-.405l-.475-.474-.106.212a4.547,4.547,0,0,1-1.212,1.3c-.362.3-1.449,1.346-2.411,2.318s-1.9,1.876-2.092,2c-.568.38-.637.355-1.48-.486a7.616,7.616,0,0,0-.774-.717c-.106,0-.431-.517-.431-.679.006-.5.493-1.115,2.5-3.154.912-.929,1.867-1.938,2.123-2.244a4.365,4.365,0,0,1,.893-.841l.419-.281-.468-.468c-.55-.548-.624-.754-.393-1.028.268-.306.481-.249.987.249l.425.418.094-.143a41.431,41.431,0,0,1,2.8-4.076,34.525,34.525,0,0,1,8.112-7.859,8.744,8.744,0,0,1,1.842-1,23.821,23.821,0,0,1,4.446-1.458H34Zm-5.97,5.422a86.02,86.02,0,0,0-7.032,6.831c-1.4,1.471-1.742,1.857-1.742,1.994s.031.174.156.187.562-.368,2.592-2.312c3.884-3.714,5.577-5.515,6.42-6.855C28.536-496.711,28.442-496.674,27.986-496.306Z" transform="translate(-10 501.99)" fill="#0c0c0d"/>
                                         </g>
                                       </g>
                                     </g>
-                                  </svg>
+                                  </g>
+                                </svg>
 
-    
-                                <div class="o-flex-grow o-layout o-layout--column">
-                                    <div class="o-layout">
-                                        <p class="c-stats__label">Attack:</p>
-                                        <p class="c-stats__label js-stat__value">1</p>
-                                    </div>
-                                    <div class="js-stats__bar c-stats__bar">
-                                        <div class="js-stats__fill c-stats__fill"></div>     
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-        
-                        <section class="o-section o-section--md">
-                            <div class="c-stats c-stats-cost js-cost o-layout o-layout--justify-start o-layout--align-center">
+  
+                              <div class="o-flex-grow o-layout o-layout--column">
+                                  <div class="o-layout">
+                                      <p class="c-stats__label">Attack:</p>
+                                      <p class="c-stats__label js-stat__value">1</p>
+                                  </div>
+                                  <div class="js-stats__bar c-stats__bar">
+                                      <div class="js-stats__fill c-stats__fill"></div>     
+                                  </div>
+                              </div>
+                          </div>
+                      </section>
+      
+                      <section class="o-section o-section--md">
+                          <div class="c-stats c-stats-cost js-cost o-layout">
 
-                                <svg class="c-icon c-icon-bar"
-                                xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-                                    <g id="Cost_Icon" transform="translate(0 0)">
-                                      <g id="Stat_Icon" transform="translate(-48 -545.011)">
-                                        <g id="Daimond" transform="translate(-0.682 -2.059)">
-                                          <g id="Shape2" transform="translate(72.682 547.07) rotate(45)" fill="#498bff">
-                                            <path d="M 32.94112396240234 32.94112396240234 L 0.999994158744812 32.94112396240234 L 1.000003576278687 1.000003576278687 L 32.94112396240234 0.999994158744812 L 32.94112396240234 32.94112396240234 Z" stroke="none"/>
-                                            <path d="M 2.000003814697266 2.000003814697266 L 2.000003814697266 31.94112396240234 L 31.94112396240234 31.94112396240234 L 31.94112396240234 2.000003814697266 L 2.000003814697266 2.000003814697266 M 3.814697265625e-06 3.814697265625e-06 L 33.94112396240234 3.814697265625e-06 L 33.94112396240234 33.94112396240234 L 3.814697265625e-06 33.94112396240234 L 3.814697265625e-06 3.814697265625e-06 Z" stroke="none" fill="#76edff"/>
-                                          </g>
-                                          <g id="Shape1" transform="translate(56 553.896)" fill="#498bff" stroke="#76edff" stroke-width="2">
-                                            <rect width="33.503" height="35" stroke="none"/>
-                                            <rect x="1" y="1" width="31.503" height="33" fill="none"/>
-                                          </g>
+                              <svg class="c-icon c-icon-bar"
+                              xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                  <g id="Cost_Icon" transform="translate(0 0)">
+                                    <g id="Stat_Icon" transform="translate(-48 -545.011)">
+                                      <g id="Daimond" transform="translate(-0.682 -2.059)">
+                                        <g id="Shape2" transform="translate(72.682 547.07) rotate(45)" fill="#498bff">
+                                          <path d="M 32.94112396240234 32.94112396240234 L 0.999994158744812 32.94112396240234 L 1.000003576278687 1.000003576278687 L 32.94112396240234 0.999994158744812 L 32.94112396240234 32.94112396240234 Z" stroke="none"/>
+                                          <path d="M 2.000003814697266 2.000003814697266 L 2.000003814697266 31.94112396240234 L 31.94112396240234 31.94112396240234 L 31.94112396240234 2.000003814697266 L 2.000003814697266 2.000003814697266 M 3.814697265625e-06 3.814697265625e-06 L 33.94112396240234 3.814697265625e-06 L 33.94112396240234 33.94112396240234 L 3.814697265625e-06 33.94112396240234 L 3.814697265625e-06 3.814697265625e-06 Z" stroke="none" fill="#76edff"/>
                                         </g>
-                                        <g id="Coins" transform="translate(60 557)" opacity="0.5">
-                                          <path id="Path_124" data-name="Path 124" d="M27.5,10c-4.143,0-7.5,1.4-7.5,3.125s3.357,3.125,7.5,3.125,7.5-1.4,7.5-3.125S31.643,10,27.5,10ZM20,14.375v2.5C20,18.625,23.375,20,27.5,20S35,18.625,35,16.875v-2.5c0,1.75-3.375,3.125-7.5,3.125S20,16.125,20,14.375Zm15,3.633c0,1.875-3.375,3.242-7.5,3.242S20,19.875,20,18.125v1.992c3,.375,5.633,1.64,6.133,3.515H27.5c4.125,0,7.5-1.375,7.5-3.125ZM17.5,21.25c-4.125,0-7.5,1.375-7.5,3.125S13.375,27.5,17.5,27.5,25,26.125,25,24.375,21.625,21.25,17.5,21.25Zm17.5.625C35,23.625,31.625,25,27.5,25H26.25v2.5H27.5c4.125,0,7.5-1.375,7.5-3.125Zm-25,3.75v2.5c0,1.75,3.375,3.125,7.5,3.125S25,29.875,25,28.125v-2.5c0,1.75-3.375,3.125-7.5,3.125S10,27.375,10,25.625Zm25,0c0,1.75-3.375,3.125-7.5,3.125H26.25v2.5H27.5c4.125,0,7.5-1.375,7.5-3.125Zm-25,3.75v2.5C10,33.625,13.375,35,17.5,35S25,33.625,25,31.875v-2.5c0,1.75-3.375,3.125-7.5,3.125S10,31.125,10,29.375Z" transform="translate(-10 -10)" fill="#0c0c0d"/>
+                                        <g id="Shape1" transform="translate(56 553.896)" fill="#498bff" stroke="#76edff" stroke-width="2">
+                                          <rect width="33.503" height="35" stroke="none"/>
+                                          <rect x="1" y="1" width="31.503" height="33" fill="none"/>
                                         </g>
                                       </g>
+                                      <g id="Coins" transform="translate(60 557)" opacity="0.5">
+                                        <path id="Path_124" data-name="Path 124" d="M27.5,10c-4.143,0-7.5,1.4-7.5,3.125s3.357,3.125,7.5,3.125,7.5-1.4,7.5-3.125S31.643,10,27.5,10ZM20,14.375v2.5C20,18.625,23.375,20,27.5,20S35,18.625,35,16.875v-2.5c0,1.75-3.375,3.125-7.5,3.125S20,16.125,20,14.375Zm15,3.633c0,1.875-3.375,3.242-7.5,3.242S20,19.875,20,18.125v1.992c3,.375,5.633,1.64,6.133,3.515H27.5c4.125,0,7.5-1.375,7.5-3.125ZM17.5,21.25c-4.125,0-7.5,1.375-7.5,3.125S13.375,27.5,17.5,27.5,25,26.125,25,24.375,21.625,21.25,17.5,21.25Zm17.5.625C35,23.625,31.625,25,27.5,25H26.25v2.5H27.5c4.125,0,7.5-1.375,7.5-3.125Zm-25,3.75v2.5c0,1.75,3.375,3.125,7.5,3.125S25,29.875,25,28.125v-2.5c0,1.75-3.375,3.125-7.5,3.125S10,27.375,10,25.625Zm25,0c0,1.75-3.375,3.125-7.5,3.125H26.25v2.5H27.5c4.125,0,7.5-1.375,7.5-3.125Zm-25,3.75v2.5C10,33.625,13.375,35,17.5,35S25,33.625,25,31.875v-2.5c0,1.75-3.375,3.125-7.5,3.125S10,31.125,10,29.375Z" transform="translate(-10 -10)" fill="#0c0c0d"/>
+                                      </g>
                                     </g>
-                                  </svg>
-    
-                                <div class="o-flex-grow o-layout o-layout--column">
-                                    <div class="o-layout">
-                                        <p class="c-stats__label">Cost:</p>
-                                        <p class="c-stats__label js-stat__value">1</p>
-                                    </div>
-                                    <div class="js-stats__bar c-stats__bar">
-                                        <div class="js-stats__fill c-stats__fill"></div>     
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </section>
+                                  </g>
+                                </svg>
+  
+                              <div class="o-flex-grow">
+                                
+                                  <div class="o-layout">
+                                      <p class="c-stats__label">Cost:</p>
+                                      <p class="c-stats__label js-stat__value">1</p>
+                                  </div>
+                                
+                                  <div class="js-stats__bar c-stats__bar">
+                                      <div class="js-stats__fill c-stats__fill"></div>     
+                                  </div>
+                              </div>
+                          </div>
+                      </section>
+                  </section>
 
-                    <div>
-                        <!--
-                        <h1>Name</h1>
-                        <p class="js-card__name">Dark Guardian</p>
-                        <h1>Card Set</h1>
-                        <p class="js-card__set">Whispers of the Old Gods</p>
-                        <h1>Description</h1>
-                        <p class="js-card__text">Increased Stats</p>
-                        -->
-                    </div>
-                </div>
-            </section>
+                  <div>
+                      <!--
+                      <h1>Name</h1>
+                      <p class="js-card__name">Dark Guardian</p>
+                      <h1>Card Set</h1>
+                      <p class="js-card__set">Whispers of the Old Gods</p>
+                      <h1>Description</h1>
+                      <p class="js-card__text">Increased Stats</p>
+                      -->
+                  </div>
+              </div>
+          </section>
+          </div>
+
+
+
 
         </main>
 	</body>

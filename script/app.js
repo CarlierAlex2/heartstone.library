@@ -10,6 +10,7 @@ let html_CardName, html_CardSet, html_CardText;
 let html_Cost, html_Attack, html_Health;
 let currentCard;
 let listCards;
+let html_FilterList;
 let defaultImage;
 
 const MAX_HEALTH = 10;
@@ -47,7 +48,7 @@ const fillSearchList = function(list){
 
 
 	for (const card of list) {
-		if(card.hasOwnProperty("img"))
+		if(card.hasOwnProperty("img") && checkFilterCard(card) == true)
 		{
 			console.log(card);
 			listFound.push(card);
@@ -68,6 +69,34 @@ const fillSearchList = function(list){
 
 	html_SearchList.innerHTML = listContentHtml;
 	listenToSelectSearched(html_SearchList);
+};
+
+const checkFilterCard = function(card){
+	const listFilter = getFilterList();
+
+	const playerClass = card["playerClass"];
+	if(listFilter && playerClass)
+	{
+		if(listFilter.includes(playerClass))
+		{
+			return true;
+		}
+	}
+	return false;
+};
+
+const getFilterList = function(){
+	var listChecked = html_FilterList.querySelectorAll('input[type=checkbox]:checked');
+	var checkBoxValues = [];
+	// loop over them all
+	for (var i=0; i<listChecked.length; i++) {
+	   // And stick the checked ones onto an array...
+	   if (listChecked[i].checked) {
+		checkBoxValues.push(listChecked[i].value);
+	   }
+	}
+	// Return the array if it is non-empty, or null
+	return checkBoxValues.length > 0 ? checkBoxValues : null;
 };
 
 const setBarPercentage = function(html_object, statValue, statMax){
@@ -165,6 +194,46 @@ const callBackLog = function(responseLog){
 };
 
 
+//============================================================================================================================================================
+const callBackSetup = function(jsonObject){
+	console.log(jsonObject);
+	listClasses = jsonObject["classes"];
+	console.log(listClasses);
+
+	let listToggles = "";
+	let toCheck = [];
+	for(const classObj of listClasses)
+	{
+		console.log(classObj);
+		if(!toCheck.includes(classObj))
+		{
+			listToggles += createFilterItem("classes", classObj);
+			toCheck.push(classObj);
+		}
+	}
+
+	html_FilterList.innerHTML = listToggles;
+}
+
+const createFilterItem = function(checkBoxGroup, filterTag){
+	html_obj = `
+	<li class="c-toggle-list__item">
+		<input class="o-hide-accessible c-option--hidden" type="checkbox" name="${checkBoxGroup}" id="${filterTag}" value="${filterTag}">
+		<label class="c-label c-custom-toggle" for="${filterTag}">
+			${filterTag}
+			<span class="c-custom-toggle__fake-input">
+				<svg class="c-custom-toggle__symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
+					<path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
+				</svg>
+			</span>
+		</label>
+	</li>
+	`;
+
+	return html_obj;
+};
+
+
 
 //============================================================================================================================================================
 const handleData = function(url, callbackFunctionName, callbackErrorFunctionName = null, method = 'GET', body = null) {
@@ -199,9 +268,7 @@ const handleData = function(url, callbackFunctionName, callbackErrorFunctionName
 
 const getInfo = function() {
 	console.log("Get Info fetch");
-	handleData(`${API_HEARTSTONE}/info`, callBackLog, callBackLog, "GET");
-
-
+	handleData(`${API_HEARTSTONE}/info`, callBackSetup, callBackLog, "GET");
 };
 
 const getDefaultCard = function(cardId) {
@@ -260,6 +327,8 @@ const getHtmlElements = function(){
 	html_Health = document.querySelector('.js-health');
 	html_Attack = document.querySelector('.js-attack');
 	html_Cost = document.querySelector('.js-cost');
+
+	html_FilterList = html_Cost = document.querySelector('.js-filter-list');
 
 	/*
 	html_CardName = document.querySelector('.js-card__name');
