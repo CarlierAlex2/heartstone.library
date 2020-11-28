@@ -1,0 +1,12 @@
+<svg id="icon_gem" xmlns="http://www.w3.org/2000/svg" width="48" height="46.906" viewBox="0 0 48 46.906">
+  <rect id="background" width="46.906" height="46.906" transform="translate(1)" fill="rgba(0,0,0,0)"/>
+  <g id="icon_path" transform="translate(0 3)">
+    <path id="path_shadow" d="M32.625,236.639H15.375L6.75,221.7H0l12,20.784H36L48,221.7H41.25Z" transform="translate(0 -200.916)" fill="#654e22"/>
+    <path id="path_shadow_core" d="M128,386.9l3.375-5.845h17.25L152,386.9Z" transform="translate(-116 -345.327)" fill="#403600"/>
+    <path id="path_top" d="M0,20.784,12,0H36L48,20.784H41.25L32.625,5.845H15.375L6.75,20.784Z" fill="#ffed00"/>
+    <path id="path_highlight" d="M128,0l3.375,5.845h17.25L152,0Z" transform="translate(-116)" fill="#fffac9"/>
+    <path id="path_center" d="M84.125,48.5,93.5,64.738,84.125,80.976H65.375L56,64.738,65.375,48.5Z" transform="translate(-50.75 -43.953)" fill="#d0be00"/>
+    <path id="path_inner_light" d="M56,221.7h1.5l8.625,14.939h17.25L92,221.7h1.5l-9.375,16.238H65.375Z" transform="translate(-50.75 -200.916)" fill="#fffac9"/>
+    <path id="path_inner_shadow" d="M57.5,64.738H56L65.375,48.5h18.75L93.5,64.738H92L83.375,49.8H66.125Z" transform="translate(-50.75 -43.953)" fill="#403600"/>
+  </g>
+</svg>

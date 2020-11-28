@@ -1,6 +1,0 @@
-<svg id="filter" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <g id="Group_351" data-name="Group 351" transform="translate(4.755 3.17)">
-    <path id="Path_128" data-name="Path 128" d="M3,3.585A1.585,1.585,0,0,1,4.585,2H23.6a1.585,1.585,0,0,1,1.585,1.585V8.339a1.585,1.585,0,0,1-.464,1.12l-7.46,7.46V22.6a1.585,1.585,0,0,1-.464,1.12l-3.17,3.17a1.585,1.585,0,0,1-2.705-1.121V16.92L3.464,9.46A1.585,1.585,0,0,1,3,8.339Z" transform="translate(-3 -2)" fill="#0c0c0d" fill-rule="evenodd"/>
-  </g>
-  <rect id="Rectangle_238" data-name="Rectangle 238" width="32" height="32" fill="rgba(0,0,0,0)" opacity="0"/>
-</svg>
