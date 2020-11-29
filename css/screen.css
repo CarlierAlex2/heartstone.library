@@ -558,7 +558,7 @@ input::placeholder {
 
 .c-app{
     --c-app-sidebar-width: calc(192rem / 16);
-    --c-app-height-header: calc(48rem / 16);
+    --c-app-height-header: calc(64rem / 16);
     --c-app-height-leftover: calc(100vh - var(--c-app-height-header));
     --c-app__sidebar-background: var(--color-orange-light);
 
@@ -622,10 +622,14 @@ input::placeholder {
 
 .c-main__header{
     grid-row: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .c-main__content{
     grid-row: 2;
+    padding-top: var(--global-whitespace);
 }
 
 
@@ -967,32 +971,35 @@ input::placeholder {
 
 .c-search{
     --c-search-color: var(--color-neutral-dark);
-    --c-search-textColor: var(--color-neutral-dark);
+    --c-search-textColor: var(--color-neutral-dark-xxx);
 
     --c-search__input-paddingH: var(--global-whitespace-md);
     --c-search__input-paddingV: var(--global-whitespace-sm);
 
-    --c-search__layout-padding: calc(16rem / 15);
+    --c-search__layout-padding: 1rem;
 
     --search-background: var(--color-neutral-light-xxxx);
 
     color: var(--c-search-textColor);
+    /*
+    font-weight: 600;
+    font-size: calc(18rem/16);
+    */
     position: relative;
     z-index: 1000;
 }
 
 .c-search__bar{
-    position: relative;
-    flex-grow: 1;
+
 }
 
 .c-search__input{
-    width: 100%;
+    max-width: 100%;
     border-bottom: 1px solid var(--c-search-color);
     padding: var(--c-search__input-paddingV) var(--c-search__input-paddingH);
 
     background-color: var(--search-background);
-    border-radius: calc(15rem / 15);
+    border-radius: 1rem;
 }
 
 .c-search__btn{
@@ -1034,7 +1041,7 @@ input::placeholder {
     position: absolute;
     z-index: -100;
     background-color: var(--search-background);
-    border-radius: calc(3rem / 15);
+    border-radius: calc(3rem / 16);
     width: var(--c-search__list-width);
 
     max-height: 0;
@@ -1158,7 +1165,7 @@ input::placeholder {
 }
 
 .u-max-width-md {
-    max-width: 50em !important;
+    max-width: 23.5rem !important; /*376px = 23.5rem * 16 */
 }
 
 .u-max-width-lg {
