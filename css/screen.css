@@ -966,25 +966,17 @@ input::placeholder {
 */
 
 .c-search{
-    --search-color: var(--color-neutral-dark);
-    --search-text-color: var(--color-neutral-dark);
+    --c-search-color: var(--color-neutral-dark);
+    --c-search-textColor: var(--color-neutral-dark);
 
-    --search-input-padding-h: var(--global-whitespace-md);
-    --search-input-padding-v: var(--global-whitespace-sm);
+    --c-search__input-paddingH: var(--global-whitespace-md);
+    --c-search__input-paddingV: var(--global-whitespace-sm);
 
-    --search-list-padding-h: var(--global-whitespace-sm);
-    --search-list-padding-v: var(--global-whitespace-md);
-
-    --search-list-item-padding-h: var(--global-whitespace-md);
-    --search-list-item-padding-v: var(--global-whitespace-sm);
-
-    --search-layout-padding: calc(16rem / 15);
+    --c-search__layout-padding: calc(16rem / 15);
 
     --search-background: var(--color-neutral-light-xxxx);
 
-    --search-transition: all var(--global-transition-beta) ease-in;
-
-    color: var(--search-text-color);
+    color: var(--c-search-textColor);
     position: relative;
     z-index: 1000;
 }
@@ -996,15 +988,15 @@ input::placeholder {
 
 .c-search__input{
     width: 100%;
-    border-bottom: 1px solid var(--search-color);
-    padding: var(--search-input-padding-v) var(--search-input-padding-h);
+    border-bottom: 1px solid var(--c-search-color);
+    padding: var(--c-search__input-paddingV) var(--c-search__input-paddingH);
 
     background-color: var(--search-background);
     border-radius: calc(15rem / 15);
 }
 
 .c-search__btn{
-    fill: var(--search-color);
+    fill: var(--c-search-color);
     width: auto;
 }
 
@@ -1014,24 +1006,44 @@ input::placeholder {
     List of searched items
 */
 
-.c-search__list{
-    --search-list-offset-v: calc(var( --search-list-padding-v) / 2);
+.c-search__container{
+    --c-search__container-offset-v: calc(var(--c-search__container-paddingV) / 2);
+    --c-search__container-paddingV: var(--global-whitespace-md);
+
+    min-height: 100vh;
+    width: calc(100% - var(--c-search__layout-padding) - var(--c-search__container-paddingV));
 
     position: absolute;
     overflow: hidden;
-    display: none;
+    z-index: 100;
 
+    transform: translateX(calc(1 * var(--c-search__container-offset-v)));
+}
+
+.c-search__list{
+    --c-search__list-width: calc(100% - var(--c-search__layout-padding) - var(--c-search__container-paddingV));
+    --c-search__list-transition: var(--global-transition-alpha);
+    
+    --c-search__list-paddingH: var(--global-whitespace-sm);
+    --c-search__list-paddingV: calc(calc(100% - var(--c-search__list-width)) / 2);
+
+
+    --c-search__list-item-paddingH: var(--global-whitespace-md);
+    --c-search__list-item-paddingV: var(--global-whitespace-sm);
+
+    position: absolute;
+    z-index: -100;
     background-color: var(--search-background);
     border-radius: calc(3rem / 15);
-    opacity: 0;
+    width: var(--c-search__list-width);
 
-    transform: translate(var(--search-list-offset-v), var(--search-list-padding-h));
-    width: calc(100% - var(--search-layout-padding) - var(--search-list-padding-v));
     max-height: 0;
+    opacity: 0;
+    transform: translate(var(--c-search__list-paddingV), calc(-1* 3rem));
 
-    transition: var(--search-list-transition);
-    -moz-transition: var(--search-list-transition); /* Firefox 4 */
-    -webkit-transition: var(--search-list-transition); /* Safari and Chrome */
+    transition: all var(--c-search__list-transition) ease-out;
+    -moz-transition: all var(--c-search__list-transition) ease-out; /* Firefox 4 */
+    -webkit-transition: all var(--c-search__list-transition) ease-out; /* Safari and Chrome */
 }
 
 
@@ -1041,17 +1053,22 @@ input::placeholder {
     display: block;
     max-height: calc(450rem / 15);
     opacity: 1;
+    transform: translate(var(--c-search__list-paddingV), var(--c-search__list-paddingH));
+
+    transition: all var(--c-search__list-transition) ease-in;
+    -moz-transition: all var(--c-search__list-transition) ease-in; /* Firefox 4 */
+    -webkit-transition: all var(--c-search__list-transition) ease-in; /* Safari and Chrome */
 }
 
 
 .c-search__list li{
-    padding: var(--search-list-item-padding-h) 0;
-    margin: 0 var(--search-list-item-padding-v);
+    padding: var(--c-search__list-item-paddingH) 0;
+    margin: 0 var(--c-search__list-item-paddingV);
 }
 
 .c-search__list li + li {
-    --search-list-borderColor: rgba(255, 255, 255, 0.2);
-    border-top: 1px solid var(--search-list-borderColor);
+    --c-search__list-borderColor: rgba(255, 255, 255, 0.2);
+    border-top: 1px solid var(--c-search__list-borderColor);
 }
 
 /*
