@@ -94,7 +94,6 @@ html {
 
     color: var(--global-text-color);
     background-color: var(--global-background-color);
-    background-image: var(--global-background-image);
 }
 
 *,
@@ -564,6 +563,7 @@ input::placeholder {
     --c-app__sidebar-background-main: var(--color-orange-dark);
 
     min-height: 100vh;
+    background-image: var(--global-background-image);
 }
 
 .c-app__sidebar{
