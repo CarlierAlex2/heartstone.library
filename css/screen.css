@@ -589,6 +589,7 @@ input::placeholder {
     background-color: var(--c-app__corner-background);
     grid-column-start: 1;
     grid-row-start: 1;
+    overflow:inherit;
 }
 
 .c-app__sidebar{
@@ -597,6 +598,7 @@ input::placeholder {
     grid-row-start: 2;
 
     padding: var(--global-whitespace-md);
+    overflow:inherit;
 }
 
 .c-app__topbar{
@@ -607,6 +609,12 @@ input::placeholder {
 .c-app__main{
     grid-column-start: 2;
     grid-row-start: 2;
+}
+
+.c-app--closed{
+    grid-template-columns: var(--c-app__sidebar-width) 1fr;
+    overflow: hidden;
+    transform: translateX(calc(-1 * var(--c-app__sidebar-width)));
 }
 
 
@@ -787,15 +795,6 @@ input::placeholder {
     width: 3rem; /* 48px = 16 * 3rem */
     margin-right: var(--global-whitespace-lg);
     position: relative;
-
-    --stat-color-highlight: var(--color-yellow-light-x);
-    --stat-color-top: var(--color-yellow-light);
-    --stat-color-center: var(--color-yellow-light);
-    --stat-color-shadow: var(--color-yellow-dark);
-    --stat-color-shadow-core: var(--color-yellow-dark-x);
-
-    --stat-color-inner-light: var(--color-yellow-light-x);
-    --stat-color-inner-shadow: var(--color-yellow-dark-x);
 }
 
 .c-icon-stats-health{
@@ -831,7 +830,7 @@ input::placeholder {
     --stat-color-inner-shadow: var(--color-blue-dark-x);
 }
 
-.c-icon-stats-cost__inner{
+.c-icon-stats__inner{
     display: block;
     max-height: 50%;
     max-width: 50%;
@@ -875,21 +874,57 @@ input::placeholder {
     --stats-color-main: purple;
     --stats-color-sub: white;
     --stats-color-background: white;
+
+    --stat-color-highlight: var(--color-yellow-light-x);
+    --stat-color-top: var(--color-yellow-light);
+    --stat-color-center: var(--color-yellow-light);
+    --stat-color-shadow: var(--color-yellow-dark);
+    --stat-color-shadow-core: var(--color-yellow-dark-x);
+
+    --stat-color-inner-light: var(--color-yellow-light-x);
+    --stat-color-inner-shadow: var(--color-yellow-dark-x);
 }
 
 .c-stats-health{
     --stats-color-main: var(--color-red-dark);
-    --stats-color-sub: var(--color-red-light);;
+    --stats-color-sub: var(--color-red-light);
+
+    --stat-color-highlight: var(--color-red-light-x);
+    --stat-color-top: var(--color-red-light);
+    --stat-color-center: var(--color-red-light);
+    --stat-color-shadow: var(--color-red-dark);
+    --stat-color-shadow-core: var(--color-red-dark-x);
+
+    --stat-color-inner-light: var(--color-red-light-x);
+    --stat-color-inner-shadow: var(--color-red-dark-x);
 }
 
 .c-stats-attack{
     --stats-color-main: var(--color-yellow-dark);
-    --stats-color-sub: var(--color-yellow-light);;
+    --stats-color-sub: var(--color-yellow-light);
+
+    --stat-color-highlight: var(--color-yellow-light-x);
+    --stat-color-top: var(--color-yellow-light);
+    --stat-color-center: var(--color-yellow-light);
+    --stat-color-shadow: var(--color-yellow-dark);
+    --stat-color-shadow-core: var(--color-yellow-dark-x);
+
+    --stat-color-inner-light: var(--color-yellow-light-x);
+    --stat-color-inner-shadow: var(--color-yellow-dark-x);
 }
 
 .c-stats-cost{
     --stats-color-main: var(--color-blue-dark);
-    --stats-color-sub: var(--color-blue-light);;
+    --stats-color-sub: var(--color-blue-light);
+
+    --stat-color-highlight: var(--color-blue-light-x);
+    --stat-color-top: var(--color-blue-light);
+    --stat-color-center: var(--color-blue-light);
+    --stat-color-shadow: var(--color-blue-dark);
+    --stat-color-shadow-core: var(--color-blue-dark-x);
+
+    --stat-color-inner-light: var(--color-blue-light-x);
+    --stat-color-inner-shadow: var(--color-blue-dark-x);
 }
 
 .c-stats__label{

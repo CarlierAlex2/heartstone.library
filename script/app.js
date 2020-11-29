@@ -218,7 +218,7 @@ const callBackSetup = function(jsonObject){
 const createFilterItem = function(checkBoxGroup, filterTag){
 	html_obj = `
 	<li class="c-toggle-list__item">
-		<input class="o-hide-accessible c-option--hidden" type="checkbox" name="${checkBoxGroup}" id="${filterTag}" value="${filterTag}">
+		<input class="o-hide-accessible c-option--hidden" type="checkbox" name="${checkBoxGroup}" id="${filterTag}" value="${filterTag}" checked>
 		<label class="c-label c-custom-toggle" for="${filterTag}">
 			${filterTag}
 			<span class="c-custom-toggle__fake-input">
