@@ -62,171 +62,162 @@
         </defs>
       </svg>
 
-      <main class="c-page c-app">
-        <div class="c-app__corner">
-          <h1>Filter</h1>
-        </div>
+      <main class="c-app">
 
+        
         <div class="c-app__sidebar">
-          <ul class="o-list c-toggle-list js-filter-list">
-            <li class="c-toggle-list__item">
-                <input class="o-hide-accessible c-option--hidden" type="checkbox" id="option1" value="Option 1" >
-                <label class="c-label c-custom-toggle" for="option1">
-                  Option 1
+          <section class="c-sidebar__header">
+            <h1>Filter</h1>
+          </section>
+
+          <section class="c-sidebar__content">
+            <ul class="c-toggle-list js-filter-list o-list ">
+              <li class="c-toggle-list__item">
+                  <input class="o-hide-accessible c-option--hidden" type="checkbox" id="option1" value="Option 1" >
+                  <label class="c-label c-custom-toggle" for="option1">
+                    Option 1
+                    <span class="c-custom-toggle__fake-input">
+                      <svg class="c-custom-toggle__symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
+                          <path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
+                      </svg>
+                    </span>
+                  </label>
+              </li>
+              <li class="c-toggle-list__item">
+                <input class="o-hide-accessible c-option--hidden" type="checkbox" id="option2" value="Option 2">
+                <label class="c-label c-custom-toggle" for="option2">
+                  Option 2
                   <span class="c-custom-toggle__fake-input">
                     <svg class="c-custom-toggle__symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
                         <path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
                     </svg>
                   </span>
                 </label>
-            </li>
-            <li class="c-toggle-list__item">
-              <input class="o-hide-accessible c-option--hidden" type="checkbox" id="option2" value="Option 2">
-              <label class="c-label c-custom-toggle" for="option2">
-                Option 2
-                <span class="c-custom-toggle__fake-input">
-                  <svg class="c-custom-toggle__symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
-                      <path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
-                  </svg>
-                </span>
-              </label>
-          </li>
-        </ul>
-        </div>
-
-        <div class="c-app__topbar">
-          <section class="o-container u-max-width-sm">
-            <div class="js-search c-search">
-              <div class="o-layout o-layout--gutter-sm o-layout--align-center o-layout--justify-space-between" >
-                                              
-              <div class="o-layout__item c-search__btn">
-                <svg class="c-icon c-icon-btn c-icon_settings">
-                  <use xlink:href="#c-icon_settings"></use>
-                </svg>
-              </div>
-              
-  
-  
-              <div class=" o-layout__item o-flex-grow c-search__bar">
-                  <input class="c-search__input js-search__input o-button-reset" type="text" placeholder="Name of card..">
-                  <ul class="c-search__list js-search__list o-list">
-                      <li data-cardId="EX1_591">Card 1</li>
-                      <li data-cardId="EX1_050">Card 2</li>
-                  </ul>
-              </div>
-  
-              
-              <div class="o-layout__item c-search__btn"> 
-                <svg class="c-icon c-icon-btn js-search__btn c-icon_search">
-                  <use xlink:href="#c-icon_search"></use>
-                </svg>
-              </div>
-              
-              </div>
-            </div>
+              </li>
+            </ul>
           </section>
         </div>
+        
 
         <div class="c-app__main">
-          <section class="o-row o-row--lg">
-            <div class="o-container u-max-width-xs">
-                <section class="o-section o-section--md">
-                    <img class="js-card__image c-image u-align-center" 
-                    src="https://d15f34w2p8l1cc.cloudfront.net/hearthstone/f7d4aa4cdcf78441cc8d0bae954a55a271ad9cedc89c611b8fc0cf0859a8a32f.png" 
-                    alt="Card Image"> 
-                </section>
-
-                <section class="o-section o-section--md">
-                    <section class="o-section o-section--md">
-                        <div class="c-stats c-stats-health js-health o-layout">
-                          <div class="c-icon c-icon-stats">
-                            <svg class="c-icon_gem">
-                              <use xlink:href="#c-icon_gem"></use>
-                            </svg>
-                            <svg class="c-icon-stats__inner">
-                              <use xlink:href="#c-icon_health"></use>
-                            </svg>
-                          </div>
-
-                            <div class="o-flex-grow o-layout o-layout--column">
-                                <div class="o-layout">
-                                    <p class="c-stats__label">Health:</p>
-                                    <p class="c-stats__label js-stat__value">1</p>
-                                </div>
-                                <div class="js-stats__bar c-stats__bar">
-                                    <div class="js-stats__fill c-stats__fill"></div>     
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-    
-                    <section class="o-section o-section--md">
-                        <div class="c-stats c-stats-attack js-attack o-layout">
-                          <div class="c-icon c-icon-stats">
-                            <svg class="c-icon_gem">
-                              <use xlink:href="#c-icon_gem"></use>
-                            </svg>
-                            <svg class="c-icon-stats__inner">
-                              <use xlink:href="#c-icon_attack"></use>
-                            </svg>
-                          </div>
-
-
-                            <div class="o-flex-grow o-layout o-layout--column">
-                                <div class="o-layout">
-                                    <p class="c-stats__label">Attack:</p>
-                                    <p class="c-stats__label js-stat__value">1</p>
-                                </div>
-                                <div class="js-stats__bar c-stats__bar">
-                                    <div class="js-stats__fill c-stats__fill"></div>     
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-    
-                    <section class="o-section o-section--md">
-                        <div class="c-stats c-stats-cost js-cost o-layout">
-                          <div class="c-icon c-icon-stats">
-                            <svg class="c-icon_gem">
-                              <use xlink:href="#c-icon_gem"></use>
-                            </svg>
-                            <svg class="c-icon-stats__inner">
-                              <use xlink:href="#c-icon_coins"></use>
-                            </svg>
-                          </div>
-
-                            <div class="o-flex-grow">
-                              
-                                <div class="o-layout">
-                                    <p class="c-stats__label">Cost:</p>
-                                    <p class="c-stats__label js-stat__value">1</p>
-                                </div>
-                              
-                                <div class="js-stats__bar c-stats__bar">
-                                    <div class="js-stats__fill c-stats__fill"></div>     
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </section>
-
-                <div>
-                    <!--
-                    <h1>Name</h1>
-                    <p class="js-card__name">Dark Guardian</p>
-                    <h1>Card Set</h1>
-                    <p class="js-card__set">Whispers of the Old Gods</p>
-                    <h1>Description</h1>
-                    <p class="js-card__text">Increased Stats</p>
-                    -->
+          <section class="c-main__header">
+            <section class="o-container u-max-width-sm">
+              <div class="js-search c-search">
+                <div class="o-layout o-layout--gutter-sm o-layout--align-center o-layout--justify-space-between" >
+                                                
+                <div class="o-layout__item c-search__btn">
+                  <svg class="c-icon c-icon-btn c-icon_settings">
+                    <use xlink:href="#c-icon_settings"></use>
+                  </svg>
                 </div>
-            </div>
-        </section>
+                
+    
+    
+                <div class=" o-layout__item o-flex-grow c-search__bar">
+                    <input class="c-search__input js-search__input o-button-reset" type="text" placeholder="Name of card..">
+                    <ul class="c-search__list js-search__list o-list">
+                        <li data-cardId="EX1_591">Card 1</li>
+                        <li data-cardId="EX1_050">Card 2</li>
+                    </ul>
+                </div>
+    
+                
+                <div class="o-layout__item c-search__btn"> 
+                  <svg class="c-icon c-icon-btn js-search__btn c-icon_search">
+                    <use xlink:href="#c-icon_search"></use>
+                  </svg>
+                </div>
+                
+                </div>
+              </div>
+            </section>
+          </section>
+  
+          <section class="c-main__content">
+            <section class="o-container u-max-width-xs">
+              <section class="o-section o-section--md">
+                <img class="js-card__image c-image u-align-center" 
+                src="https://d15f34w2p8l1cc.cloudfront.net/hearthstone/f7d4aa4cdcf78441cc8d0bae954a55a271ad9cedc89c611b8fc0cf0859a8a32f.png" 
+                alt="Card Image"> 
+              </section>
+    
+              <section class="o-section o-section--md">
+                  <section class="o-section o-section--md">
+                      <div class="c-stats c-stats-health js-health o-layout">
+                        <div class="c-icon c-icon-stats">
+                          <svg class="c-icon_gem">
+                            <use xlink:href="#c-icon_gem"></use>
+                          </svg>
+                          <svg class="c-icon-stats__inner">
+                            <use xlink:href="#c-icon_health"></use>
+                          </svg>
+                        </div>
+    
+                          <div class="o-flex-grow o-layout o-layout--column">
+                              <div class="o-layout">
+                                  <p class="c-stats__label">Health:</p>
+                                  <p class="c-stats__label js-stat__value">1</p>
+                              </div>
+                              <div class="js-stats__bar c-stats__bar">
+                                  <div class="js-stats__fill c-stats__fill"></div>     
+                              </div>
+                          </div>
+                      </div>
+                  </section>
+    
+    
+                  <section class="o-section o-section--md">
+                      <div class="c-stats c-stats-attack js-attack o-layout">
+                        <div class="c-icon c-icon-stats">
+                          <svg class="c-icon_gem">
+                            <use xlink:href="#c-icon_gem"></use>
+                          </svg>
+                          <svg class="c-icon-stats__inner">
+                            <use xlink:href="#c-icon_attack"></use>
+                          </svg>
+                        </div>
+    
+    
+                          <div class="o-flex-grow o-layout o-layout--column">
+                              <div class="o-layout">
+                                  <p class="c-stats__label">Attack:</p>
+                                  <p class="c-stats__label js-stat__value">1</p>
+                              </div>
+                              <div class="js-stats__bar c-stats__bar">
+                                  <div class="js-stats__fill c-stats__fill"></div>     
+                              </div>
+                          </div>
+                      </div>
+                  </section>
+    
+                  <section class="o-section o-section--md">
+                      <div class="c-stats c-stats-cost js-cost o-layout">
+                        <div class="c-icon c-icon-stats">
+                          <svg class="c-icon_gem">
+                            <use xlink:href="#c-icon_gem"></use>
+                          </svg>
+                          <svg class="c-icon-stats__inner">
+                            <use xlink:href="#c-icon_coins"></use>
+                          </svg>
+                        </div>
+    
+                          <div class="o-flex-grow">
+                            
+                              <div class="o-layout">
+                                  <p class="c-stats__label">Cost:</p>
+                                  <p class="c-stats__label js-stat__value">1</p>
+                              </div>
+                            
+                              <div class="js-stats__bar c-stats__bar">
+                                  <div class="js-stats__fill c-stats__fill"></div>     
+                              </div>
+                          </div>
+                      </div>
+                  </section>
+              </section>
+            </section>
+          </section>
         </div>
-
-
-
 
       </main>
 	</body>

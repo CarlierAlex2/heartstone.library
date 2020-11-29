@@ -552,70 +552,53 @@ input::placeholder {
 \*------------------------------------*/
 
 /*
-    Component: Page
-    ---
-*/
-
-.c-page{
-    margin-bottom: var(--global-whitespace-xxl);
-}
-
-/*
     Component: App
     ---
 */
 
-.c-app__corner, 
-.c-app__topbar,
-.c-app__sidebar,
-.c-app__main{
-    display: block;
-}
-
 .c-app{
-    --c-app__sidebar-width: calc(192rem / 16);
-    --c-app__topbar-height: calc(48rem / 16);
-
-    --c-app__corner-background: var(--color-orange-dark);
+    --c-app-sidebar-width: calc(192rem / 16);
+    --c-app-header-height: calc(48rem / 16);
     --c-app__sidebar-background: var(--color-orange-light);
 
     min-height: 100vh;
-    display: grid;
-
-    grid-template-columns: var(--c-app__sidebar-width) 1fr;
-    grid-template-rows: var(--c-app__topbar-height) 1fr;
-}
-
-.c-app__corner{
-    background-color: var(--c-app__corner-background);
-    grid-column-start: 1;
-    grid-row-start: 1;
-    overflow:inherit;
 }
 
 .c-app__sidebar{
     background-color: var(--c-app__sidebar-background);
-    grid-column-start: 1;
-    grid-row-start: 2;
 
-    padding: var(--global-whitespace-md);
-    overflow:inherit;
+    /*display: grid;
+    grid-template-rows: var(--c-app-header-height) 1fr;*/
+    min-width: var(--c-app-sidebar-width);
+
+    position: absolute;
+    z-index: 1000;
 }
 
-.c-app__topbar{
-    grid-column-start: 2;
-    grid-row-start: 1;
+.c-sidebar__header{
+    --c-sidebar__header-background: var(--color-orange-dark);
+    background-color: var(--c-sidebar__header-background);
+    /*grid-row-start: 1;*/
+}
+
+.c-sidebar__content{
+    padding: var(--global-whitespace-md);
+    /*grid-row-start: 2;*/
+    min-height: calc(100vh - var(--c-app-header-height));
 }
 
 .c-app__main{
-    grid-column-start: 2;
-    grid-row-start: 2;
+    display: grid;
+    grid-template-rows: var(--c-app-header-height) 1fr;
+    grid-template-columns: 100vw;
 }
 
-.c-app--closed{
-    grid-template-columns: var(--c-app__sidebar-width) 1fr;
-    overflow: hidden;
-    transform: translateX(calc(-1 * var(--c-app__sidebar-width)));
+.c-main__header{
+    grid-row-start: 1;
+}
+
+.c-main__content{
+    grid-row-start: 2;
 }
 
 
@@ -640,6 +623,7 @@ input::placeholder {
 */
 
 .c-label{
+    font-size: calc(10rem / 15);
     font-weight: 600;
     color: var(--color-neutral-dark-xxx);
 }
