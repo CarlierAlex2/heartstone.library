@@ -4,6 +4,7 @@ const HOST_RAPIDAPI = "omgvamp-hearthstone-v1.p.rapidapi.com";
 const TEST_CARD_ID_01 = "EX1_591"
 const TEST_CARD_ID_02 = "EX1_050"
 
+let html_Sidebar, html_SidebarHideBtn;
 let html_CardImage;
 let html_SearchInput, html_SearchList, html_SearchButton;
 let html_CardName, html_CardSet, html_CardText;
@@ -300,6 +301,20 @@ const listenToSearch = function(){
 	  }); 
 };
 
+const listenToHideSidebar = function(){
+	html_SidebarHideBtn.addEventListener("click", function() {
+		console.log("Hide Sidebar")
+		html_Sidebar.classList.remove("c-app__sidebar--show");
+	  }); 
+};
+
+const listenToShowSidebar = function(){
+	html_SidebarShowBtn.addEventListener("click", function() {
+		console.log("Show Sidebar")
+		html_Sidebar.classList.add("c-app__sidebar--show");
+	  }); 
+};
+
 const listenToSelectSearched = function(list){
 	list.removeEventListener("click", eventShowCard); 
 	list.addEventListener("click", eventShowCard); 
@@ -321,6 +336,10 @@ const eventShowCard = function(event){
 
 //============================================================================================================================================================
 const getHtmlElements = function(){
+	html_Sidebar = document.querySelector('.js-sidebar');
+	html_SidebarHideBtn = document.querySelector('.js-sidebar-hide-button');
+	html_SidebarShowBtn = document.querySelector('.js-sidebar-show-button');
+
 	html_CardImage = document.querySelector('.js-card__image');
 
 	html_SearchInput = document.querySelector('.js-search__input');
@@ -353,5 +372,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	//getCardyId(TEST_CARD_ID_02);
 
 	listenToSearch();
+	listenToHideSidebar();
+	listenToShowSidebar();
 });
 

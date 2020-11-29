@@ -65,9 +65,14 @@
       <main class="c-app">
 
         
-        <div class="c-app__sidebar">
+        <div class="c-app__sidebar js-sidebar">
           <section class="c-sidebar__header">
-            <h1>Filter</h1>
+            <div class="c-sidebar__button js-sidebar-hide-button">
+              <svg class="c-icon c-icon-btn c-icon_back">
+                <use xlink:href="#c-icon_back"></use>
+              </svg>
+            </div>
+            <h1 class="c-sidebar__title">Filter</h1>
           </section>
 
           <section class="c-sidebar__content">
@@ -105,7 +110,7 @@
               <div class="js-search c-search">
                 <div class="o-layout o-layout--gutter-sm o-layout--align-center o-layout--justify-space-between" >
                                                 
-                <div class="o-layout__item c-search__btn">
+                <div class="o-layout__item c-search__btn js-sidebar-show-button">
                   <svg class="c-icon c-icon-btn c-icon_settings">
                     <use xlink:href="#c-icon_settings"></use>
                   </svg>
