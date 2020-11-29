@@ -877,91 +877,7 @@ input::placeholder {
     fill: var(--stat-color-inner-shadow);
 }
 
-/*
-    Component: Stats
-    ---
-    Status elements like percentage bars
-*/
 
-.c-stats{
-    --stats-label-fontSize : 14px;
-    --stats-label-margin : var(--global-whitespace-sm);
-    --stats-border-size:  0.3rem;
-
-    --stats-color-main: purple;
-    --stats-color-sub: white;
-    --stats-color-background: white;
-
-    --stat-color-highlight: var(--color-yellow-light-x);
-    --stat-color-top: var(--color-yellow-light);
-    --stat-color-center: var(--color-yellow-light);
-    --stat-color-shadow: var(--color-yellow-dark);
-    --stat-color-shadow-core: var(--color-yellow-dark-x);
-
-    --stat-color-inner-light: var(--color-yellow-light-x);
-    --stat-color-inner-shadow: var(--color-yellow-dark-x);
-}
-
-.c-stats-health{
-    --stats-color-main: var(--color-red-dark);
-    --stats-color-sub: var(--color-red-light);
-
-    --stat-color-highlight: var(--color-red-light-x);
-    --stat-color-top: var(--color-red-light);
-    --stat-color-center: var(--color-red-light);
-    --stat-color-shadow: var(--color-red-dark);
-    --stat-color-shadow-core: var(--color-red-dark-x);
-
-    --stat-color-inner-light: var(--color-red-light-x);
-    --stat-color-inner-shadow: var(--color-red-dark-x);
-}
-
-.c-stats-attack{
-    --stats-color-main: var(--color-yellow-dark);
-    --stats-color-sub: var(--color-yellow-light);
-
-    --stat-color-highlight: var(--color-yellow-light-x);
-    --stat-color-top: var(--color-yellow-light);
-    --stat-color-center: var(--color-yellow-light);
-    --stat-color-shadow: var(--color-yellow-dark);
-    --stat-color-shadow-core: var(--color-yellow-dark-x);
-
-    --stat-color-inner-light: var(--color-yellow-light-x);
-    --stat-color-inner-shadow: var(--color-yellow-dark-x);
-}
-
-.c-stats-cost{
-    --stats-color-main: var(--color-blue-dark);
-    --stats-color-sub: var(--color-blue-light);
-
-    --stat-color-highlight: var(--color-blue-light-x);
-    --stat-color-top: var(--color-blue-light);
-    --stat-color-center: var(--color-blue-light);
-    --stat-color-shadow: var(--color-blue-dark);
-    --stat-color-shadow-core: var(--color-blue-dark-x);
-
-    --stat-color-inner-light: var(--color-blue-light-x);
-    --stat-color-inner-shadow: var(--color-blue-dark-x);
-}
-
-.c-stats__label{
-    font-size: var(--stats-label-fontSize);
-    margin: 0 0 var(--stats-label-margin);
-}
-
-.c-stats__bar{
-    display: block;
-    background-color: var(--stats-color-background);
-
-    width: 100%;
-    height: 20px;
-}
-
-.c-stats__fill{
-    background-color: var(--stats-color-sub);
-    width: 50%;
-    height: 100%;
-}   
 
 /*
     Component: Search
@@ -994,7 +910,7 @@ input::placeholder {
 }
 
 .c-search__input{
-    max-width: 100%;
+    width: 100%;
     border-bottom: 1px solid var(--c-search-color);
     padding: var(--c-search__input-paddingV) var(--c-search__input-paddingH);
 
@@ -1018,13 +934,13 @@ input::placeholder {
     --c-search__container-paddingV: var(--global-whitespace-md);
 
     min-height: 100vh;
-    width: calc(100% - var(--c-search__layout-padding) - var(--c-search__container-paddingV));
+    width: 100%;
 
     position: absolute;
     overflow: hidden;
     z-index: 100;
 
-    transform: translateX(calc(1 * var(--c-search__container-offset-v)));
+    transform: translateX(calc(-1 * var(--c-search__container-offset-v)));
 }
 
 .c-search__list{
@@ -1054,7 +970,7 @@ input::placeholder {
 }
 
 
-.c-search__bar:hover .c-search__list,
+/*.c-search__bar:hover .c-search__list,*/
 .c-search__list-open
 {
     display: block;
@@ -1077,6 +993,107 @@ input::placeholder {
     --c-search__list-borderColor: rgba(255, 255, 255, 0.2);
     border-top: 1px solid var(--c-search__list-borderColor);
 }
+
+
+
+/*
+    Component: Stats
+    ---
+    Status elements like percentage bars
+*/
+
+.c-stats{
+    --stats-label-fontSize : 14px;
+    --stats-label-margin : var(--global-whitespace-sm);
+    --stats-border-size:  0.3rem;
+
+    --stats-color-dark: red;
+    --stats-color-light: blue;
+    --stats-color-shadow: gray;
+    --stats-color-background: var(--color-neutral-dark-xxx);
+
+    --stat-color-highlight: var(--color-yellow-light-x);
+    --stat-color-top: var(--color-yellow-light);
+    --stat-color-center: var(--color-yellow-light);
+    --stat-color-shadow: var(--color-yellow-dark);
+    --stat-color-shadow-core: var(--color-yellow-dark-x);
+
+    --stat-color-inner-light: var(--color-yellow-light-x);
+    --stat-color-inner-shadow: var(--color-yellow-dark-x);
+}
+
+.c-stats-health{
+    --stats-color-dark: var(--color-red-light);
+    --stats-color-light: var(--color-red-light-x);
+    --stats-color-shadow: var(--color-red-light);
+
+    --stat-color-highlight: var(--color-red-light-x);
+    --stat-color-top: var(--color-red-light);
+    --stat-color-center: var(--color-red-light);
+    --stat-color-shadow: var(--color-red-dark);
+    --stat-color-shadow-core: var(--color-red-dark-x);
+
+    --stat-color-inner-light: var(--color-red-light-x);
+    --stat-color-inner-shadow: var(--color-red-dark-x);
+}
+
+.c-stats-attack{
+    --stats-color-dark: var(--color-yellow-light);
+    --stats-color-light: var(--color-yellow-light-x);
+    --stats-color-shadow: var(--color-yellow-light);
+
+    --stat-color-highlight: var(--color-yellow-light-x);
+    --stat-color-top: var(--color-yellow-light);
+    --stat-color-center: var(--color-yellow-light);
+    --stat-color-shadow: var(--color-yellow-dark);
+    --stat-color-shadow-core: var(--color-yellow-dark-x);
+
+    --stat-color-inner-light: var(--color-yellow-light-x);
+    --stat-color-inner-shadow: var(--color-yellow-dark-x);
+}
+
+.c-stats-cost{
+    --stats-color-dark: var(--color-blue-light);
+    --stats-color-light: var(--color-blue-light-x);
+    --stats-color-shadow: var(--color-blue-light);
+
+    --stat-color-highlight: var(--color-blue-light-x);
+    --stat-color-top: var(--color-blue-light);
+    --stat-color-center: var(--color-blue-light);
+    --stat-color-shadow: var(--color-blue-dark);
+    --stat-color-shadow-core: var(--color-blue-dark-x);
+
+    --stat-color-inner-light: var(--color-blue-light-x);
+    --stat-color-inner-shadow: var(--color-blue-dark-x);
+}
+
+.c-stats__label{
+    font-size: var(--stats-label-fontSize);
+    margin: 0 0 var(--stats-label-margin);
+}
+
+.c-stats__bar{
+    --c-stats__bar-borderRadius: calc(1rem);
+
+    display: block;
+    width: 100%;
+    height: 20px;
+
+    background-color: var(--stats-color-background);
+    border-radius: var(--c-stats__bar-borderRadius);
+    -webkit-box-shadow: 0px 0px 10px 0px var(--stats-color-shadow);
+    -moz-box-shadow: 0px 0px 10px 0px var(--stats-color-shadow);
+    box-shadow: 0px 0px 10px 0px var(--stats-color-shadow);
+}
+
+.c-stats__fill{
+    width: 50%;
+    height: 100%;
+
+    background-color: var(--stats-color-light);
+    background-image: linear-gradient(to right, var(--stats-color-dark) , var(--stats-color-light));
+    border-radius: var(--c-stats__bar-borderRadius);
+}   
 
 /*
     Component: Image
