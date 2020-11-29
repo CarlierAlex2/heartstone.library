@@ -43,6 +43,8 @@ const callbackSearch = function(jsonObject){
 };
 
 const fillSearchList = function(list){
+	html_SearchList.classList.add("c-search__list-open");
+
 	let listFound = [];
 	let listContentHtml = "";
 
@@ -292,6 +294,7 @@ const getCardSearchName = function(name){
 
 const listenToSearch = function(){
 	html_SearchButton.addEventListener("click", function() {
+		console.log("Search for....")
 		const name = html_SearchInput.value;
 		getCardSearchName(name);
 	  }); 
@@ -310,7 +313,7 @@ const eventShowCard = function(event){
 		const cardId = item.getAttribute("data-cardId");
 		const cardName = item.getAttribute("data-cardName");
 		getCardyId(cardId);
-		html_SearchList.classList.add("c-search__list-hide");
+		html_SearchList.classList.remove("c-search__list-open");
 		html_SearchInput.value = cardName;
 	}
 }
@@ -328,7 +331,7 @@ const getHtmlElements = function(){
 	html_Attack = document.querySelector('.js-attack');
 	html_Cost = document.querySelector('.js-cost');
 
-	html_FilterList = html_Cost = document.querySelector('.js-filter-list');
+	html_FilterList = document.querySelector('.js-filter-list');
 
 	/*
 	html_CardName = document.querySelector('.js-card__name');
