@@ -560,7 +560,8 @@ input::placeholder {
     --c-app-sidebar-width: calc(192rem / 16);
     --c-app-height-header: calc(64rem / 16);
     --c-app-height-leftover: calc(100vh - var(--c-app-height-header));
-    --c-app__sidebar-background: var(--color-orange-light);
+    --c-app__sidebar-background-sub: var(--color-orange-light);
+    --c-app__sidebar-background-main: var(--color-orange-dark);
 
     min-height: 100vh;
 }
@@ -569,7 +570,7 @@ input::placeholder {
     display: grid;
     grid-template-rows: var(--c-app-height-header) var(--c-app-height-leftover);
 
-    background-color: var(--c-app__sidebar-background);
+    background-color: var(--c-app__sidebar-background-sub);
 
     position: absolute;
     z-index: 10000;
@@ -585,11 +586,10 @@ input::placeholder {
 }
 
 .c-sidebar__header{
-    --c-sidebar__header-background: var(--color-orange-dark);
     --c-sidebar__header-padding-left: var(--global-whitespace-sm);
 
     grid-row: 1;
-    background-color: var(--c-sidebar__header-background);
+    background-color: var(--c-app__sidebar-background-main);
     padding-left: var(--c-sidebar__header-padding-left);
 
     display: flex;
@@ -611,7 +611,6 @@ input::placeholder {
 
 .c-sidebar__content{
     grid-row: 2;
-    padding: var(--global-whitespace-md);
     min-height: calc(100vh - var(--c-app-header-height));
 }
 
@@ -643,8 +642,8 @@ input::placeholder {
 }
 
 
-.c-toggle-list__item + .c-toggle-list__item{
-    padding-top: var(--global-whitespace-md);
+.c-toggle-list__item{
+
 }
 
 
@@ -654,10 +653,34 @@ input::placeholder {
 */
 
 .c-label{
+    position: static;
+
     font-size: calc(16rem / 15);
     font-weight: 600;
     color: var(--color-neutral-dark-xxx);
+
+    width: 100%;
+    height: 100%;
+
+    padding: calc(var(--global-whitespace-md) / 2) var(--global-whitespace-md);
+
+    transition: all var(--global-transition-alpha) ease-out;
+    -moz-transition: all var(--global-transition-alpha) ease-out; /* Firefox 4 */
+    -webkit-transition: all var(--global-transition-alpha) ease-out; /* Safari and Chrome */
 }
+
+.c-option--hidden:checked + .c-label{
+    background: var(--c-app__sidebar-background-main);
+}
+
+.c-label:hover{
+    position: relative;
+    background: var(--color-red-light) !important;
+    -webkit-box-shadow: 0px 0px 10px 0px var(--color-orange-light-x);
+    -moz-box-shadow: 0px 0px 10px 0px var(--color-orange-light-x);
+    box-shadow: 0px 0px 10px 0px var(--color-orange-light-x);
+}
+
 
 .c-custom-toggle{
     --custom-option-background: var(--color-neutral-light-xxxx);
@@ -667,7 +690,6 @@ input::placeholder {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
 
     /*background-color: blue;*/
 }
@@ -706,7 +728,6 @@ input::placeholder {
     fill:red;
     opacity: 100;
 }
-
 
 /*
     Component: Intro
