@@ -600,6 +600,22 @@ input::placeholder {
     padding-top: var(--global-whitespace);
 }
 
+@media (min-width: 768px) {
+    .c-app{
+        display: grid;
+        grid-template-columns: var(--c-app-sidebar-width) calc(100vw - var(--c-app-sidebar-width));
+    }
+
+    .c-app__sidebar{
+        grid-column: 1;
+        transform: translateX(0);
+    }
+
+    .c-app__main{
+        grid-column: 2;
+    }
+}
+
 /*
     Component: Sidebar
     ---

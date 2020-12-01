@@ -323,6 +323,11 @@ const listenToSelectSearched = function(list){
 const eventShowCard = function(event){
 	if(event.target && event.target.nodeName == "LI") 
 	{
+		if(!html_SearchList.classList.contains("c-search__list-open"))
+		{
+			return
+		}
+
 		const item = event.target;
 		console.log(item + " was clicked");
 		const cardId = item.getAttribute("data-cardId");
@@ -368,7 +373,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	getInfo();
 	getDefaultCard();
 	//getCardSearchName("a");
-	//getCardyId(TEST_CARD_ID_01);
+	getCardyId(TEST_CARD_ID_01);
 	//getCardyId(TEST_CARD_ID_02);
 
 	listenToSearch();
