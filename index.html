@@ -65,54 +65,68 @@
             </defs>
           </svg>
 
-        <main class="c-intro c-page">
+        <main class="o-page">
 
-            <section class="o-row">
-                <div class="o-container u-max-width-xs">
+            <section class="o-row o-row--lg o-row--center">
+                <div class="o-container u-max-width-xs u-max-width-xl-bp3">
 
-                    <section class="o-section o-section--md">
-                        <h1 class="c-icon c-icon-logo">
-                            <svg class="c-icon__symbol c-icon_heartstone">
-                                <use xlink:href="#c-icon_heartstone"></use>
-                            </svg>
-                        </h1>
-                        <h1 class="c-intro__title u-align-text-center">
-                            Heartstone Library
-                        </h1>
-                        <h2  class="c-intro__subtitle u-no-margin-bottom u-align-text-center">
-                            Bekijk de volledige verzameling aan kaarten
-                        </h2>
+                  <div class="c-landing">
+                    <!------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                    <section class="c-landing__intro o-section o-section--md">
+                      <h1 class="c-landing__logo">
+                        <div class="c-logo">
+                          <svg class="c-logo_symbol">
+                            <use xlink:href="#c-icon_heartstone"></use>
+                          </svg>
+                        </div>
+                      </h1>
+                      <h1 class="c-landing__title u-align-text-center">
+                          Heartstone Library
+                      </h1>
+                      <h2  class="c-landing__subtitle u-no-margin-bottom u-align-text-center">
+                          Bekijk de volledige verzameling aan kaarten
+                      </h2>
                     </section>
 
+                    <!----------------------------------------------------------------------------------------------->
 
-                    <section class="o-section o-section--lg">
-                        <p  class="c-intro__content u-no-margin-bottom u-align-text-center">
+                    <section class="c-landing__text o-section o-section--lg">
+                        <p  class="u-no-margin-bottom u-align-text-center">
                             Met de Heartstone Library heb je onmiddelijk toegang tot de volledige collectie aan Heartstone kaarten om ze te vergelijken.
                         </p>
                     </section>
 
+                    <!----------------------------------------------------------------------------------------------->
 
-                    <section class="o-section o-section--lg">
-                        <img class="u-align-center" src="./img/png/Mockup.png" alt="Mockup Image"> 
+                    <section class="c-landing__image o-section o-section--lg o-section--negate-bp3">
+                      <div class="o-container u-max-width-xs">
+                        <img class="u-align-center" src="./img/png/Mockup.png" alt="Application Mockup Image"> 
+                      </div>
                     </section>
 
-                    
-                    <section class="o-section">
-                        <form class="o-container u-max-width-xxs c-email">
+                    <!------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                    <section class="c-landing__form o-section">
+                        <form class="o-container u-max-width-xxs c-form">
+
                             <div class="o-layout o-layout--gutter-v o-layout--justify-center o-layout--align-center">
-                                <div class="o-layout__item ">
-                                    <input class="c-email__input c-border-interact o-button-reset" 
+                                <div class="o-layout__item">
+                                    <input class="c-form__email c-border-interact o-button-reset" 
                                     type="text" placeholder="Jouw email">
                                 </div>
     
+                                <!---------------------------------------------------------------------------------->
     
-                                <div class="o-layout__item ">
+                                <div class="o-layout__item">
                                     <input class="c-border-interact c-button u-align-text-center o-button-reset"
-                                    type="button" value="Meld je aan" onclick="msg()">
+                                    type="submit" value="Meld je aan" onclick="msg()">
                                 </div>
                             </div>
+
                         </form> 
                     </section>
+                  <!------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                  </div>
+
                 </div>
             </section>
 
