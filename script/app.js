@@ -40,6 +40,7 @@ const callbackCardList = function(jsonObject){
 
 const callbackSearch = function(jsonObject){
 	console.log(jsonObject);
+	html_SearchInput.setAttribute("isvalid", "false")
 	fillSearchList(jsonObject);
 	html_SearchList.classList.remove("c-search__list-hide");
 	//getCardyId(cardId);
@@ -47,6 +48,7 @@ const callbackSearch = function(jsonObject){
 
 const callbackSearchFail = function(jsonObject){
 	console.log("Could not find any cards matching the search input");
+	html_SearchInput.setAttribute("isvalid", "true")
 };
 
 const fillSearchList = function(list){
