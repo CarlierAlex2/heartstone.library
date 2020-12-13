@@ -45,6 +45,10 @@ const callbackSearch = function(jsonObject){
 	//getCardyId(cardId);
 };
 
+const callbackSearchFail = function(jsonObject){
+	console.log("Could not find any cards matching the search input");
+};
+
 const fillSearchList = function(list){
 	html_SearchList.classList.add("c-search__list-open");
 
@@ -292,27 +296,26 @@ const getCardList = function(){
 
 const getCardSearchName = function(name){
 	console.log("Get card by name fetch");
-	handleData(`${API_HEARTSTONE}/cards/search/${name}`, callbackSearch, callBackLog, "GET");
+	handleData(`${API_HEARTSTONE}/cards/search/${name}`, callbackSearch, callbackSearchFail, "GET");
 };
 
 const listenToSearch = function(){
 	html_SearchButton.addEventListener("click", function() {
-		console.log("Search for....")
-		const name = html_SearchInput.value;
-		getCardSearchName(name);
+		beginSearch();
 	  }); 
 
-	  /*
 	html_SearchInput.addEventListener("keyup", function(event) {
-		// Number 13 is the "Enter" key on the keyboard
-		if (event.keyCode === 13) {
+		if (event.keyCode === 13) { 		// Number 13 is the "Enter" key on the keyboard
 		  event.preventDefault();
-		  console.log("Search for....")
-		  const name = html_SearchInput.value;
-		  getCardSearchName(name);
+		  beginSearch();
 		}
 	  }); 
-	  */
+};
+
+const beginSearch = function(){
+	console.log("Search for....")
+	const name = html_SearchInput.value;
+	getCardSearchName(name);
 };
 
 const listenToHideSidebar = function(){
@@ -334,14 +337,10 @@ const listenToSelectSearched = function(list){
 	list.addEventListener("click", eventShowCard); 
 };
 
-const disableDefaultForm = function(list){
-	$(document).on("keypress", 'form', function (e) {
-		var code = e.keyCode || e.which;
-		if (code == 13) {
-			e.preventDefault();
-			return false;
-		}
-	});
+const preventDefaultForm = function(list){
+	html_SearchForm.addEventListener('submit', function(e) {
+		e.preventDefault();
+	}, false);
 };
 
 const eventShowCard = function(event){
@@ -394,6 +393,7 @@ const getHtmlElements = function(){
 
 document.addEventListener('DOMContentLoaded', function() {
 	getHtmlElements();
+	preventDefaultForm();
 
 	getInfo();
 	getDefaultCard();
@@ -401,7 +401,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	getCardyId(TEST_CARD_ID_ARR["card1"]);
 	//getCardyId(TEST_CARD_ID_02);
 
-	//disableDefaultForm();
 	listenToSearch();
 	listenToHideSidebar();
 	listenToShowSidebar();
