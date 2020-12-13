@@ -78,6 +78,9 @@
     /* Shadows */
 
     /* border radius */
+    --global-border-radius: calc(3rem / 16);
+    --global-border-radius-round: calc(30rem / 16);
+    --global-border-radius-small: 1rem;
 
     /* transitions */
     --global-transition-alpha: 0.2s;
@@ -689,6 +692,9 @@ input::placeholder {
 }
 
 .c-app__sidebar{
+    --c-app__sidebar-border-radius: var(--global-border-radius-small);
+
+
     display: grid;
     grid-template-rows: var(--c-app-height-header) var(--c-app-height-leftover);
 
@@ -697,6 +703,9 @@ input::placeholder {
     position: fixed;
     z-index: 10000;
     transform: translateX(-100%);
+
+    border-top-right-radius: var(--c-app__sidebar-border-radius);
+    border-bottom-right-radius: var(--c-app__sidebar-border-radius);
 
     transition: all var(--global-transition-alpha) ease-out;
     -moz-transition: all var(--global-transition-alpha) ease-out; /* Firefox 4 */
@@ -765,6 +774,8 @@ input::placeholder {
     display: flex;
     justify-content: start;
     align-items: center;
+
+    border-top-right-radius: var(--c-app__sidebar-border-radius);
 }
 
 .c-sidebar__title{
@@ -791,6 +802,8 @@ input::placeholder {
     grid-row: 2;
     min-height: calc(100vh - var(--c-app-header-height));
     color: var(--c-sidebar__header-labelColor);
+
+    overflow-y: scroll;
 }
 
 
@@ -859,14 +872,15 @@ input::placeholder {
 
 .c-label:hover,
 .c-label:focus{
+    --c-label-boxShadow-width-hover: calc(2rem / 16);
+    --c-label-boxShadow-hover: 0px 0px 0px var(--c-label-boxShadow-width-hover) var(--color-orange-light-x);
+
     position: relative;
     background-color: var(--c-label-background-hover) !important ;
     color: var(--c-label-labelColor-hover) !important;
 
     width: calc(100% + var(--c-label-hover-extraWidth));
 
-    --c-label-boxShadow-width-hover: calc(2rem / 16);
-    --c-label-boxShadow-hover: 0px 0px 0px var(--c-label-boxShadow-width-hover) var(--color-orange-light-x);
     -webkit-box-shadow: var( --c-label-boxShadow-hover);
     -moz-box-shadow: var( --c-label-boxShadow-hover);
     box-shadow: var( --c-label-boxShadow-hover);
@@ -874,15 +888,15 @@ input::placeholder {
 
 
 .c-custom-toggle{
-    --custom-option-background: var(--color-neutral-light-xxxx);
-    --custom-option-background-checked: var(--color-neutral-light-xxxx);
-    --custom-option-color: var(--color-neutral-light-xxxx);
-    --custom-option-color-checked: var(--color-neutral-dark-xxx);
+    --c-custom-option-background: var(--color-neutral-light-xxxx);
+    --c-custom-option-background-checked: var(--color-neutral-light-xxxx);
+    --c-custom-option-color: var(--color-neutral-light-xxxx);
+    --c-custom-option-color-checked: var(--color-neutral-dark-xxx);
 
-    --custom-option-borderColor: var(--color-neutral-dark-x);
-    --custom-option-borderColor-hover: var(--color-neutral-dark-xx);
-    --custom-option-border: 1px solid var(--custom-option-borderColor);
-    --custom-option-border-hover: calc(2rem / 16) solid var(--custom-option-borderColor-hover);
+    --c-custom-option-borderColor: var(--color-neutral-dark-x);
+    --c-custom-option-borderColor-hover: var(--color-neutral-dark-xx);
+    --c-custom-option-border: 1px solid var(--c-custom-option-borderColor);
+    --c-custom-option-border-hover: calc(2rem / 16) solid var(--c-custom-option-borderColor-hover);
 
     display: flex;
     align-items: center;
@@ -905,15 +919,15 @@ input::placeholder {
     width: 16px;
     height: 16px;
 
-    background-color: var(--custom-option-background);
-    border-radius: calc(3rem / 16);
-    border: var(--custom-option-border);
+    background-color: var(--c-custom-option-background);
+    border-radius: var(--global-border-radius);
+    border: var(--c-custom-option-border);
 
     margin-left: var(--global-whitespace-md);
 }
 
 .c-option--hidden:checked + .c-custom-toggle .c-custom-toggle__fake-input{
-    background:var(--custom-option-background-checked);
+    background:var(--c-custom-option-background-checked);
 }
 
 .c-custom-toggle__symbol{
@@ -924,13 +938,13 @@ input::placeholder {
 }
 
 .c-option--hidden:checked + .c-custom-toggle .c-custom-toggle__symbol{
-    fill: var(--custom-option-color-checked);
+    fill: var(--c-custom-option-color-checked);
     opacity: 100;
 }
 
 .c-label:hover .c-custom-toggle__fake-input,
 .c-label:focus .c-custom-toggle__fake-input{
-    border: var(--custom-option-border-hover);
+    border: var(--c-custom-option-border-hover);
 }
 
 
@@ -943,13 +957,13 @@ input::placeholder {
 */
 
 .c-border-interact{
-    font-size: 14px;
+    font-size: var(--global-font-size-small);
     font-weight: var(--global-font-weight-semi);
-    padding: 14px 18px;
+    padding: calc(14rem / 16) calc(18rem / 16);
 
     background-color: transparent;
-    border: 2px solid var(--global-borderColor);
-    border-radius: 30px;
+    border: calc(2rem / 16) solid var(--global-borderColor);
+    border-radius: var(--global-border-radius-round);
 
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -1114,7 +1128,7 @@ input::placeholder {
     padding: var(--c-search__input-paddingV) var(--c-search__input-paddingH);
 
     background-color: var(--search-background);
-    border-radius: 1rem;
+    border-radius: var(--global-border-radius-small);
 }
 
 .c-search__btn{
@@ -1123,7 +1137,7 @@ input::placeholder {
 
 /*
 ------------------------------------------------------------------------------------------------
-    Component: Search list
+    Component: Search list results
     ---
     List of searched items
 */
@@ -1156,7 +1170,7 @@ input::placeholder {
     position: absolute;
     z-index: -100;
     background-color: var(--search-background);
-    border-radius: calc(3rem / 16);
+    border-radius: var(--global-border-radius);
     width: var(--c-search__list-width);
 
     max-height: 0;
@@ -1273,7 +1287,7 @@ input::placeholder {
 }
 
 .c-stats__bar{
-    --c-stats__bar-borderRadius: calc(1rem);
+    --c-stats__bar-borderRadius: var(--global-border-radius-small);
     --c-stats__bar-boxShadow: 0px 0px var(--c-stats-boxShadow-width) 0px var(--c-stats-color-shadow);
 
     display: block;

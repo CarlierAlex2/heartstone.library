@@ -13,7 +13,7 @@ let listCards;
 let html_FilterList;
 let defaultImage;
 
-const MAX_HEALTH_HERO = 30;
+const MAX_HEALTH_HERO = 40;
 const MAX_HEALTH_MINION = 20;
 let MAX_HEALTH = MAX_HEALTH_MINION;
 const MAX_ATTACK = 20;
@@ -125,6 +125,9 @@ const showCard = function(card){
 	let cost = 0;
 	let attack = 0;
 
+	console.log(`card["type"] = ${card["type"]}`);
+	let max_health_typed = (card["type"].toLowerCase() == "hero") ? MAX_HEALTH_HERO : MAX_HEALTH_MINION;
+
 	if(card.hasOwnProperty("img")){
 		html_CardImage.src = card["img"];
 	}
@@ -150,7 +153,7 @@ const showCard = function(card){
 	html_CardText.innerHTML = card["text"];
 	*/
 
-	setBarPercentage(html_Health, health, MAX_HEALTH);
+	setBarPercentage(html_Health, health, max_health_typed);
 	setBarPercentage(html_Attack, attack, MAX_ATTACK);
 	setBarPercentage(html_Cost, cost, MAX_COST);
 };
