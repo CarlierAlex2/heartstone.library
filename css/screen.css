@@ -1125,10 +1125,13 @@ input::placeholder {
     grid-column-gap: var(--global-whitespace-md);
 
     fill: var(--c-search-color);
+
+    outline: none;
 }
 
 .c-search__filter{
     grid-column: 1;
+    outline: none;
 }
 
 .c-search__bar{
@@ -1147,11 +1150,36 @@ input::placeholder {
 
     background-color: var(--search-background);
     border-radius: var(--global-border-radius-small);
+
+    outline: none;
 }
 
 .c-search__btn{
     grid-column: 3;
+    outline: none;
 }
+
+@keyframes btn-animate {
+    0% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+    50%  {
+        fill: var(--global-color-alpha-light);
+        transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+  }
+.c-btn-animate:active { 
+    animation-name:  btn-animate;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-out;
+} 
+
 
 /*
 ------------------------------------------------------------------------------------------------
