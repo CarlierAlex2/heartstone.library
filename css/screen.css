@@ -576,7 +576,7 @@ input::placeholder {
 */
 .o-page{
     background-image: var(--global-background-image);
-    overflow-y: auto;
+    overflow: hidden;
 }
 
 .o-page--fill{
