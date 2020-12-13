@@ -1,8 +1,7 @@
 const API_HEARTSTONE = "https://omgvamp-hearthstone-v1.p.rapidapi.com";
 const KEY_RAPIDAPI = "33cfbd2fd6mshd1b64af868129a8p1a7089jsn81904d09c905";
 const HOST_RAPIDAPI = "omgvamp-hearthstone-v1.p.rapidapi.com";
-const TEST_CARD_ID_01 = "EX1_591"
-const TEST_CARD_ID_02 = "EX1_050"
+const TEST_CARD_ID_ARR = { "card1" : "EX1_591", "card2" : "EX1_050"}
 
 let html_Sidebar, html_SidebarHideBtn;
 let html_CardImage;
@@ -14,9 +13,12 @@ let listCards;
 let html_FilterList;
 let defaultImage;
 
-const MAX_HEALTH = 10;
-const MAX_ATTACK = 10;
-const MAX_COST = 10;
+const MAX_HEALTH_HERO = 30;
+const MAX_HEALTH_MINION = 20;
+let MAX_HEALTH = MAX_HEALTH_MINION;
+const MAX_ATTACK = 20;
+const MAX_COST = 25;
+
 
 
 //============================================================================================================================================================
@@ -373,7 +375,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	getInfo();
 	getDefaultCard();
 	//getCardSearchName("a");
-	getCardyId(TEST_CARD_ID_01);
+	getCardyId(TEST_CARD_ID_ARR["card1"]);
 	//getCardyId(TEST_CARD_ID_02);
 
 	listenToSearch();
