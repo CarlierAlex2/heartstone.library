@@ -576,6 +576,7 @@ input::placeholder {
 */
 .o-page{
     background-image: var(--global-background-image);
+    overflow-y: auto;
 }
 
 .o-page--fill{
@@ -607,7 +608,7 @@ input::placeholder {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr auto auto;
-        grid-column-gap: var(--global-whitespace-lg);
+        grid-column-gap: var(--global-whitespace-xxl);
     }
 
     .c-landing__intro{
@@ -719,6 +720,7 @@ input::placeholder {
 .c-app__main{
     display: grid;
     grid-template-rows: var(--c-app-height-header) auto;
+    overflow-x: hidden;
 }
 
 .c-main__header{
@@ -802,8 +804,6 @@ input::placeholder {
     grid-row: 2;
     min-height: calc(100vh - var(--c-app-header-height));
     color: var(--c-sidebar__header-labelColor);
-
-    overflow-y: scroll;
 }
 
 
@@ -1314,6 +1314,10 @@ input::placeholder {
 .c-stats__label{
     font-size: var(--c-stats-label-fontSize);
     margin: 0;
+}
+
+.c-stats__label-start{
+    min-width: 25%;
 }
 
 .c-stats__bar{
