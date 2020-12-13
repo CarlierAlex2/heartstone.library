@@ -1077,17 +1077,25 @@ input::placeholder {
     --search-background: var(--color-neutral-light-xxxx);
 
     color: var(--c-search-textColor);
-    /*
-    font-weight: 600;
-    font-size: calc(18rem/16);
-    */
     position: relative;
     z-index: 1000;
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-column-gap: var(--global-whitespace-md);
+
+    fill: var(--c-search-color);
+}
+
+.c-search__filter{
+    grid-column: 1;
 }
 
 .c-search__bar{
     position: relative;
     width: auto;
+
+    grid-column: 2;
 }
 
 .c-search__input{
@@ -1102,7 +1110,7 @@ input::placeholder {
 }
 
 .c-search__btn{
-    fill: var(--c-search-color);
+    grid-column: 3;
 }
 
 /*
