@@ -5,7 +5,7 @@ const TEST_CARD_ID_ARR = { "card1" : "EX1_591", "card2" : "EX1_050"}
 
 let html_Sidebar, html_SidebarHideBtn;
 let html_CardImage;
-let html_SearchInput, html_SearchList, html_SearchButton;
+let html_SearchForm, html_SearchInput, html_SearchList, html_SearchButton;
 let html_CardName, html_CardSet, html_CardText;
 let html_Cost, html_Attack, html_Health;
 let currentCard;
@@ -301,6 +301,18 @@ const listenToSearch = function(){
 		const name = html_SearchInput.value;
 		getCardSearchName(name);
 	  }); 
+
+	  /*
+	html_SearchInput.addEventListener("keyup", function(event) {
+		// Number 13 is the "Enter" key on the keyboard
+		if (event.keyCode === 13) {
+		  event.preventDefault();
+		  console.log("Search for....")
+		  const name = html_SearchInput.value;
+		  getCardSearchName(name);
+		}
+	  }); 
+	  */
 };
 
 const listenToHideSidebar = function(){
@@ -320,6 +332,16 @@ const listenToShowSidebar = function(){
 const listenToSelectSearched = function(list){
 	list.removeEventListener("click", eventShowCard); 
 	list.addEventListener("click", eventShowCard); 
+};
+
+const disableDefaultForm = function(list){
+	$(document).on("keypress", 'form', function (e) {
+		var code = e.keyCode || e.which;
+		if (code == 13) {
+			e.preventDefault();
+			return false;
+		}
+	});
 };
 
 const eventShowCard = function(event){
@@ -349,6 +371,7 @@ const getHtmlElements = function(){
 
 	html_CardImage = document.querySelector('.js-card__image');
 
+	html_SearchForm = document.querySelector('.js-search');
 	html_SearchInput = document.querySelector('.js-search__input');
 	html_SearchList = document.querySelector('.js-search__list');
 	html_SearchButton = document.querySelector('.js-search__btn');
@@ -378,6 +401,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	getCardyId(TEST_CARD_ID_ARR["card1"]);
 	//getCardyId(TEST_CARD_ID_02);
 
+	//disableDefaultForm();
 	listenToSearch();
 	listenToHideSidebar();
 	listenToShowSidebar();

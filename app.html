@@ -10,8 +10,8 @@
         <meta name="theme-color" content="#cce7ff">
 
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./img/png/favIcon_32_Heartstone.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./img/png/favIcon_16_Heartstone.png">
         <link rel="manifest" href="site.webmanifest">
         <link rel="mask-icon" href="safari-pinned-tab.svg" color="#0f3557">
 
@@ -106,18 +106,21 @@
         <div class="c-app__main">
           <section class="c-main__header">
             <section class="o-container u-max-width-sm">
-              <div class="js-search c-search">
+              <form class="js-search c-search">
                 <div class="o-layout o-layout--gutter-sm o-layout--align-center o-layout--justify-space-between" >
                                                 
-                <div class="o-layout__item c-search__btn js-sidebar-show-button">
-                  <svg class="c-icon c-icon-btn c-icon_settings">
-                    <use xlink:href="#c-icon_settings"></use>
-                  </svg>
+                <div class="o-layout__item u-dimension-auto o-layout--center">
+                  <button type="button" class="o-button-reset js-sidebar-show-button c-search__btn">
+                    <svg class="c-icon c-icon-btn c-icon_settings">
+                      <use xlink:href="#c-icon_settings"></use>
+                    </svg>
+                  </button> 
                 </div>
                 
     
     
-                <div class=" o-layout__item o-flex-grow c-search__bar">
+                <div class="o-layout__item o-flex-grow ">
+                  <div class="c-search__bar">
                     <input class="c-search__input js-search__input o-button-reset" type="text" placeholder="Name of card..">
                     <div class="c-search__container">
                       <ul class="c-search__list js-search__list o-list">
@@ -125,17 +128,20 @@
                         <li data-cardId="EX1_050">Card 2</li>
                       </ul>
                     </div>
+                  </div>
                 </div>
     
                 
-                <div class="o-layout__item c-search__btn"> 
-                  <svg class="c-icon c-icon-btn js-search__btn c-icon_search">
-                    <use xlink:href="#c-icon_search"></use>
-                  </svg>
+                <div class="o-layout__item u-dimension-auto o-layout--center"> 
+                  <button type="button" class="o-button-reset c-search__btn js-search__btn">
+                    <svg class="c-icon c-icon-btn  c-icon_search">
+                      <use xlink:href="#c-icon_search"></use>
+                    </svg>
+                  </button> 
                 </div>
                 
                 </div>
-              </div>
+              </form>
             </section>
           </section>
   

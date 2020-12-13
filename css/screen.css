@@ -7,7 +7,7 @@
 \*------------------------------------*/
 
 :root {
-    /* colors */
+    /* colors base */
     --color-orange-dark: #ff8b3e;
     --color-orange-light: #ffab73;
     --color-orange-light-x: #ffc9a6;
@@ -38,6 +38,8 @@
     --color-neutral-dark-xx: #252627;
     --color-neutral-dark-xxx: #0c0c0d;
 
+
+    /* colors */
     --color-gradient-dark: linear-gradient(var(--color-neutral-dark-xxx), var(--color-neutral-dark-xx));
     --global-background-gradient: var(--color-gradient-dark);
 
@@ -252,10 +254,13 @@ input::placeholder {
 }
 
 /*------------------------------------*\
+============================================================================================================================================================================================
 #OBJECTS
+============================================================================================================================================================================================
 \*------------------------------------*/
 
 /*
+------------------------------------------------------------------------------------------------
     Objects: Row
     ---
     Creates a horizontal row that stretches the viewport and adds padding around children
@@ -275,16 +280,19 @@ input::placeholder {
 /* size modifiers */
 
 .o-row--md {
-    padding-top: var(--global-whitespace-md);
-    padding-bottom: var(--global-whitespace-md);
+    --o-row-whitespace-md: var(--global-whitespace-md);
+    padding-top: var(--o-row-whitespace-md);
+    padding-bottom: var(--o-row-whitespace-md);
 }
 
 .o-row--lg {
-    padding-top: var(--global-whitespace-lg);
-    padding-bottom: var(--global-whitespace-lg);
+    --o-row-whitespace-lg: var(--global-whitespace-lg);
+    padding-top: var(--o-row-whitespace-lg);
+    padding-bottom: var(--o-row-whitespace-lg);
 }
 
 /*
+------------------------------------------------------------------------------------------------
     Objects: Container
     ---
     Creates a horizontal container that sets de global max-width
@@ -298,6 +306,7 @@ input::placeholder {
 }
 
 /*
+------------------------------------------------------------------------------------------------
     Objects: section
     ---
     Creates vertical whitespace between adjacent sections inside a row
@@ -327,6 +336,7 @@ input::placeholder {
 
 
 /*
+------------------------------------------------------------------------------------------------
     Objects: Layout
     ---
     The layout object provides us with a column-style layout system. This object
@@ -339,9 +349,16 @@ input::placeholder {
     flex-wrap: wrap;
 }
 
+.o-layout--center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .o-layout__item {
     width: 100%;
 }
+
 
 /* gutter modifiers, these affect o-layout__item too */
 
@@ -479,7 +496,9 @@ input::placeholder {
     flex-grow: 1;
 }
 
+
 /*
+------------------------------------------------------------------------------------------------
     Objects: List
     ---
     Small reusable object to remove default list styling from lists
@@ -491,6 +510,7 @@ input::placeholder {
 }
 
 /*
+------------------------------------------------------------------------------------------------
     Object: Button reset
     ---
     Small button reset object
@@ -522,6 +542,7 @@ input::placeholder {
 
 
 /*
+------------------------------------------------------------------------------------------------
     Object: Hide accessible
     ---
     Accessibly hide any element
@@ -539,6 +560,7 @@ input::placeholder {
 }
 
 /*
+------------------------------------------------------------------------------------------------
     Object: Page elements
     ---
 */
@@ -549,14 +571,17 @@ input::placeholder {
 
 
 /*------------------------------------*\
+============================================================================================================================================================================================
 #COMPONENTS
+============================================================================================================================================================================================
 \*------------------------------------*/
 
 
 /*
-    Component: Intro
+---------------------------------------------------------------------------------------------------------------------------------------------------
+    Component: Landing page
     ---
-    Website intro page
+    Website landing page elemenrs
 */
 
 .c-landing{
@@ -642,6 +667,7 @@ input::placeholder {
 
 
 /*
+---------------------------------------------------------------------------------------------------------------------------------------------------
     Component: App
     ---
 */
@@ -705,6 +731,7 @@ input::placeholder {
 }
 
 /*
+------------------------------------------------------------------------------------------------
     Component: Sidebar
     ---
 */
@@ -750,6 +777,7 @@ input::placeholder {
 
 
 /*
+------------------------------------------------------------------------------------------------
     Component: Toggle list
     ---
 */
@@ -765,6 +793,7 @@ input::placeholder {
 
 
 /*
+------------------------------------------------------------------------------------------------
     Component: Filter
     ---
 */
@@ -887,6 +916,7 @@ input::placeholder {
 
 
 /*
+------------------------------------------------------------------------------------------------
     Component: Interactable
     ---
     Interactables
@@ -915,6 +945,7 @@ input::placeholder {
 
 
 /*
+------------------------------------------------------------------------------------------------
     Component: Logo
     ---
     Website main logo
@@ -937,10 +968,12 @@ input::placeholder {
 
 .c-icon-btn {
     width: 1.5rem; /* 24px = 16 * 1.5rem */
+    height: 1.5rem; /* 24px = 16 * 1.5rem */
 }
 
 .c-icon__symbol {
-    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
     fill: var(--global-color-alpha-dark);
 }
 
@@ -1014,6 +1047,7 @@ input::placeholder {
 }
 
 /*
+------------------------------------------------------------------------------------------------
     Component: Search
     ---
     Search elements
@@ -1055,10 +1089,10 @@ input::placeholder {
 
 .c-search__btn{
     fill: var(--c-search-color);
-    width: auto;
 }
 
 /*
+------------------------------------------------------------------------------------------------
     Component: Search list
     ---
     List of searched items
@@ -1132,6 +1166,7 @@ input::placeholder {
 
 
 /*
+------------------------------------------------------------------------------------------------
     Component: Stats
     ---
     Status elements like percentage bars
@@ -1231,6 +1266,7 @@ input::placeholder {
 }   
 
 /*
+------------------------------------------------------------------------------------------------
     Component: Image
     ---
     Image elements
@@ -1242,7 +1278,9 @@ input::placeholder {
 
 
 /*------------------------------------*\
+============================================================================================================================================================================================
 #UTILITIES
+============================================================================================================================================================================================
 \*------------------------------------*/
 
 
@@ -1252,6 +1290,7 @@ input::placeholder {
 
 
 /*
+------------------------------------------------------------------------------------------------
     Utilities: color
     ---
     Utility classes to put specific colors onto elements
@@ -1266,6 +1305,7 @@ input::placeholder {
 }
 
 /*
+------------------------------------------------------------------------------------------------
     Utilities: spacing
     ---
     Utility classes to put specific margins and paddings onto elements
@@ -1300,6 +1340,7 @@ input::placeholder {
 }
 
 /*
+------------------------------------------------------------------------------------------------
     Utilities: max-width
     ---
     Utility classes to put specific max widths onto elements
@@ -1336,6 +1377,7 @@ input::placeholder {
 
 
 /*
+------------------------------------------------------------------------------------------------
     Utilities: align
     ---
     Utility classes align text or components
@@ -1350,6 +1392,7 @@ input::placeholder {
 }
 
 /*
+------------------------------------------------------------------------------------------------
     Utilities: text
     Utility classes to create smaller or bigger test
 */
@@ -1357,8 +1400,8 @@ input::placeholder {
 .u-text-sm {
     font-size: 14px;
 }
-
 /*
+------------------------------------------------------------------------------------------------
     Utility: Widths
     ---
     Utility classes to put specific widths onto elements
@@ -1367,6 +1410,11 @@ input::placeholder {
 
 .u-width-auto {
     width: auto !important;
+}
+
+.u-dimension-auto {
+    width: auto;
+    height: auto;
 }
 
 .u-1-of-2 {
@@ -1559,7 +1607,9 @@ input::placeholder {
 
 
 /*------------------------------------*\
+============================================================================================================================================================================================
 #STATES
+============================================================================================================================================================================================
 \*------------------------------------*/
 
 /*
@@ -1571,8 +1621,8 @@ input::placeholder {
 /*------------------------------------*\
 #MEDIA
 \*------------------------------------*/
-
 /*
+------------------------------------------------------------------------------------------------
     Print styles.
     ---
     Inlined to avoid the additional HTTP request:
