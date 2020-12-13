@@ -686,7 +686,7 @@ input::placeholder {
 
     background-color: var(--c-app__sidebar-background-sub);
 
-    position: absolute;
+    position: fixed;
     z-index: 10000;
     transform: translateX(-100%);
 
