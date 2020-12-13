@@ -55,14 +55,16 @@ const fillSearchList = function(list){
 	html_SearchList.classList.add("c-search__list-open");
 
 	let listFound = [];
+	let listFoundNames = [];
 	let listContentHtml = "";
 
 
 	for (const card of list) {
-		if(card.hasOwnProperty("img") && checkFilterCard(card) == true)
+		if(card.hasOwnProperty("img") && listFoundNames.includes(card["name"]) == false && checkFilterCard(card) == true)
 		{
 			console.log(card);
 			listFound.push(card);
+			listFoundNames.push(card["name"]);
 		}
 		if(listFound.length >= 5)
 		{
