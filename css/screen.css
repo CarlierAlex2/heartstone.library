@@ -1332,6 +1332,9 @@ input::placeholder {
 }
 
 .c-search__list{
+    --c-search__list-background: var(--global-form-backGroundColor-focus);
+    --c-search__list-textColor: var(--global-form-textColor-focus);
+
     --c-search__list-width: calc(100% - var(--c-search__layout-padding) - var(--c-search__container-paddingV));
     --c-search__list-transition: var(--global-transition-alpha);
     
@@ -1344,9 +1347,11 @@ input::placeholder {
 
     position: absolute;
     z-index: -100;
-    background-color: var(--search-background);
     border-radius: var(--global-border-radius-md);
-    width: var(--c-search__list-width);
+    width: 100%;
+
+    background-color: var(--c-search__list-background);
+    color: var(--c-search__list-textColor);
 
     max-height: 0;
     opacity: 0;
