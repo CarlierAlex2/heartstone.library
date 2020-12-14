@@ -729,13 +729,15 @@ input::placeholder {
 }
 
 .c-form__item{
-    --c-form__item-textColor: var(--global-form-textColor);
+    --c-form__item-textColor-base: var(--global-form-textColor);
     --c-form__item-textColor-hover: var(--global-form-textColor-hover);
     --c-form__item-textColor-focus: var(--global-form-textColor-focus);
+    --c-form__item-textColor: var(--c-form__item-textColor-base);
 
-    --c-form__item-backgroundColor: var(--global-form-backGroundColor);
+    --c-form__item-backgroundColor-base: var(--global-form-backGroundColor);
     --c-form__item-backgroundColor-hover: var(--global-form-backGroundColor-hover);
     --c-form__item-backgroundColor-focus: var(--global-form-backGroundColor-focus);
+    --c-form__item-backgroundColor: var(--c-form__item-backgroundColor-base);
 
     --c-form__item-borderColor: var(--global-form-borderColor-normal);
     --c-form__item-borderColor-hover: var(--global-form-borderColor-hover);
@@ -810,7 +812,7 @@ input::placeholder {
     --c-form__item-textColor-hover: var(--global-button-textColor-hover);
     --c-form__item-textColor-focus: var(--global-button-textColor-focus);
 
-    --c-form__item-backgroundColor: var(--global-button-backGroundColor);
+    --c-form__item-backgroundColor-base: var(--global-button-backGroundColor);
     --c-form__item-backgroundColor-hover: var(--global-button-backGroundColor-hover);
     --c-form__item-backgroundColor-focus: var(--global-button-backGroundColor-focus);
 
@@ -823,6 +825,47 @@ input::placeholder {
     --c-form__item-backgroundColor: var(--global-button-backGroundColor-active)
 }
 
+
+.c-form__button-svg { 
+    --c-form__item-backgroundColor-base: transparent;
+    --c-form__item-backgroundColor-hover: var(--global-button-backGroundColor-hover);
+    --c-form__item-backgroundColor-focus: var(--global-button-backGroundColor-focus);
+
+    --c-form__button-fill-focus: var(--color-neutral-light-xxxx);
+    --c-form__button-fill-active: var(--color-neutral-light-xxxx);
+
+    padding: 0;
+} 
+
+.c-form__button-svg:hover,
+.c-form__button-svg:focus{ 
+    fill: var(--c-form__button-fill-focus);
+} 
+
+.c-form__button-svg:active { 
+    transform: scale(1.5);
+    /*
+    animation-name:  btn-animate;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-out;
+    */
+} 
+
+@keyframes btn-animate {
+    0% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+    50%  {
+        fill: var(--c-form__button-fill-active);
+        transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+}
 
 /*
 ---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1265,38 +1308,6 @@ input::placeholder {
     grid-column: 3;
     outline: none;
 }
-
-@keyframes btn-animate {
-    0% {
-        transform: scale(1.0);
-        -webkit-transform: scale(1.0);
-    }
-    50%  {
-        fill: var(--global-color-alpha-light);
-        transform: scale(1.5);
-        -webkit-transform: scale(1.5);
-    }
-    100% {
-        transform: scale(1.0);
-        -webkit-transform: scale(1.0);
-    }
-}
-
-
-.c-btn-animate { 
-    --c-btn-transition: 0.2s;
-    -webkit-transition: 0 var(--c-btn-transition);
-    -moz-transition: 0s var(--c-btn-transition);
-     -ms-transition: 0 var(--c-btn-transition);
-      -o-transition: 0 var(--c-btn-transition);
-         transition: 0 var(--c-btn-transition);
-} 
-
-.c-btn-animate:active { 
-    animation-name:  btn-animate;
-    animation-duration: 0.2s;
-    animation-timing-function: ease-out;
-} 
 
 
 /*
