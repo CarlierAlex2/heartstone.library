@@ -1399,7 +1399,8 @@ input::placeholder {
 .c-stats{
     --c-stats-label-fontSize : var(--global-font-size-small);
     --c-stats-label-margin : var(--global-whitespace-sm);
-    --c-stats-boxShadow-width:  var( --global-boxShadow-spread-sm);
+    --c-stats-boxShadow-width:  var( --global-boxShadow-width-xs);
+    --c-stats-boxShadow-spread:  var( --global-boxShadow-spread-sm);
 
     --c-stats-color-dark: red;
     --c-stats-color-light: blue;
@@ -1499,8 +1500,10 @@ input::placeholder {
 }
 
 .c-stats__bar{
-    --c-stats__bar-borderRadius: var(--global-border-radius-small);
-    --c-stats__bar-boxShadow: 0px 0px var(--c-stats-boxShadow-width) 0px var(--c-stats-color-shadow);
+    --c-stats__bar-borderRadius: var(--global-border-radius-xl);
+    --c-stats__bar-boxShadow: 0px 0px var(--c-stats-boxShadow-width) var(--c-stats-boxShadow-width) var(--c-stats-color-shadow);
+
+    --c-stats__bar-percentage: 90%;
 
     display: block;
     width: 100%;
@@ -1512,15 +1515,33 @@ input::placeholder {
     -webkit-box-shadow: var(--c-stats__bar-boxShadow);
     -moz-box-shadow: var(--c-stats__bar-boxShadow);
     box-shadow: var(--c-stats__bar-boxShadow);
+
+    position: relative;
+    overflow: hidden;
 }
 
 .c-stats__fill{
-    width: 50%;
+    position: relative;
+
+    width: 100%;
     height: 100%;
 
     background-color: var(--c-stats-color-light);
     background-image: linear-gradient(to right, var(--c-stats-color-dark) , var(--c-stats-color-light));
     border-radius: var(--c-stats__bar-borderRadius);
+}   
+
+.c-stats__hide{
+    position: absolute;
+    z-index: 100;
+
+    left: var(--c-stats__bar-percentage);
+    top: 0;
+
+    width: calc(100% - var(--c-stats__bar-percentage));
+    height: 100%;
+
+    background-color: var(--c-stats-color-background);
 }   
 
 /*

@@ -113,11 +113,14 @@ const getFilterList = function(){
 };
 
 const setBarPercentage = function(html_object, statValue, statMax){
-	html_fill = html_object.querySelector(".js-stats__fill");
 	html_value = html_object.querySelector(".js-stat__value");
-	
-	html_fill.style.width = `${(statValue / statMax) * 100}%`;
 	html_value.innerHTML = statValue;
+
+	let percentage = statValue / statMax * 100;
+	let percentString = `${percentage}%`
+	console.log(`Set bar to ${percentage}`);
+	html_bar = html_object.querySelector(".js-stats__bar");
+	html_bar.style.setProperty('--c-stats__bar-percentage', percentString);
 };
 
 
