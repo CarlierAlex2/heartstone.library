@@ -923,6 +923,7 @@ input::placeholder {
 }
 
 .c-header{
+    padding: 0 var(--global-whitespace-md);
     /*
     position: fixed;
     width: 100%;
