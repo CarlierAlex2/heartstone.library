@@ -1173,10 +1173,21 @@ input::placeholder {
         transform: scale(1.0);
         -webkit-transform: scale(1.0);
     }
-  }
+}
+
+
+.c-btn-animate { 
+    --c-btn-transition: 0.2s;
+    -webkit-transition: 0 var(--c-btn-transition);
+    -moz-transition: 0s var(--c-btn-transition);
+     -ms-transition: 0 var(--c-btn-transition);
+      -o-transition: 0 var(--c-btn-transition);
+         transition: 0 var(--c-btn-transition);
+} 
+
 .c-btn-animate:active { 
     animation-name:  btn-animate;
-    animation-duration: 0.3s;
+    animation-duration: 0.2s;
     animation-timing-function: ease-out;
 } 
 
