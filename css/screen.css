@@ -8,6 +8,7 @@
 
 :root {
     /* colors base */
+    --color-orange-dark-x: #f27624;
     --color-orange-dark: #ff8b3e;
     --color-orange-light: #ffab73;
     --color-orange-light-x: #ffc9a6;
@@ -37,21 +38,34 @@
     --color-neutral-dark-x: #555759;
     --color-neutral-dark-xx: #252627;
     --color-neutral-dark-xxx: #0c0c0d;
+    --color-neutral-dark-xxxx: #000000;
+
 
 
     /* colors */
-    --color-gradient-dark: linear-gradient(var(--color-neutral-dark-xxx), var(--color-neutral-dark-xx));
+    --color-gradient-dark: linear-gradient(var(--color-neutral-dark-xxxx), var(--color-neutral-dark-xx));
     --global-background-gradient: var(--color-gradient-dark);
 
     --global-borderColor: var(--color-neutral-light-xxxx);
 
     --global-background-image: var(--global-background-gradient);
     --global-background-color: var(--color-neutral-dark-xx);
-    --global-text-color: var(--color-neutral-light-xxxx);
-    --global-text-color-light: var(--color-neutral-light);
 
     --global-color-alpha-dark: var(--color-orange-dark);
     --global-color-alpha-light: var(--color-orange-light-x);
+
+    --global-form-backGroundColor: var(--color-neutral-light);
+    --global-form-backGroundColor-hover: var(--color-neutral-light-xx);
+    --global-form-backGroundColor-focus: var(--color-neutral-light-xxxx);
+
+    --global-form-borderColor-normal: transparent;
+    --global-form-borderColor-hover: var(--color-orange-light);
+    --global-form-borderColor-focus: var(--color-orange-dark-x);
+
+    --global-button-backGroundColor: var(--color-orange-dark-x);
+    --global-button-backGroundColor-hover: var(--color-orange-dark-x);
+    --global-button-backGroundColor-focus: var(--color-orange-dark-x);
+    --global-button-backGroundColor-active: var(--color-orange-light);
 
     
     /* font */
@@ -61,7 +75,18 @@
     --global-font-weight-semi: 600;
     --global-font-weight-regular: 400;
 
+    --global-text-color: var(--color-neutral-light-xxxx);
+    --global-text-color-light: var(--color-neutral-light);
 
+    --global-form-textColor: var(--color-neutral-dark-xx);
+    --global-form-textColor-hover: var(--color-neutral-dark-xxx);
+    --global-form-textColor-focus: var(--color-neutral-dark-xxxx);
+
+    --global-button-textColor: var(--color-neutral-light-xxx);
+    --global-button-textColor-hover: var(--color-neutral-light-xxx);
+    --global-button-textColor-focus: var(--color-neutral-light-xxxx);
+
+    
     /* Whitespace */
     --global-baseline: calc(8rem / 16);         
     --global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
@@ -76,11 +101,22 @@
 
 
     /* Shadows */
+    --global-boxShadow-color-hover: var(--color-orange-dark-x);
+
+    --global-boxShadow-width-xs:  0.05rem; 
+
+    --global-boxShadow-spread-sm:  0.125rem; /*2px*/
+    --global-boxShadow-spread-xs:   0.25rem; 
+
+    --global-form-boxShadow-hover: 0px 0px var(--global-boxShadow-spread-xs) var(--global-boxShadow-width-xs) var(--global-boxShadow-color-hover);
+
 
     /* border radius */
-    --global-border-radius: calc(3rem / 16);
-    --global-border-radius-round: calc(30rem / 16);
-    --global-border-radius-small: 1rem;
+    --global-border-radius-xl: 1rem;
+    --global-border-radius-lg: calc(30rem / 16);
+    --global-border-radius-md: calc(3rem / 16);
+    --global-border-radius-sm: calc(2rem / 16);
+
 
     /* transitions */
     --global-transition-alpha: 0.2s;
@@ -550,6 +586,27 @@ input::placeholder {
 }
 
 
+.o-form-reset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+
+    color: inherit;
+    font: inherit;
+
+    line-height: normal;
+
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    -webkit-appearance: none;
+
+    outline: none;
+}
+
+
 
 /*
 ------------------------------------------------------------------------------------------------
@@ -661,8 +718,77 @@ input::placeholder {
     color: var(--global-text-color-light);
 }
 
+/*
+---------------------------------------------------------------------------------------------------------------------------------------------------
+    Component: Form
+    ---
+*/
+
 .c-form{
 
+}
+
+.c-form__item{
+    --c-form__item-textColor: var(--global-form-textColor);
+    --c-form__item-textColor-hover: var(--global-form-textColor-hover);
+    --c-form__item-textColor-focus: var(--global-form-textColor-focus);
+
+    --c-form__item-backgroundColor: var(--global-form-backGroundColor);
+    --c-form__item-backgroundColor-hover: var(--global-form-backGroundColor-hover);
+    --c-form__item-backgroundColor-focus: var(--global-form-backGroundColor-focus);
+
+    --c-form__item-borderColor: var(--global-form-borderColor-normal);
+    --c-form__item-borderColor-hover: var(--global-form-borderColor-hover);
+    --c-form__item-borderColor-focus: var(--global-form-borderColor-focus);
+
+    --c-form__item-border:  var(--global-border-radius-sm) solid var(--c-form__item-borderColor);
+
+    --c-form__item-boxShadow-hover: var(--global-form-boxShadow-hover);
+
+    font-size: var(--global-font-size-small);
+    font-weight: var(--global-font-weight-semi);
+    padding: calc(14rem / 16) calc(18rem / 16);
+    border-radius: var(--global-border-radius-lg);
+
+    background-color: var(--c-form__item-backgroundColor);
+    border: var(--c-form__item-border);
+    color: var(--c-form__item-textColor);
+
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+    --c-form__item-transition: all var(--global-transition-alpha) ease;
+    transition: var(--c-form__item-transition);
+    display: block;
+}
+
+.c-form__item::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--c-form__item-textColor);
+    opacity: 1; 
+    transition: var(--c-form__item-transition);
+  }
+
+.c-form__item:hover{
+    --c-form__item-borderColor: var(--c-form__item-borderColor-hover);
+    --c-form__item-backgroundColor: var(--c-form__item-backgroundColor-hover);
+    --c-form__item-textColor: var(--c-form__item-textColor-hover);
+
+    -webkit-box-shadow: var(--c-form__item-boxShadow-hover);
+    -moz-box-shadow:  var(--c-form__item-boxShadow-hover);
+    box-shadow:  var(--c-form__item-boxShadow-hover);
+}
+
+.c-form__item:focus,
+.c-form__item:active{
+    --c-form__item-borderColor: var(--c-form__item-borderColor-focus);
+    --c-form__item-backgroundColor: var(--c-form__item-backgroundColor-focus);
+    --c-form__item-textColor: var(--c-form__item-textColor-focus);
+}
+
+.c-form__input{
+    min-width: 100%;
+    width: 100%;
 }
 
 .c-form__email{
@@ -674,8 +800,27 @@ input::placeholder {
     max-width: 100%;
 }
 
+
 .c-form_submit{
 
+}
+
+.c-form__button{
+    --c-form__item-textColor: var(--global-button-textColor);
+    --c-form__item-textColor-hover: var(--global-button-textColor-hover);
+    --c-form__item-textColor-focus: var(--global-button-textColor-focus);
+
+    --c-form__item-backgroundColor: var(--global-button-backGroundColor);
+    --c-form__item-backgroundColor-hover: var(--global-button-backGroundColor-hover);
+    --c-form__item-backgroundColor-focus: var(--global-button-backGroundColor-focus);
+
+    --c-form__item-borderColor: transparent;
+
+    min-width: 100%;
+}
+
+.c-form__button:active{
+    --c-form__item-backgroundColor: var(--global-button-backGroundColor-active)
 }
 
 
@@ -693,7 +838,7 @@ input::placeholder {
 }
 
 .c-app__sidebar{
-    --c-app__sidebar-border-radius: var(--global-border-radius-small);
+    --c-app__sidebar-border-radius: var(--global-border-radius-lg);
 
 
     display: grid;
@@ -712,6 +857,7 @@ input::placeholder {
     -moz-transition: all var(--global-transition-alpha) ease-out; /* Firefox 4 */
     -webkit-transition: all var(--global-transition-alpha) ease-out; /* Safari and Chrome */
 }
+
 
 .c-app__sidebar--show{
     transform: translateX(0);
@@ -936,7 +1082,7 @@ input::placeholder {
     height: 16px;
 
     background-color: var(--c-custom-option-background);
-    border-radius: var(--global-border-radius);
+    border-radius: var(--global-border-radius-md);
     border: var(--c-custom-option-border);
 
     margin-left: var(--global-whitespace-md);
@@ -961,36 +1107,6 @@ input::placeholder {
 .c-label:hover .c-custom-toggle__fake-input,
 .c-label:focus .c-custom-toggle__fake-input{
     border: var(--c-custom-option-border-hover);
-}
-
-
-
-/*
-------------------------------------------------------------------------------------------------
-    Component: Interactable
-    ---
-    Interactables
-*/
-
-.c-border-interact{
-    font-size: var(--global-font-size-small);
-    font-weight: var(--global-font-weight-semi);
-    padding: calc(14rem / 16) calc(18rem / 16);
-
-    background-color: transparent;
-    border: calc(2rem / 16) solid var(--global-borderColor);
-    border-radius: var(--global-border-radius-round);
-
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-}
-
-.c-button{
-    display: block;
-    background-color: var(--global-color-alpha-dark);
-    color: var(--color-neutral-light-xxxx);
-    width: 100%;
 }
 
 
@@ -1106,6 +1222,7 @@ input::placeholder {
 */
 
 .c-search{
+    /*https://loading.io/css/*/
     --c-search-color: var(--color-neutral-dark);
     --c-search-textColor: var(--color-neutral-dark-xxx);
 
@@ -1113,8 +1230,6 @@ input::placeholder {
     --c-search__input-paddingV: var(--global-whitespace-sm);
 
     --c-search__layout-padding: 1rem;
-
-    --search-background: var(--color-neutral-light-xxxx);
 
     color: var(--c-search-textColor);
     position: relative;
@@ -1143,15 +1258,7 @@ input::placeholder {
 
 .c-search__input{
     position: relative;
-    width: 100%;
-    max-width: 100%;
-    border-bottom: 1px solid var(--c-search-color);
     padding: var(--c-search__input-paddingV) var(--c-search__input-paddingH);
-
-    background-color: var(--search-background);
-    border-radius: var(--global-border-radius-small);
-
-    outline: none;
 }
 
 .c-search__btn{
@@ -1227,7 +1334,7 @@ input::placeholder {
     position: absolute;
     z-index: -100;
     background-color: var(--search-background);
-    border-radius: var(--global-border-radius);
+    border-radius: var(--global-border-radius-md);
     width: var(--c-search__list-width);
 
     max-height: 0;
@@ -1276,7 +1383,7 @@ input::placeholder {
 .c-stats{
     --c-stats-label-fontSize : var(--global-font-size-small);
     --c-stats-label-margin : var(--global-whitespace-sm);
-    --c-stats-boxShadow-width:  0.125rem; /*2px*/
+    --c-stats-boxShadow-width:  var( --global-boxShadow-spread-sm);
 
     --c-stats-color-dark: red;
     --c-stats-color-light: blue;
@@ -1385,6 +1492,7 @@ input::placeholder {
 
     background-color: var(--c-stats-color-background);
     border-radius: var(--c-stats__bar-borderRadius);
+
     -webkit-box-shadow: var(--c-stats__bar-boxShadow);
     -moz-box-shadow: var(--c-stats__bar-boxShadow);
     box-shadow: var(--c-stats__bar-boxShadow);
