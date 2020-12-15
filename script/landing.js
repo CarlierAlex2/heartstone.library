@@ -68,6 +68,8 @@ const addErrors = function(formField, errorField, errorMessage = "This field is 
     console.log("Add error");
     //console.log(formField);
     formField.classList.add("has-error");
+    signInButton.disabled = true;
+    signInButton.classList.add("c-form__button--disabled");
     if(errorField){
         errorField.innerHTML = errorMessage;
         errorField.style.display = 'block'; //kan via class
@@ -78,6 +80,8 @@ const addErrors = function(formField, errorField, errorMessage = "This field is 
     console.log("Remove error");
     //console.log(formField);
     formField.classList.remove("has-error");
+    signInButton.classList.remove("c-form__button--disabled");
+    signInButton.disabled = false;
     if(errorField){
         //errorField.innerHTML = "";
         errorField.style.display = 'none'; //kan via class

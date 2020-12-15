@@ -803,6 +803,13 @@ input::placeholder {
     transform: scale(1.12);
 }
 
+.c-form__button--disabled{
+    color: var(--color-neutral-dark-xxx) !important;
+    background-color: var(--color-neutral-dark-x) !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
 
 .c-form__button-svg { 
     width: 2rem;
