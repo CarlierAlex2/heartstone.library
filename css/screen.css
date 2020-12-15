@@ -67,6 +67,7 @@
     --global-button-backGroundColor-focus: var(--color-orange-dark-x);
     --global-button-backGroundColor-active: var(--color-orange-light);
 
+    --global-header-backGroundColor: var(--color-neutral-dark-xxxx);
     
     /* font */
     --global-font-size: 16px;
@@ -318,6 +319,25 @@ input::placeholder {
 
 /*
 ------------------------------------------------------------------------------------------------
+    Object: Page elements
+    ---
+*/
+.o-page{
+    background-image: var(--global-background-image);
+}
+
+.o-page--fill{
+    min-height: 100vh;
+}
+
+.o-page--center {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/*
+------------------------------------------------------------------------------------------------
     Objects: Row
     ---
     Creates a horizontal row that stretches the viewport and adds padding around children
@@ -328,19 +348,7 @@ input::placeholder {
     padding: var(--global-whitespace) var(--global-whitespace) 0;
 }
 
-.o-row--center {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-}
-
 /* size modifiers */
-
-.o-row--md {
-    --o-row-whitespace-md: var(--global-whitespace-md);
-    padding-top: var(--o-row-whitespace-md);
-    padding-bottom: var(--o-row-whitespace-md);
-}
 
 .o-row--lg {
     --o-row-whitespace-lg: var(--global-whitespace-lg);
@@ -406,12 +414,6 @@ input::placeholder {
     flex-wrap: wrap;
 }
 
-.o-layout--center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .o-layout__item {
     width: 100%;
 }
@@ -429,21 +431,6 @@ input::placeholder {
     padding: 0 var(--o-layout__item--gutter-width);
 }
 
-.o-layout--gutter-sm {
-    --o-layout--gutter-width: calc(8rem / 16);
-}
-
-.o-layout--gutter-md {
-    --o-layout--gutter-width: calc(16rem / 16);
-}
-
-.o-layout--gutter-lg {
-    --o-layout--gutter-width: calc(24rem / 16);
-}
-
-.o-layout--gutter-xl {
-    --o-layout--gutter-width: calc(48rem / 16);
-}
 
 /* gutter modifiers, these affect o-layout__item too */
 
@@ -533,15 +520,6 @@ input::placeholder {
     align-content: space-between;
 }
 
-/* Vertical alignment modifiers that only work if there is one than one flex item */
-
-.o-flex-grow {
-    /*width: auto;*/
-    /*flex-grow: 1;*/
-
-    flex: 1 1 auto;
-}
-
 
 /*
 ------------------------------------------------------------------------------------------------
@@ -624,19 +602,6 @@ input::placeholder {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
-}
-
-/*
-------------------------------------------------------------------------------------------------
-    Object: Page elements
-    ---
-*/
-.o-page{
-    background-image: var(--global-background-image);
-}
-
-.o-page--fill{
-    min-height: 100vh;
 }
 
 
@@ -875,9 +840,11 @@ input::placeholder {
 
 .c-app{
     --c-app-sidebar-width: calc(192rem / 16);
-    --c-app-height-header: calc(64rem / 16);
-    --c-app-height-leftover: calc(100vh - var(--c-app-height-header));
-    position: relative;
+    --c-app-header-height: calc(64rem / 16);
+
+    --c-app-main-height: calc(100vh - var(--c-app-header-height));
+    --c-app-main-width: calc(100vw - var(--c-app-sidebar-width));
+    --c-app-main__header-width: calc(var(--c-app-sidebar-width) + var(--c-app-main-width));
 }
 
 .c-app__sidebar{
@@ -885,7 +852,7 @@ input::placeholder {
 
 
     display: grid;
-    grid-template-rows: var(--c-app-height-header) var(--c-app-height-leftover);
+    grid-template-rows: var(--c-app-header-height) var(--c-app-main-height);
 
     background-color: var(--c-app__sidebar-background-sub);
 
@@ -908,7 +875,7 @@ input::placeholder {
 
 .c-app__main{
     display: grid;
-    grid-template-rows: var(--c-app-height-header) auto;
+    grid-template-rows: var(--c-app-header-height) auto;
     overflow: hidden;
 
     position: relative;
@@ -919,16 +886,25 @@ input::placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+
+    /*static header*/
+    position: fixed;
+    z-index: 1000;
+
+    top: 0;
+    width: 100%;
+    height: var(--c-app-header-height);
 }
 
 .c-header{
     padding: 0 var(--global-whitespace-md);
-    /*
-    position: fixed;
-    width: 100%;
-    background-color: red;
-    */
+    background: var(--global-header-backGroundColor);
+    min-width: 100%;
+    min-height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .c-main__content{
@@ -949,6 +925,10 @@ input::placeholder {
 
     .c-app__main{
         grid-column: 2;
+    }
+
+    .c-main__header{
+        width: var(--c-app-main-width);
     }
 }
 
@@ -1554,6 +1534,9 @@ input::placeholder {
 
 .c-image{
     max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
