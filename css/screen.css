@@ -752,6 +752,9 @@ input::placeholder {
     --c-form__item-backgroundColor: var(--c-form__item-backgroundColor-focus);
     --c-form__item-textColor: var(--c-form__item-textColor-focus);
 }
+.c-form__item:active{
+    transform: scale(1.05);
+}
 
 .c-form__input{
     min-width: 100%;
@@ -787,7 +790,8 @@ input::placeholder {
 }
 
 .c-form__button:active{
-    --c-form__item-backgroundColor: var(--global-button-backGroundColor-active)
+    --c-form__item-backgroundColor: var(--global-button-backGroundColor-active);
+    transform: scale(1.12);
 }
 
 
