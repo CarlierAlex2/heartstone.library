@@ -1315,6 +1315,12 @@ input::placeholder {
     height: 100vh;
 }
 
+@media (min-width: 48rem) {
+    .c-icon-loading--center{
+        left: calc(50% - calc(var(--c-icon-loading-width) / 2) + calc(var(--c-app-sidebar-width) / 2));
+    }
+}
+
 /*
 ------------------------------------------------------------------------------------------------
     Component: Search
