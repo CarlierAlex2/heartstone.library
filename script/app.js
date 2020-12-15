@@ -337,8 +337,16 @@ const listenToHideSidebar = function(){
 
 const listenToShowSidebar = function(){
 	html_SidebarShowBtn.addEventListener("click", function() {
-		console.log("Show Sidebar")
-		html_Sidebar.classList.add("c-app__sidebar--show");
+		if(html_Sidebar.classList.contains("c-app__sidebar--show"))
+		{
+			console.log("Hide Sidebar")
+			html_Sidebar.classList.remove("c-app__sidebar--show");
+		}
+		else
+		{
+			console.log("Hide Sidebar")
+			html_Sidebar.classList.add("c-app__sidebar--show");
+		}
 	  }); 
 };
 
