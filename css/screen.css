@@ -792,6 +792,13 @@ input::placeholder {
 
 
 .c-form__button-svg { 
+    width: 2rem;
+    height: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     --c-form__item-backgroundColor-base: transparent;
     --c-form__item-backgroundColor-hover: var(--global-button-backGroundColor-hover);
     --c-form__item-backgroundColor-focus: var(--global-button-backGroundColor-focus);
@@ -809,6 +816,7 @@ input::placeholder {
 
 .c-form__button-svg:active { 
     transform: scale(1.5);
+    fill: var(--c-form__button-fill-focus);
     /*
     animation-name:  btn-animate;
     animation-duration: 0.2s;
