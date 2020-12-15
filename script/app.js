@@ -5,8 +5,8 @@ const TEST_CARD_ID_ARR = { "card1" : "EX1_591", "card2" : "EX1_050"}
 
 let html_Sidebar, html_SidebarHideBtn;
 let html_CardImage;
-let html_SearchForm, html_SearchInput, html_SearchList, html_SearchButton;
-let html_CardName, html_CardSet, html_CardText;
+let html_SearchForm, html_SearchInput, html_SearchList, html_SearchButton, html_SearchLoading;
+let html_CardName, html_CardSet, html_CardText, html_CardLoading;
 let html_Cost, html_Attack, html_Health;
 let currentCard;
 let listCards;
@@ -28,6 +28,11 @@ const callbackCardById = function(jsonObject){
 	showCard(card);
 };
 
+const callbackCardByIdFail = function(jsonObject){
+	console.log("Failed to load card");
+	html_CardLoading.classList.remove("c-loading--show");
+};
+
 const callBackDefaultImage = function(jsonObject){
 	let card = jsonObject[0];
 	defaultImage = card["img"];
@@ -43,12 +48,13 @@ const callbackSearch = function(jsonObject){
 	html_SearchInput.setAttribute("isvalid", "false")
 	fillSearchList(jsonObject);
 	html_SearchList.classList.remove("c-search__list-hide");
-	//getCardyId(cardId);
+	html_SearchLoading.classList.remove("c-icon-loading--show");
 };
 
 const callbackSearchFail = function(jsonObject){
 	console.log("Could not find any cards matching the search input");
-	html_SearchInput.setAttribute("isvalid", "true")
+	html_SearchInput.setAttribute("isvalid", "true");
+	html_SearchLoading.classList.remove("c-icon-loading--show");
 };
 
 const fillSearchList = function(list){
@@ -161,6 +167,7 @@ const showCard = function(card){
 	setBarPercentage(html_Health, health, max_health_typed);
 	setBarPercentage(html_Attack, attack, MAX_ATTACK);
 	setBarPercentage(html_Cost, cost, MAX_COST);
+	html_CardLoading.classList.remove("c-loading--show");
 };
 
 const consoleCard = function(card)
@@ -296,7 +303,7 @@ const getDefaultCard = function(cardId) {
 
 const getCardyId = function(cardId) {
 	console.log("Get CardById fetch");
-	handleData(`${API_HEARTSTONE}/cards/${cardId}`, callbackCardById, callBackLog, "GET");
+	handleData(`${API_HEARTSTONE}/cards/${cardId}`, callbackCardById, callbackCardByIdFail, "GET");
 };
 
 const getCardList = function(){
@@ -324,6 +331,7 @@ const listenToSearch = function(){
 
 const beginSearch = function(){
 	console.log("Search for....")
+	html_SearchLoading.classList.add("c-icon-loading--show");
 	const name = html_SearchInput.value;
 	getCardSearchName(name);
 };
@@ -369,6 +377,7 @@ const eventShowCard = function(event){
 			return
 		}
 
+		html_CardLoading.classList.add("c-loading--show");
 		const item = event.target;
 		console.log(item + " was clicked");
 		const cardId = item.getAttribute("data-cardId");
@@ -387,11 +396,13 @@ const getHtmlElements = function(){
 	html_SidebarShowBtn = document.querySelector('.js-sidebar-show-button');
 
 	html_CardImage = document.querySelector('.js-card__image');
+	html_CardLoading = document.querySelector('.js-card__loading');
 
 	html_SearchForm = document.querySelector('.js-search');
 	html_SearchInput = document.querySelector('.js-search__input');
 	html_SearchList = document.querySelector('.js-search__list');
 	html_SearchButton = document.querySelector('.js-search__btn');
+	html_SearchLoading = document.querySelector('.js-search__loading');
 
 	html_Health = document.querySelector('.js-health');
 	html_Attack = document.querySelector('.js-attack');
