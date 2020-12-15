@@ -20,43 +20,8 @@ const MAX_ATTACK = 20;
 const MAX_COST = 25;
 
 
-
-//============================================================================================================================================================
-const callbackCardById = function(jsonObject){
-	let card = jsonObject["0"];
-	console.log(card);
-	showCard(card);
-};
-
-const callbackCardByIdFail = function(jsonObject){
-	console.log("Failed to load card");
-	html_CardLoading.classList.remove("c-loading--show");
-};
-
-const callBackDefaultImage = function(jsonObject){
-	let card = jsonObject[0];
-	defaultImage = card["img"];
-};
-
-const callbackCardList = function(jsonObject){
-	console.log(jsonObject);
-
-};
-
-const callbackSearch = function(jsonObject){
-	console.log(jsonObject);
-	html_SearchInput.setAttribute("isvalid", "false")
-	fillSearchList(jsonObject);
-	html_SearchList.classList.remove("c-search__list-hide");
-	html_SearchLoading.classList.remove("c-icon-loading--show");
-};
-
-const callbackSearchFail = function(jsonObject){
-	console.log("Could not find any cards matching the search input");
-	html_SearchInput.setAttribute("isvalid", "true");
-	html_SearchLoading.classList.remove("c-icon-loading--show");
-};
-
+///============================================================================================================================================================
+//#region ==== Callbacks - subfunctions //
 const fillSearchList = function(list){
 	html_SearchList.classList.add("c-search__list-open");
 
@@ -124,7 +89,8 @@ const setBarPercentage = function(html_object, statValue, statMax){
 
 	let percentage = statValue / statMax * 100;
 	let percentString = `${percentage}%`
-	console.log(`Set bar to ${percentage}`);
+
+	//console.log(`Set bar to ${percentage}`);
 	html_bar = html_object.querySelector(".js-stats__bar");
 	html_bar.style.setProperty('--c-stats__bar-percentage', percentString);
 };
@@ -136,14 +102,13 @@ const showCard = function(card){
 	let cost = 0;
 	let attack = 0;
 
-	console.log(`card["type"] = ${card["type"]}`);
+	//console.log(`card["type"] = ${card["type"]}`);
 	let max_health_typed = (card["type"].toLowerCase() == "hero") ? MAX_HEALTH_HERO : MAX_HEALTH_MINION;
 
 	if(card.hasOwnProperty("img")){
 		html_CardImage.src = card["img"];
 	}
-	else
-	{
+	else{
 		html_CardImage.src = defaultImage;
 	}
 	html_CardImage.alt = `Card image of ${card["name"]}`;
@@ -158,11 +123,6 @@ const showCard = function(card){
 		cost = card["cost"];
 	}
 
-	/*
-	html_CardName.innerHTML = card["name"];
-	html_CardSet.innerHTML = card["cardSet"];
-	html_CardText.innerHTML = card["text"];
-	*/
 
 	setBarPercentage(html_Health, health, max_health_typed);
 	setBarPercentage(html_Attack, attack, MAX_ATTACK);
@@ -172,55 +132,97 @@ const showCard = function(card){
 
 const consoleCard = function(card)
 {
-	const name = card["name"];
-	const cardSet = card["cardSet"];
-	const cardType = card["type"];
+	console.log(`name - ${card["name"]}`);
+	console.log(`cardSet - ${card["cardSet"]}`);
+	console.log(`cardType - ${card["type"]}`);
 
-	const faction = card["faction"];
-	const rarity = card["rarity"];
+	console.log(`faction - ${card["faction"]}`);
+	console.log(`rarity - ${card["rarity"]}`);
 
-	const cost = card["cost"];
-	const attack = card["attack"];
-	const health = card["health"];
+	console.log(`cost - ${card["cost"]}`);
+	console.log(`attack - ${card["attack"]}`);
+	console.log(`health - ${card["health"]}`);
 
-	const text = card["text"];
-	const flavor = card["flavor"];
-	const artist = card["artist"];
-	const collectible = card["collectible"];
-	const playerClass = card["playerClass"];
+	console.log(`text - ${card["text"]}`);
+	console.log(`flavor - ${card["flavor"]}`);
+	console.log(`artist - ${card["artist"]}`);
+	console.log(`collectible - ${card["collectible"]}`);
+	console.log(`playerClass - ${card["playerClass"]}`);
 
-	const img = card["img"];
-	const imgGold = card["imgGold"];
-	const locale = card["locale"];
-
-	console.log(`name - ${name}`);
-	console.log(`cardSet - ${cardSet}`);
-	console.log(`cardType - ${cardType}`);
-
-	console.log(`faction - ${faction}`);
-	console.log(`rarity - ${rarity}`);
-
-	console.log(`cost - ${cost}`);
-	console.log(`attack - ${attack}`);
-	console.log(`health - ${health}`);
-
-	console.log(`text - ${text}`);
-	console.log(`flavor - ${flavor}`);
-	console.log(`artist - ${artist}`);
-	console.log(`collectible - ${collectible}`);
-	console.log(`playerClass - ${playerClass}`);
-
-	console.log(`img - ${img}`);
-	console.log(`imgGold - ${imgGold}`);
-	console.log(`locale - ${locale}`);
+	console.log(`img - ${card["img"]}`);
+	console.log(`imgGold - ${card["imgGold"]}`);
+	console.log(`locale - ${card["locale"]}`);
 };
+
+const createFilterItem = function(checkBoxGroup, filterTag){
+	html_obj = `
+	<li class="c-toggle-list__item">
+		<input class="o-hide-accessible c-option--hidden" type="checkbox" name="${checkBoxGroup}" id="${filterTag}" value="${filterTag}" checked>
+		<label class="c-label c-label__checkbox c-custom-toggle" for="${filterTag}">
+			${filterTag}
+			<span class="c-custom-toggle__fake-input">
+				<svg class="c-custom-toggle__symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
+					<path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
+				</svg>
+			</span>
+		</label>
+	</li>
+	`;
+
+	return html_obj;
+};
+//#endregion
+
+
+
+///============================================================================================================================================================
+//#region ==== Callbacks //
+const callbackCardById = function(jsonObject){
+	let card = jsonObject["0"];
+	console.log(card);
+	showCard(card);
+};
+
+
+const callbackCardByIdFail = function(jsonObject){
+	console.log("Failed to load card");
+	html_CardLoading.classList.remove("c-loading--show");
+};
+
+
+const callBackDefaultImage = function(jsonObject){
+	let card = jsonObject[0];
+	defaultImage = card["img"];
+};
+
+
+const callbackCardList = function(jsonObject){
+	console.log(jsonObject);
+
+};
+
+
+const callbackSearch = function(jsonObject){
+	console.log(jsonObject);
+	html_SearchInput.setAttribute("isvalid", "false")
+	fillSearchList(jsonObject);
+	html_SearchList.classList.remove("c-search__list-hide");
+	html_SearchLoading.classList.remove("c-icon-loading--show");
+};
+
+
+const callbackSearchFail = function(jsonObject){
+	console.log("Could not find any cards matching the search input");
+	html_SearchInput.setAttribute("isvalid", "true");
+	html_SearchLoading.classList.remove("c-icon-loading--show");
+};
+
 
 const callBackLog = function(responseLog){
 	console.log(responseLog);
 };
 
 
-//============================================================================================================================================================
 const callBackSetup = function(jsonObject){
 	console.log(jsonObject);
 	listClasses = jsonObject["classes"];
@@ -240,28 +242,127 @@ const callBackSetup = function(jsonObject){
 
 	html_FilterList.innerHTML = listToggles;
 }
+//#endregion
 
-const createFilterItem = function(checkBoxGroup, filterTag){
-	html_obj = `
-	<li class="c-toggle-list__item">
-		<input class="o-hide-accessible c-option--hidden" type="checkbox" name="${checkBoxGroup}" id="${filterTag}" value="${filterTag}" checked>
-		<label class="c-label c-custom-toggle" for="${filterTag}">
-			${filterTag}
-			<span class="c-custom-toggle__fake-input">
-				<svg class="c-custom-toggle__symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
-					<path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
-				</svg>
-			</span>
-		</label>
-	</li>
-	`;
 
-	return html_obj;
+///============================================================================================================================================================
+//#region ==== Add event listeners - subfunctions //
+const getInfo = function() {
+	console.log("Get Info fetch");
+	handleData(`${API_HEARTSTONE}/info`, callBackSetup, callBackLog, "GET");
 };
+
+
+const getDefaultCard = function(cardId) {
+	handleData(`${API_HEARTSTONE}/cardbacks`, callBackDefaultImage, callBackLog, "GET");
+};
+
+
+const getCardyId = function(cardId) {
+	console.log("Get CardById fetch");
+	handleData(`${API_HEARTSTONE}/cards/${cardId}`, callbackCardById, callbackCardByIdFail, "GET");
+};
+
+
+const getCardList = function(){
+	console.log("Get all cards fetch");
+	handleData(`${API_HEARTSTONE}/cards`, callbackCardList, callBackLog, "GET");
+};
+
+
+const getCardSearchName = function(name){
+	console.log("Get card by name fetch");
+	handleData(`${API_HEARTSTONE}/cards/search/${name}`, callbackSearch, callbackSearchFail, "GET");
+};
+
+
+const beginSearch = function(){
+	console.log("Search for....")
+	html_SearchLoading.classList.add("c-icon-loading--show");
+	const name = html_SearchInput.value;
+	getCardSearchName(name);
+};
+
+
+const preventDefaultForm = function(list){
+	html_SearchForm.addEventListener('submit', function(e) {
+		e.preventDefault();
+	}, false);
+};
+
+
+const eventShowCard = function(event){
+	if(event.target && event.target.nodeName == "LI") 
+	{
+		if(!html_SearchList.classList.contains("c-search__list-open"))
+		{
+			return
+		}
+
+		html_CardLoading.classList.add("c-loading--show");
+		const item = event.target;
+		console.log(item + " was clicked");
+		const cardId = item.getAttribute("data-cardId");
+		const cardName = item.getAttribute("data-cardName");
+		getCardyId(cardId);
+		html_SearchList.classList.remove("c-search__list-open");
+		html_SearchInput.value = cardName;
+	}
+}
+//#endregion
 
 
 
 //============================================================================================================================================================
+//#region ==== Add event listeners //
+const listenToSearch = function(){
+	html_SearchButton.addEventListener("click", function() {
+		beginSearch();
+	  }); 
+
+	html_SearchInput.addEventListener("keyup", function(event) {
+		if (event.keyCode === 13) { 		// Number 13 is the "Enter" key on the keyboard
+		  event.preventDefault();
+		  beginSearch();
+		}
+	  }); 
+};
+
+
+const listenToHideSidebar = function(){
+	html_SidebarHideBtn.addEventListener("click", function() {
+		console.log("Hide Sidebar")
+		html_Sidebar.classList.remove("c-app__sidebar--show");
+	  }); 
+};
+
+
+const listenToShowSidebar = function(){
+	html_SidebarShowBtn.addEventListener("click", function() {
+		if(html_Sidebar.classList.contains("c-app__sidebar--show"))
+		{
+			console.log("Hide Sidebar")
+			html_Sidebar.classList.remove("c-app__sidebar--show");
+		}
+		else
+		{
+			console.log("Hide Sidebar")
+			html_Sidebar.classList.add("c-app__sidebar--show");
+		}
+	  }); 
+};
+
+
+const listenToSelectSearched = function(list){
+	list.removeEventListener("click", eventShowCard); 
+	list.addEventListener("click", eventShowCard); 
+};
+//#endregion
+
+
+
+//============================================================================================================================================================
+//#region ==== Fetch handler //
 const handleData = function(url, callbackFunctionName, callbackErrorFunctionName = null, method = 'GET', body = null) {
 	fetch(url, {
 	  method: method,
@@ -290,107 +391,13 @@ const handleData = function(url, callbackFunctionName, callbackErrorFunctionName
 		}
 	  });
 };
+//#endregion
 
-
-const getInfo = function() {
-	console.log("Get Info fetch");
-	handleData(`${API_HEARTSTONE}/info`, callBackSetup, callBackLog, "GET");
-};
-
-const getDefaultCard = function(cardId) {
-	handleData(`${API_HEARTSTONE}/cardbacks`, callBackDefaultImage, callBackLog, "GET");
-};
-
-const getCardyId = function(cardId) {
-	console.log("Get CardById fetch");
-	handleData(`${API_HEARTSTONE}/cards/${cardId}`, callbackCardById, callbackCardByIdFail, "GET");
-};
-
-const getCardList = function(){
-	console.log("Get all cards fetch");
-	handleData(`${API_HEARTSTONE}/cards`, callbackCardList, callBackLog, "GET");
-};
-
-const getCardSearchName = function(name){
-	console.log("Get card by name fetch");
-	handleData(`${API_HEARTSTONE}/cards/search/${name}`, callbackSearch, callbackSearchFail, "GET");
-};
-
-const listenToSearch = function(){
-	html_SearchButton.addEventListener("click", function() {
-		beginSearch();
-	  }); 
-
-	html_SearchInput.addEventListener("keyup", function(event) {
-		if (event.keyCode === 13) { 		// Number 13 is the "Enter" key on the keyboard
-		  event.preventDefault();
-		  beginSearch();
-		}
-	  }); 
-};
-
-const beginSearch = function(){
-	console.log("Search for....")
-	html_SearchLoading.classList.add("c-icon-loading--show");
-	const name = html_SearchInput.value;
-	getCardSearchName(name);
-};
-
-const listenToHideSidebar = function(){
-	html_SidebarHideBtn.addEventListener("click", function() {
-		console.log("Hide Sidebar")
-		html_Sidebar.classList.remove("c-app__sidebar--show");
-	  }); 
-};
-
-const listenToShowSidebar = function(){
-	html_SidebarShowBtn.addEventListener("click", function() {
-		if(html_Sidebar.classList.contains("c-app__sidebar--show"))
-		{
-			console.log("Hide Sidebar")
-			html_Sidebar.classList.remove("c-app__sidebar--show");
-		}
-		else
-		{
-			console.log("Hide Sidebar")
-			html_Sidebar.classList.add("c-app__sidebar--show");
-		}
-	  }); 
-};
-
-const listenToSelectSearched = function(list){
-	list.removeEventListener("click", eventShowCard); 
-	list.addEventListener("click", eventShowCard); 
-};
-
-const preventDefaultForm = function(list){
-	html_SearchForm.addEventListener('submit', function(e) {
-		e.preventDefault();
-	}, false);
-};
-
-const eventShowCard = function(event){
-	if(event.target && event.target.nodeName == "LI") 
-	{
-		if(!html_SearchList.classList.contains("c-search__list-open"))
-		{
-			return
-		}
-
-		html_CardLoading.classList.add("c-loading--show");
-		const item = event.target;
-		console.log(item + " was clicked");
-		const cardId = item.getAttribute("data-cardId");
-		const cardName = item.getAttribute("data-cardName");
-		getCardyId(cardId);
-		html_SearchList.classList.remove("c-search__list-open");
-		html_SearchInput.value = cardName;
-	}
-}
 
 
 //============================================================================================================================================================
-const getHtmlElements = function(){
+//#region ==== Get DOM elements //
+const getDOMElements = function(){
 	html_Sidebar = document.querySelector('.js-sidebar');
 	html_SidebarHideBtn = document.querySelector('.js-sidebar-hide-button');
 	html_SidebarShowBtn = document.querySelector('.js-sidebar-show-button');
@@ -409,29 +416,23 @@ const getHtmlElements = function(){
 	html_Cost = document.querySelector('.js-cost');
 
 	html_FilterList = document.querySelector('.js-filter-list');
-
-	/*
-	html_CardName = document.querySelector('.js-card__name');
-	html_CardSet = document.querySelector('.js-card__set');
-	html_CardText = document.querySelector('.js-card__text');
-	*/
 };
+//#endregion
 
 
 
-
+//============================================================================================================================================================
+//#region ==== DOMContentLoaded //
 document.addEventListener('DOMContentLoaded', function() {
-	getHtmlElements();
+	getDOMElements();
 	preventDefaultForm();
 
 	getInfo();
 	getDefaultCard();
-	//getCardSearchName("a");
 	getCardyId(TEST_CARD_ID_ARR["card1"]);
-	//getCardyId(TEST_CARD_ID_02);
 
 	listenToSearch();
 	listenToHideSidebar();
 	listenToShowSidebar();
 });
-
+//#endregion

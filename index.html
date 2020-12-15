@@ -24,6 +24,7 @@
 
         <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap" rel="stylesheet"> 
 
+        <script src="./script/landing.js"></script>
 
     </head>
     <body>
@@ -110,15 +111,25 @@
 
                             <div class="o-layout o-layout--gutter-v o-layout--justify-center o-layout--align-center">
                                 <div class="o-layout__item">
+
+                                  <div class="c-field js-email-field">
+                                    <span class="c-label c-label__error js-email-error"></span>
+                                    <input class="c-form__item c-form__input o-form-reset js-email-input" 
+                                    type="email" name="username" id="username"
+                                    placeholder="Your email" required>
+                                  </div>
+
+                                    <!--
                                     <input class="c-form__item c-form__input o-form-reset" 
                                     type="email" placeholder="Your email" required>
+                                    -->
                                 </div>
     
                                 <!---------------------------------------------------------------------------------->
     
                                 <div class="o-layout__item">
-                                    <input class="c-form__item c-form__button o-form-reset"
-                                    type="submit" value="Subscribe to newsletter" onclick="msg()">
+                                    <input class="js-sign-up-button c-form__item c-form__button o-form-reset"
+                                    type="submit" value="Subscribe to newsletter">
                                 </div>
                             </div>
 
