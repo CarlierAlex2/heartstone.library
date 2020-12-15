@@ -851,11 +851,6 @@ input::placeholder {
     top: 0;
     transform: translateX(-100%);
 
-    overflow-y: auto;
-
-    border-top-right-radius: var(--global-border-radius-lg);
-    border-bottom-right-radius: var(--global-border-radius-lg);
-
     transition: all var(--global-transition-alpha) ease-out;
     -moz-transition: all var(--global-transition-alpha) ease-out; /* Firefox 4 */
     -webkit-transition: all var(--global-transition-alpha) ease-out; /* Safari and Chrome */
@@ -872,7 +867,6 @@ input::placeholder {
 }
 
 .c-header{
-    grid-row: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -936,7 +930,13 @@ input::placeholder {
     --c-sidebar__header-background: var(--color-neutral-dark-xxx);
     --c-sidebar__header-color: var(--color-neutral-light-xxxx);
 
+    border-top-right-radius: var(--global-border-radius-lg);
+    border-bottom-right-radius: var(--global-border-radius-lg);
+
     background: var(--c-sidebar__header-background);
+
+    display: grid;
+    grid-template-rows: var(--c-app-header-height) calc(100vh - var(--c-app-header-height));
 }
 
 .c-sidebar__header{
@@ -946,12 +946,11 @@ input::placeholder {
     color: var(--c-sidebar__header-color);
     fill: var(--c-sidebar__header-color);
 
+    border-top-right-radius: var(--global-border-radius-lg);
+
     display: flex;
     justify-content: start;
     align-items: center;
-
-    border-top-right-radius: var(--c-app__sidebar-border-radius);
-    height: var(--c-app-header-height);
 }
 
 .c-sidebar__title{
@@ -976,11 +975,10 @@ input::placeholder {
 
 .c-sidebar__content{
     grid-row: 2;
-    min-height: calc(100vh - var(--c-app-header-height));
     color: var(--c-sidebar__header-labelColor);
-    overflow: auto;
-}
 
+    overflow-y: auto;
+}
 
 /*
 ------------------------------------------------------------------------------------------------
@@ -1032,6 +1030,10 @@ input::placeholder {
     transition: all var(--global-transition-alpha) ease-out;
     -moz-transition: all var(--global-transition-alpha) ease-out; /* Firefox 4 */
     -webkit-transition: all var(--global-transition-alpha) ease-out; /* Safari and Chrome */
+
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
 @media (min-width: 15rem){ /* 240px = 15rem * 16 , take padding into acc*/
@@ -1055,10 +1057,7 @@ input::placeholder {
     color: var(--c-label-labelColor-hover) !important;
     height: auto;
 
-    /*
-    width: calc(100% + var(--c-label-hover-extraWidth));
-    position: absolute;
-    */
+    /* width: calc(100% + var(--c-label-hover-extraWidth)); */
 
     -webkit-box-shadow: var( --c-label-boxShadow-hover);
     -moz-box-shadow: var( --c-label-boxShadow-hover);
