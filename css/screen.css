@@ -67,6 +67,11 @@
     --global-button-backGroundColor-focus: var(--color-orange-dark-x);
     --global-button-backGroundColor-active: var(--color-orange-light);
 
+    --global-buttonSvg-backGroundColor: var(--color-orange-dark-x);
+    --global-buttonSvg-backGroundColor-hover: var(--color-orange-dark);
+    --global-buttonSvg-backGroundColor-focus: var(--color-orange-light);
+    --global-buttonSvg-backGroundColor-active: var(--color-orange-dark-x);
+
     --global-header-backGroundColor: var(--color-neutral-dark-xxxx);
     
     /* font */
@@ -804,8 +809,9 @@ input::placeholder {
     justify-content: center;
 
     --c-form__item-backgroundColor-base: transparent;
-    --c-form__item-backgroundColor-hover: var(--global-button-backGroundColor-hover);
-    --c-form__item-backgroundColor-focus: var(--global-button-backGroundColor-focus);
+    --c-form__item-backgroundColor-hover: var(--global-buttonSvg-backGroundColor-hover);
+    --c-form__item-backgroundColor-focus: var(--global-buttonSvg-backGroundColor-focus);
+    --c-form__item-backgroundColor-active: var(--global-buttonSvg-backGroundColor-active);
 
     --c-form__button-fill-focus: var(--color-neutral-light-xxxx);
     --c-form__button-fill-active: var(--color-neutral-light-xxxx);
@@ -813,20 +819,26 @@ input::placeholder {
     padding: 0;
 } 
 
-.c-form__button-svg:hover,
 .c-form__button-svg:focus{ 
     fill: var(--c-form__button-fill-focus);
+    --c-form__item-backgroundColor: var(--c-form__item-backgroundColor-focus);
+} 
+
+.c-form__button-svg:hover{ 
+    fill: var(--c-form__button-fill-focus);
+    --c-form__item-backgroundColor: var(--c-form__item-backgroundColor-hover);
 } 
 
 .c-form__button-svg:active { 
-    transform: scale(1.5);
+    --c-form__item-backgroundColor: var(--c-form__item-backgroundColor-active);
     fill: var(--c-form__button-fill-focus);
-    /*
+    
     animation-name:  btn-animate;
     animation-duration: 0.2s;
-    animation-timing-function: ease-out;
-    */
+    animation-timing-function: ease-in-out;
+    
 } 
+
 
 @keyframes btn-animate {
     0% {
@@ -834,15 +846,15 @@ input::placeholder {
         -webkit-transform: scale(1.0);
     }
     50%  {
-        fill: var(--c-form__button-fill-active);
-        transform: scale(1.5);
-        -webkit-transform: scale(1.5);
+        transform: scale(1.3);
+        -webkit-transform: scale(1.3);
     }
     100% {
         transform: scale(1.0);
         -webkit-transform: scale(1.0);
     }
 }
+
 
 /*
 ---------------------------------------------------------------------------------------------------------------------------------------------------
