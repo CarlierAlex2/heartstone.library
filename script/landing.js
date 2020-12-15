@@ -15,19 +15,7 @@ const enableListeners = function(){
         let input = email.input;
         let error = email.error;
 
-        if(isEmpty(input.value)){
-            addErrors(field, error);
-            input.removeEventListener('input', doubleCheckEmail); //to avoid multiple events
-            input.addEventListener('input', doubleCheckEmail);
-        }
-        else if (!isValidEmailAddress(input.value)){
-            addErrors(field, error, "Invalid email address");
-            input.removeEventListener('input', doubleCheckEmail); //to avoid multiple events
-            input.addEventListener('input', doubleCheckEmail);
-        }
-        else{
-            removeErrors(field, error);
-        }
+        checkErrors(input, field, error);
     });
 
     if(signInButton){
@@ -39,8 +27,28 @@ const enableListeners = function(){
             }
             else{
                 console.log("Failed to submit form!");
+                let field = email.field;
+                let input = email.input;
+                let error = email.error;
+                checkErrors(input, field, error);
             }
         });
+    }
+};
+
+const checkErrors = function(input, field, error){
+    if(isEmpty(input.value)){
+        addErrors(field, error);
+        input.removeEventListener('input', doubleCheckEmail); //to avoid multiple events
+        input.addEventListener('input', doubleCheckEmail);
+    }
+    else if (!isValidEmailAddress(input.value)){
+        addErrors(field, error, "Invalid email address");
+        input.removeEventListener('input', doubleCheckEmail); //to avoid multiple events
+        input.addEventListener('input', doubleCheckEmail);
+    }
+    else{
+        removeErrors(field, error);
     }
 };
 //#endregion

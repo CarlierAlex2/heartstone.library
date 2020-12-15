@@ -796,6 +796,10 @@ input::placeholder {
     --c-form__item-borderColor: transparent;
 
     min-width: 100%;
+
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
 .c-form__button:active{
@@ -806,8 +810,9 @@ input::placeholder {
 .c-form__button--disabled{
     color: var(--color-neutral-dark-xxx) !important;
     background-color: var(--color-neutral-dark-x) !important;
-    border: none !important;
+    border-color: var(--color-neutral-dark-x) !important;
     box-shadow: none !important;
+    transform: scale(1) !important;
 }
 
 
@@ -941,16 +946,6 @@ input::placeholder {
     .c-main{
         padding-left: var(--c-app-sidebar-width);
     }
-
-    /*
-    .c-app__main{
-        padding-left: var(--c-app-sidebar-width);
-    }
-
-    .c-app__main{
-        padding-left: var(--c-app-sidebar-width);
-    }
-    */
 }
 
 
@@ -1117,8 +1112,8 @@ input::placeholder {
     color: var(--c-label-labelColor-checked);
 }
 
-.c-label:hover,
-.c-label:focus{
+.c-label__checkbox:hover,
+.c-label__checkbox:focus{
     --c-label-boxShadow-width-hover: calc(2rem / 16);
     --c-label-boxShadow-hover: 0px 0px 0px var(--c-label-boxShadow-width-hover) var(--color-orange-light-x);
 
