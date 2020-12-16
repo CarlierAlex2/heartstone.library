@@ -41,14 +41,17 @@ const checkErrors = function(input, field, error){
         addErrors(field, error);
         input.removeEventListener('input', doubleCheckEmail); //to avoid multiple events
         input.addEventListener('input', doubleCheckEmail);
+        field.classList.remove("c-form-field--filled");
     }
     else if (!isValidEmailAddress(input.value)){
         addErrors(field, error, "Invalid email address");
         input.removeEventListener('input', doubleCheckEmail); //to avoid multiple events
         input.addEventListener('input', doubleCheckEmail);
+        field.classList.add("c-form-field--filled");
     }
     else{
         removeErrors(field, error);
+        field.classList.add("c-form-field--filled");
     }
 };
 //#endregion

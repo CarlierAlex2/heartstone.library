@@ -85,6 +85,7 @@
 
     --global-text-color: var(--color-neutral-light-xxxx);
     --global-text-color-light: var(--color-neutral-light);
+    --global-text-color-dark: var(--color-neutral-dark-xxxx);
 
     --global-form-textColor: var(--color-neutral-dark-xx);
     --global-form-textColor-hover: var(--color-neutral-dark-xxx);
@@ -106,6 +107,9 @@
     --global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
     --global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
     --global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
+
+    --global-form-padding-sm: calc(14rem / 16);
+    --global-form-padding-md: calc(18rem / 16);
 
 
     /* Shadows */
@@ -702,6 +706,10 @@ input::placeholder {
 
 }
 
+.c-form-field{
+    position: relative;
+}
+
 .c-form__item{
     --c-form__item-textColor-base: var(--global-form-textColor);
     --c-form__item-textColor-hover: var(--global-form-textColor-hover);
@@ -723,26 +731,32 @@ input::placeholder {
 
     font-size: var(--global-font-size-small);
     font-weight: var(--global-font-weight-semi);
-    padding: calc(14rem / 16) calc(18rem / 16);
+    padding: var(--global-form-padding-sm) var(--global-form-padding-md);
     border-radius: var(--global-border-radius-lg);
 
     background-color: var(--c-form__item-backgroundColor);
     border: var(--c-form__item-border);
     color: var(--c-form__item-textColor);
+    font-family: inherit;
 
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 
     --c-form__item-transition: all var(--global-transition-alpha) ease;
-    transition: var(--c-form__item-transition);
+    transition:var(--c-form__item-transition);
+    -moz-transition: var(--c-form__item-transition);
+    -webkit-transition:var(--c-form__item-transition);
     display: block;
 }
 
 .c-form__item::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: var(--c-form__item-textColor);
     opacity: 1; 
-    transition: var(--c-form__item-transition);
+
+    transition:var(--c-form__item-transition);
+    -moz-transition: var(--c-form__item-transition);
+    -webkit-transition:var(--c-form__item-transition);
   }
 
 .c-form__item:hover{
@@ -767,6 +781,66 @@ input::placeholder {
 
 .has-error .c-form__item{
     --c-form__item-borderColor: red;
+}
+
+.c-label{
+    --c-label-background: transparent;
+    --c-label-background-checked: var(--color-neutral-dark-xx);
+    --c-label-background-hover: var(--color-orange-dark);
+
+    --c-label-labelColor: var(--color-neutral-light);
+    --c-label-labelColor-checked: var(--color-orange-dark);
+    --c-label-labelColor-hover: var(--color-neutral-light-xxxx);
+    
+    --c-label-paddingH: var(--global-whitespace-md);
+    --c-label-paddingV: calc(var(--global-whitespace-md) / 2);
+
+    font-size: var(--global-font-size-small);
+    font-weight: var(--global-font-weight-semi);
+    color: var(--c-label-labelColor);
+    background-color: var(--c-label-background);
+
+    margin: 0;
+}
+
+.c-label--floating{
+    padding: var(--global-form-padding-sm) var(--global-form-padding-md);
+    width: 100%;
+    max-height: 100%;
+
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    top: 0;
+
+    color: var(--global-text-color-dark);
+    transition: all var(--global-transition-alpha) ease-in-out;
+    -moz-transition: all var(--global-transition-alpha) ease-in-out;
+    -webkit-transition: all var(--global-transition-alpha) ease-in-out;
+}
+
+.c-form-field:focus-within .c-label--floating,
+.c-form-field--filled .c-label--floating
+{
+    --c-label-translate: calc(36rem / 16);
+    transform: translateY(calc(-1 * var( --c-label-translate)));
+    color: var(--global-text-color);
+}
+
+.c-label__error{
+    color: red;
+    text-align: right;
+    float: right;
+    opacity: 0;
+    font-weight: var(--global-font-weight-semi);
+
+    transition: all var(--global-transition-alpha) ease-in-out;
+    -moz-transition: all var(--global-transition-alpha) ease-in-out;
+    -webkit-transition: all var(--global-transition-alpha) ease-in-out;
+}
+
+.has-error .c-label__error{
+    opacity: 1;
 }
 
 .c-form__input{
@@ -853,28 +927,7 @@ input::placeholder {
     --c-form__item-backgroundColor: var(--c-form__item-backgroundColor-active);
     fill: var(--c-form__button-fill-focus);
     transform: scale(1.2);
-
-    animation-name:  form__button-animate;
-    animation-duration: var(--global-transition-alpha);
-    animation-timing-function: ease-in-out;
-    
 } 
-
-
-@keyframes form__button-animate {
-    0% {
-        transform: scale(1.0);
-        -webkit-transform: scale(1.0);
-    }
-    50%  {
-        transform: scale(1.5);
-        -webkit-transform: scale(1.5);
-    }
-    100% {
-        transform: scale(1.0);
-        -webkit-transform: scale(1.0);
-    }
-}
 
 
 /*
@@ -1033,55 +1086,9 @@ input::placeholder {
 
 /*
 ------------------------------------------------------------------------------------------------
-    Component: Filter
+    Component: Checkbox labels
     ---
 */
-
-.c-field{
-    position: relative;
-}
-
-.c-label{
-    --c-label-background: transparent;
-    --c-label-background-checked: var(--color-neutral-dark-xx);
-    --c-label-background-hover: var(--color-orange-dark);
-
-    --c-label-labelColor: var(--color-neutral-light);
-    --c-label-labelColor-checked: var(--color-orange-dark);
-    --c-label-labelColor-hover: var(--color-neutral-light-xxxx);
-    
-    --c-label-paddingH: var(--global-whitespace-md);
-    --c-label-paddingV: calc(var(--global-whitespace-md) / 2);
-
-    font-size: var(--global-font-size-small);
-    font-weight: var(--global-font-weight-semi);
-    color: var(--c-label-labelColor);
-    background-color: var(--c-label-background);
-}
-
-.c-label__error{
-    color: red;
-    position: absolute;
-    z-index: 100;
-    
-    top: 0;
-    transform: translateY( 0 );
-
-    width: 100%;
-    text-align: center;
-
-    opacity: 0;
-
-    will-change: transform;
-    transition: all var(--global-transition-alpha) ease-out;
-    -moz-transition: all var(--global-transition-alpha) ease-out; /* Firefox 4 */
-    -webkit-transition: all var(--global-transition-alpha) ease-out; /* Safari and Chrome */
-}
-
-.has-error .c-label__error{
-    opacity: 1;
-    transform: translateY(calc(-1* 24rem / 16));
-}
 
 .c-label__checkbox{
     --c-label-background: transparent;
@@ -1196,9 +1203,8 @@ input::placeholder {
 
 /*
 ------------------------------------------------------------------------------------------------
-    Component: Logo
+    Component: Icons
     ---
-    Website main logo
 */
 
 .c-icon {

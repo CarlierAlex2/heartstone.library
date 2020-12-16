@@ -107,16 +107,19 @@
 
                     <!------------------------------------------------------------------------------------------------------------------------------------------------------------------->
                     <section class="c-landing__form o-section">
-                        <form class="o-container u-max-width-xxs c-form">
+                        <form class="o-container u-max-width-xs c-form">
 
                             <div class="o-layout o-layout--gutter-v o-layout--justify-center o-layout--align-center">
                                 <div class="o-layout__item">
 
-                                  <div class="c-field js-email-field">
-                                    <span class="c-label c-label__error js-email-error"></span>
+                                  <div class="c-form-field js-email-field">
+                                    <label class="c-label c-label--floating js-email-label" for="email">
+                                      Email
+                                      <span class="c-label c-label__error js-email-error"></span>
+                                    </label>
+                                    
                                     <input class="c-form__item c-form__input o-form-reset js-email-input" 
-                                    type="email" name="username" id="username"
-                                    placeholder="Your email" required>
+                                    type="email" name="email" id="email" required>
                                   </div>
 
                                     <!--
@@ -128,8 +131,8 @@
                                 <!---------------------------------------------------------------------------------->
     
                                 <div class="o-layout__item">
-                                    <input class="js-sign-up-button c-form__item c-form__button o-form-reset"
-                                    type="submit" value="Subscribe to newsletter">
+                                  <input class="js-sign-up-button c-form__item c-form__button o-form-reset"
+                                  type="submit" value="Subscribe to newsletter">
                                 </div>
                             </div>
 
