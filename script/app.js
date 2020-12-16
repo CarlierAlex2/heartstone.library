@@ -158,7 +158,7 @@ const createFilterItem = function(checkBoxGroup, filterTag){
 	html_obj = `
 	<li class="c-toggle-list__item">
 		<input class="o-hide-accessible c-option--hidden" type="checkbox" name="${checkBoxGroup}" id="${filterTag}" value="${filterTag}" checked>
-		<label class="c-label c-label__checkbox c-custom-toggle" for="${filterTag}">
+		<label class="c-label c-custom-toggle" for="${filterTag}">
 			${filterTag}
 			<span class="c-custom-toggle__fake-input">
 				<svg class="c-custom-toggle__symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
