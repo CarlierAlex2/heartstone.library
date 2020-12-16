@@ -1503,9 +1503,9 @@ input::placeholder {
     color: var(--global-form-textColor-focus);
 
     --c-search__list-boxShadow-hover: inset 0px 0px 0px var(--global-border-radius-sm) var(--color-orange-light);
-    -webkit-box-shadow: var(--c-search__list-boxShadow-hover);
-    -moz-box-shadow: var(--c-search__list-boxShadow-hover);
-    box-shadow: var(--c-search__list-boxShadow-hover);
+    -webkit-box-shadow: var(--c-search__list-boxShadow-hover) !important;
+    -moz-box-shadow: var(--c-search__list-boxShadow-hover) !important;
+    box-shadow: var(--c-search__list-boxShadow-hover) !important;
 }
 
 /*
