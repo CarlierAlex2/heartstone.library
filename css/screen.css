@@ -122,8 +122,9 @@
     /* border radius */
     --global-border-radius-xl: 1rem;
     --global-border-radius-lg: calc(30rem / 16);
-    --global-border-radius-md: calc(3rem / 16);
-    --global-border-radius-sm: calc(2rem / 16);
+    --global-border-radius-md: calc(5rem / 16);
+    --global-border-radius-sm: calc(3rem / 16);
+    --global-border-radius-xs: calc(2rem / 16);
 
 
     /* transitions */
@@ -716,7 +717,7 @@ input::placeholder {
     --c-form__item-borderColor-hover: var(--global-form-borderColor-hover);
     --c-form__item-borderColor-focus: var(--global-form-borderColor-focus);
 
-    --c-form__item-border:  var(--global-border-radius-sm) solid var(--c-form__item-borderColor);
+    --c-form__item-border:  var(--global-border-radius-xs) solid var(--c-form__item-borderColor);
 
     --c-form__item-boxShadow-hover: var(--global-form-boxShadow-hover);
 
@@ -1116,7 +1117,7 @@ input::placeholder {
 
 .c-label__checkbox:hover,
 .c-label__checkbox:focus{
-    --c-label-boxShadow-width-hover: calc(2rem / 16);
+    --c-label-boxShadow-width-hover: var(--global-border-radius-xs);
     --c-label-boxShadow-hover: 0px 0px 0px var(--c-label-boxShadow-width-hover) var(--color-orange-light-x);
 
     position: relative;
@@ -1165,7 +1166,7 @@ input::placeholder {
     height: 16px;
 
     background-color: var(--c-custom-option-background);
-    border-radius: var(--global-border-radius-md);
+    border-radius: var(--global-border-radius-sm);
     border: var(--c-custom-option-border);
 
     margin-left: var(--global-whitespace-md);
@@ -1299,7 +1300,7 @@ input::placeholder {
 
 
 .c-icon-loading{
-    --c-icon-loading-borderwidth: calc(5rem/16);
+    --c-icon-loading-borderwidth: var(--global-border-radius-md);
     --c-icon-loading-width: calc(24rem / 16);
 
     border: var(--c-icon-loading-borderwidth) solid var(--global-background-color);
@@ -1384,7 +1385,6 @@ input::placeholder {
 */
 
 .c-search{
-    /*https://loading.io/css/*/
     --c-search-color: var(--color-neutral-dark);
     --c-search-textColor: var(--color-neutral-dark-xxx);
 
@@ -1412,14 +1412,13 @@ input::placeholder {
 }
 
 .c-search__bar{
-    position: relative;
-    width: auto;
-
+    width: 100%;
     grid-column: 2;
+
+    position: relative;
 }
 
 .c-search__input{
-    position: relative;
     padding: var(--c-search__input-paddingV) var(--c-search__input-paddingH);
 }
 
@@ -1437,68 +1436,61 @@ input::placeholder {
 */
 
 .c-search__container{
-    --c-search__container-offset-v: calc(var(--c-search__container-paddingV) / 2);
-    --c-search__container-paddingV: var(--global-whitespace-md);
-
-    min-height: 100vh;
-    width: 100%;
-
     position: absolute;
-    overflow: hidden;
     z-index: 100;
 
-    transform: translateX(calc(-1 * var(--c-search__container-offset-v)));
+    left: 0;
+    top: 100%;
+
+    min-height: 100vh;
+    min-width: 100%;
 }
 
 .c-search__list{
-    --c-search__list-background: var(--global-form-backGroundColor-focus);
-    --c-search__list-textColor: var(--global-form-textColor-focus);
+    --c-search__list-background: var(--global-form-backGroundColor-hover);
+    --c-search__list-textColor: var(--global-form-textColor-hover);
 
-    --c-search__list-width: calc(100% - var(--c-search__layout-padding) - var(--c-search__container-paddingV));
-    --c-search__list-transition: var(--global-transition-alpha);
-    
-    --c-search__list-paddingH: var(--global-whitespace-sm);
-    --c-search__list-paddingV: calc(calc(100% - var(--c-search__list-width)) / 2);
-
+    --c-search__list-paddingH: var(--global-whitespace-md);
+    --c-search__list-paddingV: var(--global-whitespace-sm);
 
     --c-search__list-item-paddingH: var(--global-whitespace-md);
     --c-search__list-item-paddingV: var(--global-whitespace-sm);
 
-    position: absolute;
-    z-index: -100;
-    border-radius: var(--global-border-radius-md);
-    width: 100%;
-
     background-color: var(--c-search__list-background);
     color: var(--c-search__list-textColor);
+    border-radius: var(--global-border-radius-sm);
+
+    transform: translate(var(--c-search__list-paddingH), var(--c-search__list-paddingV));
+    width: calc(100% - calc(2 * var(--c-search__list-paddingH)));
+
+    transition: all var(--global-transition-alpha) ease-out;
+    -moz-transition: all var(--global-transition-alpha) ease-out; /* Firefox 4 */
+    -webkit-transition: all var(--global-transition-alpha) ease-out; /* Safari and Chrome */
 
     max-height: 0;
     opacity: 0;
-    transform: translate(var(--c-search__list-paddingV), calc(-1* 3rem));
-
-    transition: all var(--c-search__list-transition) ease-out;
-    -moz-transition: all var(--c-search__list-transition) ease-out; /* Firefox 4 */
-    -webkit-transition: all var(--c-search__list-transition) ease-out; /* Safari and Chrome */
 }
 
-
-/*.c-search__bar:hover .c-search__list,*/
-.c-search__list-open
-{
+.c-search__list-open{
     display: block;
     max-height: calc(450rem / 15);
     opacity: 1;
-    transform: translate(var(--c-search__list-paddingV), var(--c-search__list-paddingH));
 
     transition: all var(--c-search__list-transition) ease-in;
     -moz-transition: all var(--c-search__list-transition) ease-in; /* Firefox 4 */
     -webkit-transition: all var(--c-search__list-transition) ease-in; /* Safari and Chrome */
 }
 
-
 .c-search__list li{
-    padding: var(--c-search__list-item-paddingH) 0;
-    margin: 0 var(--c-search__list-item-paddingV);
+    padding: var(--c-search__list-item-paddingH) var(--c-search__list-item-paddingV);
+    max-width: 100%;
+
+    font-size: var(--global-font-size-small);
+    font-weight: var(--global-font-weight-semi);
+
+    transition: all var(--c-search__list-transition) ease-out;
+    -moz-transition: all var(--c-search__list-transition) ease-out; /* Firefox 4 */
+    -webkit-transition: all var(--c-search__list-transition) ease-out; /* Safari and Chrome */
 }
 
 .c-search__list li + li {
@@ -1506,7 +1498,15 @@ input::placeholder {
     border-top: 1px solid var(--c-search__list-borderColor);
 }
 
+.c-search__list li:hover{
+    background: var(--global-form-backGroundColor-focus);
+    color: var(--global-form-textColor-focus);
 
+    --c-search__list-boxShadow-hover: inset 0px 0px 0px var(--global-border-radius-sm) var(--color-orange-light);
+    -webkit-box-shadow: var(--c-search__list-boxShadow-hover);
+    -moz-box-shadow: var(--c-search__list-boxShadow-hover);
+    box-shadow: var(--c-search__list-boxShadow-hover);
+}
 
 /*
 ------------------------------------------------------------------------------------------------
